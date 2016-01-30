@@ -1,6 +1,6 @@
 <widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.phonegap.helloworld" version="1.0.0">
-  <name>F7WP</name>
-  <description>WordPress REST App</description>
+  <name>MG</name>
+  <description>MG Mobile App</description>
   <author href="http://vladimirklochkov.ru" email="4blogga@gmail.com">Vladimir Klochkov</author>
   <content src="index.html"/>
   <preference name="permissions" value="none"/>
