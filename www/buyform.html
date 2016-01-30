@@ -1,0 +1,82 @@
+<!-- Buy Form Page Template -->
+<div class="pages navbar-fixed">
+<div data-page="buyform" class="page">
+
+	<div class="navbar">
+		<div class="navbar-inner">
+			<div class="left"><a href="#" class="back link"> <i class="icon icon-back"></i></a></div>
+			<!-- <div class="center">Заказ</div> -->
+			<div class="right icon">
+				<a class="link icon-only" onclick="window.location.href = 'tel: 999999'; " href="#" > <i class="icon icon-phonecall" > </i></a>
+			</div>				
+		</div>
+	</div>
+		 
+	<div class="page-content">
+<!-- 		<div class="content-block-title">
+			<h3>Пожалуйста, заполните все поля:</h3>
+		</div>	 -->
+		
+		<div class="content-block">
+      
+		<form id="buyformid" class="ajax-submit list-block store-data" method="POST" action="http://27biletov.ru/buyform.php">
+		<div class="list-block inputs-list">
+		<ul>
+			<li>
+			  <div class="item-content">
+				<div class="item-media"><i class="icon icon-form-name"></i></div>
+				<div class="item-inner"> 
+				  <div class="item-title floating-label">Ваше имя</div>
+				  <div class="item-input">
+					<input name="name" id="name" type="text" placeholder=""/>
+				  </div>
+				</div>
+			  </div>
+			</li>
+			<li>
+			  <div class="item-content">
+				<div class="item-media"><i class="icon icon-form-tel"></i></div>
+				<div class="item-inner"> 
+				  <div class="item-title floating-label">Телефон</div>
+				  <div class="item-input">
+					<input name="tel" id="tel" type="tel" placeholder=""/>
+				  </div>
+				</div>
+			  </div>
+			</li>
+			
+			<li>
+			  <div class="item-content">
+				<div class="item-media"><i class="icon icon-form-toggle"></i></div>
+				<div class="item-inner">
+					<!-- <div class="item-title label">C <a href="rules.html">Условиями заказа</a> ознакомлен</div> -->
+					<div class="item-title label">C <a href="#" data-popup=".popup-services" class="open-popup">Условиями заказа</a> ознакомлен</div>
+				  <div class="item-input" >
+					<label class="label-switch">
+					  <input type="checkbox" class="switchrules">
+					  <div class="checkbox"></div>
+					</label>
+				  </div>
+				</div>
+			  </div>
+			</li>
+
+			<input name="inputurl" id="inputurl" type="hidden" placeholder=""/>
+			<input name="inputtitle" id="inputtitle" type="hidden" placeholder=""/>
+			
+			<!-- <input type="submit" value="Отправить" class="button">  -->
+			<!-- <input type="submit" value="Тест отправить" class="confirm-title-ok-cancel button button-big button-fill color-green">  -->
+		</ul>
+		  
+		<p>Стоимость, количество билетов, адрес и удобное Вам время доставки уточнит оператор.</p>
+			<div class="rowsubmit">
+				<p class="buttons-row"><a href="#" id="btnsubmit" class="confirm-title-ok-cancel button button-big button-fill color-green">Заказать билет</a></p>
+			</div>
+			
+		</div>
+		</form>
+		</div>
+	</div>
+	
+</div>
+</div>

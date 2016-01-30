@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<!-- <meta name="apple-mobile-web-app-status-bar-style" content="black"> -->
+		<meta name="apple-mobile-web-app-status-bar-style" content="yes">
+		<!-- Color theme for statusbar -->
+		<meta name="theme-color" content="#2196f3">
+		<!-- Your app title -->	
+		<title>F7WP</title>
+		<!-- Path to Framework7 Library CSS-->
+		<!-- <link rel="stylesheet" href="css/framework7.ios.min.css"> -->
+		<link rel="stylesheet" href="css/framework7.material.min.css">
+		<!-- Path to Framework7 color related styles, Material Theme -->
+		<link rel="stylesheet" href="css/framework7.material.colors.min.css">
+		<!-- Path to your custom app styles-->
+		<link rel="stylesheet" href="css/my-app.css">
+	</head>
+<body>
+
+<!-- First, we need to add Panel's overlay that will overlays app while panel is opened -->
+<div class="panel-overlay"></div>
+
+<!-- Left panel with cover effect-->
+<div class="panel panel-left panel-cover">
+	<div class="list-block">
+		<div class="list-group">
+			<ul>
+				<a href="index.html" class="back close-panel" data-force="true">
+				<li class="item-content list-panel-all close-panel item-link">
+				<div class="item-media"><i class="icon icon-home-black"></i></div>
+					<div class="item-inner">
+						<div class="item-title">На главную</div>
+					</div>
+				</li>
+				</a>
+					
+				<a href="#" data-catid="3" class="load-dynamic-page-category">
+				<li class="item-content list-panel-all close-panel item-link">
+				<div class="item-media"><i class="icon icon-folder-open-black"></i></div>
+					<div class="item-inner">
+						<div class="item-title">Великано</div>
+					</div>
+				</li>
+				</a>
+								
+				<a href="#" data-catid="7" class="load-dynamic-page-category">
+				<li class="item-content list-panel-all close-panel item-link">
+				<div class="item-media"><i class="icon icon-folder-open-black"></i></div>
+					<div class="item-inner">
+						<div class="item-title">Заимка/Ривьера</div>
+					</div>
+				</li>
+				</a>
+				
+				
+				
+												
+				<a href="#" data-postid="140" class="load-dynamic-page-post">
+				<li class="item-content list-panel-all close-panel item-link">
+				<div class="item-media"><i class="icon icon-link-black"></i></div>
+					<div class="item-inner">
+						<div class="item-title">Пост 140</div>
+					</div>
+				</li>
+				</a>
+				
+				
+				
+				
+				
+				<a href="#">
+				<li class="item-content list-panel-favorites close-panel item-link">
+				<div class="item-media"><i class="icon icon-folder-special-black"></i></div>
+					<div class="item-inner">
+						<div class="item-title">Избранное</div>
+					</div>
+				</li>
+				</a>
+				
+						
+				<a href="#">
+				<li class="item-content close-panel">
+				<div class="item-media"><i class="icon icon-close-black"></i></div>
+					<div class="item-inner">
+						<div class="item-title">Закрыть панель</div>
+					</div>
+				</li>
+				</a>
+				
+				
+				
+			</ul>
+		</div>
+	
+	
+	
+	
+	
+
+	
+	
+	
+      <!-- Click on link with "close-panel" class will close panel -->
+	 <!-- 	 <p>Список категорий:</p>
+      <p><a href="index.html" class="back close-panel" data-force="true">На главную</a></p>
+      <p><a href="#" data-catid="3" class="close-panel item-link item-content load-dynamic-page-category">Великано</a></p>
+      <p><a href="#" data-catid="7" class="close-panel item-link item-content load-dynamic-page-category">Заимка/Ривьера</a></p>
+      <p><a href="#" data-postid="140" class="close-panel item-link item-content load-dynamic-page-post">140 пост</a></p>
+
+	  <br />
+      <p><a href="#" class="close-panel">Просто закрыть панель</a></p>
+	 -->
+
+		<!-- http://27biletov.ru/wp-json/wp/v2/posts?filter[category_name]=platinum-arena -->
+	</div>
+</div>
+  
+
+<div class="views"> <!-- Views-->
+<div class="view view-main"> <!-- Your main view, should have "view-main" class-->
+	
+<!-- Home Page Template -->
+<!-- <script type="template" id="home-page"> -->
+	<div class="pages navbar-fixed">
+		<div data-page="home" class="page">
+			<div class="navbar">
+				<div class="navbar-inner">
+					<div class="left"><a href="#" class="link icon-only open-panel"> <i class="icon icon-bars"></i></a></div>
+					<div class="center">Title</div>
+					<div class="right icon">
+						<a class="link icon-only" onclick="window.plugins.socialsharing.share(null, null, null,  'http://27biletov.ru')" href="#" > <i class="icon icon-share" > </i></a> 
+						<a class="link icon-only" onclick="window.location.href = 'tel: 99999'; " href="#" > <i class="icon icon-phonecall" > </i></a>
+						
+						<!-- <a class="link icon-only" onclick="window.location.href = 'tg://msg?text=Hello Telegram'; " href="#" > <i class="icon icon-msg-telegram-un" > </i></a>
+						<a class="link icon-only" onclick="window.location.href = 'whatsapp://send?text=Hello WhatsApp'; " href="#" > <i class="icon icon-msg-whatsapp" > </i></a>
+						<a class="link icon-only" onclick="window.location.href = 'viber://forward?text=Hello Viber'; " href="#" > <i class="icon icon-msg-viber" > </i></a> -->
+						
+						<!-- <a class="link external icon-only" href="tg://msg?text=HelloTelegram" > <i class="icon icon-msg-telegram-un" > </i></a> 
+						<a class="link external icon-only" href="whatsapp://send?text=HelloWhatsApp" > <i class="icon icon-msg-whatsapp" > </i></a>
+						<a class="link external icon-only" href="viber://forward?text=Hello Viber" > <i class="icon icon-msg-viber" > </i></a> -->
+					</div>				
+				</div>
+			</div>
+			 
+			<div class="page-content">
+				<div class="content-block-title">
+					<h1>Добро пожаловать!</h1>
+				</div>
+
+				<div class="list-block">
+					<ul>
+					
+					<li><a href="rules.html" class="item-link">
+					<div class="item-content">
+						<div class="item-media"><i class="icon icon-f7"></i></div>
+						<div class="item-inner">
+							<div class="item-title">Условия</div>
+						</div>
+					</div></a></li>
+					
+					<li><a href="buyform.html" class="item-link">
+					<div class="item-content">
+						<div class="item-media"><i class="icon icon-f7"></i></div>
+						<div class="item-inner">
+							<div class="item-title">Купить</div>
+						</div>
+					</div></a></li>
+					
+					<li><a href="#" data-catid="3" class="item-link item-content load-dynamic-page-category">
+					<div class="item-inner"> 
+					<div class="item-title">Великано</div>
+					</div></a></li>
+					
+					<li><a href="#" data-catid="7" class="item-link item-content load-dynamic-page-category">
+					<div class="item-inner"> 
+					<div class="item-title">Заимка/Ривьера</div>
+					</div></a></li>
+					
+					<li><a href="#" data-postid="140" class="item-link item-content load-dynamic-page-post">
+					<div class="item-inner"> 
+					<div class="item-title">140 пост</div>
+					</div></a></li>
+					</ul>
+				</div>
+				
+				<div class="content-block">
+								<p>Привет! Это пре-альфа версия.</p>
+
+					<p><a href="#" class="alert-text-title">Alert With Text and Title</a></p>
+					<p><a href="#" class="open-panel">Открыть левую панель</a></p>
+					<div class="content-block-inner">
+					<p>Для рендеринга страниц работает шаблон-движок Template7. В настоящее время готовы:</p>
+					<p>1. Левая панель по свайпу с левой границы экрана, закрывается обратным свайпом или тапом в основное окно контента</p>
+					<p>2. Список категорий доступен из левой панели или с главной страницы</p>
+					<p>3. При переходе в категорию отображается список мероприятий</p>
+					<p>4. Material Design </p>
+					<p>5. В навбаре (сверху) иконка меню меняется на иконку "назад" если мы не на главной странице</p>
+					<p>6. Поддержка хардверной кнопки "назад" на устройстве</p>
+					<p>7. Навбар скрывается при скроллинге вниз, появляется при прокрутке до самого низа страницы, либо скроллинге вверх</p>
+					<p>Известная багофича: название мероприятия в списке категорий не совпадает с фактическим содержимым поста, это просто заглушки</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- </script>	 -->		
+		
+		
+<!-- List of Posts in Category Template -->
+<script type="text/template" id="category-page">
+<div class="pages navbar-fixed">
+	<div data-page="category" class="page">
+		<div class="navbar">
+			<div class="navbar-inner">
+					<div class="left"><a href="#" class="back link"> <i class="icon icon-back"></i></a></div>
+					<!-- <div class="center">Статьи</div> -->
+					<div class="right icon">
+						<!-- <a class="link icon-only" onclick="window.plugins.socialsharing.share(null, null, null,  '{{link}}')" href="#" > <i class="icon icon-share" > </i></a>  -->
+						<a class="link icon-only" onclick="window.location.href = 'tel: 999999'; " href="#" > <i class="icon icon-phonecall" > </i></a>
+					</div>	
+			</div>
+		</div>
+		  
+		<div class="page-content">
+		<p><a href="#" class="alert-text-title">Alert With Text and Title</a></p>
+		  <div class="content-block-title">Статьи</div>
+		  <div class="list-block">
+		  
+			<ul>{{#each this}}
+			  <li>
+			  
+				<a href="#" data-postid="{{id}}" class="item-content item-link load-dynamic-page-post">
+				  <div class="item-inner">
+					<div class="item-title">{{id}}. {{title.rendered}} {{date}}</div>
+				  </div>
+				</a>			  
+
+			  </li>{{/each}}
+			</ul>
+		  </div>
+		</div>
+	</div>
+</div>
+</script>		
+		
+		
+<!-- Post Content Template -->
+<script type="text/template" id="post-page">
+<!-- <div class="pages navbar-fixed toolbar-fixed"> -->
+<div class="pages navbar-fixed">
+	<div data-page="post" class="page">
+		<div class="navbar">
+			<div class="navbar-inner">
+				<div class="left"><a href="#" class="back link"> <i class="icon icon-back"></i></a></div>
+				<!-- <div class="center infotitle">{{title.rendered}}</div> -->
+				<div class="right icon">
+					<a class="link icon-only" href="#" > <i class="icon icon-star-white" > </i></a>
+ 					<a class="link icon-only" onclick="window.plugins.socialsharing.share(null, null, null,  '{{link}}')" href="#" > <i class="icon icon-share" > </i></a> 
+					<a class="link icon-only" onclick="window.location.href = 'tel: 999999';" href="#" > <i class="icon icon-phonecall" ></i></a>
+				</div>	
+			</div>
+		</div>
+		
+		<div class="page-content hide-bars-on-scroll">
+		<div class="content-block">
+			<h1>{{title.rendered}}</h1>
+			<p class="buttons-row">
+		<a href="#" onclick="window.location.href = 'tel: 999999';" class="button button-big button-fill color-teal">Заказ по тел.</a>
+		<a href="buyform.html?linkurl={{link}}&linktitle={{title.rendered}}" class="button button-big button-fill color-green">Заказ онлайн</a>
+			</p>
+<!-- <p><a href="#" class="alert-text-title">Alert With Text and Title</a></p> -->
+			
+			<div class="content-block-inner">
+				<!-- <a href="buyform.html?linkurl={{link}}&linktitle={{title.rendered}}" class="item-content item-link">
+					<div class="item-inner">
+						<div class="item-title">Купить билет</div>
+					</div>
+				</a> -->	
+				<p>{{content.rendered}}</p>
+			</div>
+			
+		<p class="buttons-row">
+		<a href="#" onclick="window.location.href = 'tel: 999999';" class="button button-big button-fill color-teal">Заказ по тел.</a>
+		<a href="buyform.html?linkurl={{link}}&linktitle={{title.rendered}}" class="button button-big button-fill color-green">Заказ онлайн</a>
+		</p>
+		</div>	
+		</div>
+	</div>
+</div>
+</script>			
+</div>
+</div>
+
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="cordova_plugins.js"></script>
+<script type="text/javascript" src="js/SocialSharing.js"></script>
+
+<!-- <script type="text/javascript" charset="utf-8">
+
+// Call onDeviceReady when PhoneGap is loaded.
+// At this point, the document has loaded but phonegap-1.0.0.js has not.
+// When PhoneGap is loaded and talking with the native device,
+// it will call the event deviceready.
+document.addEventListener("deviceready", onDeviceReady, false);
+function onDeviceReady() { // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
+document.addEventListener("backbutton", onBackKeyDown, false); // Register the event listener
+}
+function onBackKeyDown() { // Handle the back button
+	if(mainView.activePage.name=="home"){ navigator.app.exitApp(); }
+	else { mainView.router.back(); }
+	}
+</script>	 -->
+
+
+
+
+<script type="text/javascript" src="js/framework7.min.js"></script>
+<script type="text/javascript" src="js/my-app.js"></script>
+
+			  
+			    <!-- <a href="#" data-catid="7" class="item-link item-content load-dynamic-page-category"> -->
+				<!-- <a href="post.html" class="item-content item-link" data-context-name="cars.{{@index}}">
+				  <div class="item-inner">
+					<div class="item-title">{{title.rendered}} {{date}}</div>
+				  </div>
+				</a> -->
+				
+				
+				
+				
+	<div class="popup popup-services">
+		<div class="content-block-title">
+			<h1>Условия заказа</h1>
+		</div>		 
+	<div class="content-block">
+		<p><a href="#" class="close-popup">Закрыть</a></p>
+		<div class="content-block-inner">
+			<p>Обработка заказов осуществляется с ежедневно с 10:00 до 19:00.</p>
+			<p>Доставка осуществляется (пн, ср, пт) с 15:00-18:00; (либо время доставки оговарвивается с оператором). Заказы, сделанные в нерабочие дни, доставляются в первый рабочий.</p>
+			<p>Стоимость доставки: от 100 руб.</p>
+			<p>Ориентировочная стоимость:</p>
+			<ul>
+			<li>Центральный район — 100 руб.</li>
+			<li>1 мкр-н, ДОС, Большая, Казачья гора, Лазо- 150 руб.</li>
+			<li>Южный микрорайон (до Стройки), Северный микрорайон, Выборгская,  п.Горький — 200 руб.</li>
+			</ul>
+			<p>Точную стоимость доставки указывает оператор. Оплата производится наличными.</p>
+			<p>При доставке товара и отказе от покупки по любым причинам взимается стоимость доставки, установленная оператором.
+			При отмене концерта билеты возвращаются в кассу, указанную организатором концерта, деньги за доставку не возвращаются.</p>
+			
+			<h3>Соглашение об обработке персональных данных.</h3>
+			<p>Данное соглашение об обработке персональных данных разработано в соответствии с законодательством Российской Федерации.</p>
+			<p>Все лица, заполнившие сведения составляющие персональные данные на данном сайте, а также разместившие иную информацию обозначенными действиями подтверждают свое согласие на обработку персональных данных и их передачу оператору обработки персональных данных.</p>
+			<p>Под персональными данными Гражданина понимается нижеуказанная анкетная информация: общая информация (Ф.И.О.), телефон, адрес электронной почты, адрес доставки.</p>
+			<p>Персональные данные направляются оператору в целях предоставления последним услуги доставки.</p>
+			<p>Гражданин, принимая настоящее Соглашение, выражают свою заинтересованность и полное согласие, что обработка их персональных данных может включать в себя следующие действия: сбор, систематизацию, накопление, хранение, уточнение (обновление, изменение), использование, уничтожение.</p>
+			<p>Гражданин гарантирует: информация, им предоставленная, является полной, точной и достоверной; при предоставлении информации не нарушается действующее законодательство Российской Федерации, законные права и интересы третьих лиц; вся предоставленная информация заполнена Гражданина в отношении себя лично.</p>
+		</div>
+		<p><a href="#" class="close-popup">Закрыть</a></p>
+	</div>
+	</div>
+	
+</body>
+</html>
