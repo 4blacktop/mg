@@ -54,10 +54,10 @@ myApp.buildTabsHTML = function () {
 	
 	var newsURL = 'http://www.moigorod.ru/m/news/';
 	
-	// $$.get(newsURL, null, function (data) {
-		// console.log('Load was performed');
-		// $$('.content-news').html(data);
-	// });
+	$$.get(newsURL, null, function (data) {
+		console.log('Load was performed');
+		$$('.content-news').html(data);
+	});
 	
 };
 
