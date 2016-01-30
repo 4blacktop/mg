@@ -52,12 +52,12 @@ myApp.buildTabsHTML = function () {
     var html = '<p>Новости</p><p>Новость1</p><p>Новость2</p>';
     $$('.content-news').html(html);
 	
-	var newsURL = 'http://www.moigorod.ru/m/news/';
+	// var newsURL = 'http://www.moigorod.ru/m/news/';
 	
-	$$.get(newsURL, null, function (data) {
-		console.log('Load was performed');
-		$$('.content-news').html(data);
-	});
+	// $$.get(newsURL, null, function (data) {
+		// console.log('Load was performed');
+		// $$('.content-news').html(data);
+	// });
 	
 };
 
