@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="http://www.MoiGorod.Ru/uploads/rss/rss.xsl"?>
+<rss version="2.0" xmlns:kg="http://www.MoiGorod.Ru">
+<channel>
+
+	<title>Сегодня в кино (Хабаровск)</title>
+	<link>http://habarovsk.MoiGorod.Ru/kino/</link>
+	<description>Афиша кинотеатров на сегодня</description>
+	<image>
+		<url>http://www.MoiGorod.Ru/rss/i/mglogo.gif</url>
+		<title>MoiGorod.Ru - Хабаровск</title>
+		<link>http://habarovsk.MoiGorod.Ru/</link>
+		<width>209</width>
+		<height>30</height>
+	</image>
+	<pubDate>Sun, 31 Jan 2016 15:45:00 +1000</pubDate>
+	<language>ru</language>
+	<copyright>MoiGorod.Ru</copyright>
+	<webMaster>support@MoiGorod.Ru</webMaster>
+
+	<item>
+		<title>13 часов: Тайные солдаты Бенгази</title>
+		<link>http://habarovsk.MoiGorod.Ru/kino/2016/13_Chasov_Tainye_Soldaty_Bengazi/</link>
+		<pdalink>http://habarovsk.MoiGorod.Ru/m/kino/movie.asp?m=2099598186</pdalink>
+		<description><![CDATA[<img border="0" align="right" src="http://mgrd.ru/u/kino/movies/2099598186_0.jpg" alt="" />боевик, триллер, драма, военный]]></description>
+		<pubDate>Mon, 25 Jan 2016 15:35:00 +1000</pubDate>
+	</item>
+
+	<item>
+		<title>5-я волна</title>
+		<link>http://habarovsk.MoiGorod.Ru/kino/2016/5-ya_Volna/</link>
+		<pdalink>http://habarovsk.MoiGorod.Ru/m/kino/movie.asp?m=2099598171</pdalink>
+		<description><![CDATA[<img border="0" align="right" src="http://mgrd.ru/u/kino/movies/2099598171_0.jpg" alt="" />фантастика, триллер, приключения]]></description>
+		<pubDate>Wed, 13 Jan 2016 15:41:00 +1000</pubDate>
+	</item>
+
+	<item>
+		<title>Выживший</title>
+		<link>http://habarovsk.MoiGorod.Ru/kino/2016/Vyzhivshii/</link>
+		<pdalink>http://habarovsk.MoiGorod.Ru/m/kino/movie.asp?m=2099598170</pdalink>
+		<description><![CDATA[<img border="0" align="right" src="http://mgrd.ru/u/kino/movies/2099598170_0.jpg" alt="" />триллер, драма, приключения, вестерн]]></description>
+		<pubDate>Tue, 5 Jan 2016 15:33:00 +1000</pubDate>
+	</item>
+
+	<item>
+		<title>Девушка из Дании</title>
+		<link>http://habarovsk.MoiGorod.Ru/kino/2016/Devushka_Iz_Danii/</link>
+		<pdalink>http://habarovsk.MoiGorod.Ru/m/kino/movie.asp?m=2099598184</pdalink>
+		<description><![CDATA[<img border="0" align="right" src="http://mgrd.ru/u/kino/movies/2099598184_0.jpg" alt="" />драма, мелодрама, биография]]></description>
+		<pubDate>Mon, 25 Jan 2016 15:28:00 +1000</pubDate>
+	</item>
+
+	<item>
+		<title>Дедушка легкого поведения</title>
+		<link>http://habarovsk.MoiGorod.Ru/kino/2016/Dedushka_Legkogo_Povedeniya/</link>
+		<pdalink>http://habarovsk.MoiGorod.Ru/m/kino/movie.asp?m=2099598183</pdalink>
+		<description><![CDATA[<img border="0" align="right" src="http://mgrd.ru/u/kino/movies/2099598183_0.jpg" alt="" />комедия]]></description>
+		<pubDate>Tue, 19 Jan 2016 16:41:00 +1000</pubDate>
+	</item>
+
+	<item>
+		<title>Джой</title>
+		<link>http://habarovsk.MoiGorod.Ru/kino/2016/Dzhoi/</link>
+		<pdalink>http://habarovsk.MoiGorod.Ru/m/kino/movie.asp?m=2099598175</pdalink>
+		<description><![CDATA[<img border="0" align="right" src="http://mgrd.ru/u/kino/movies/2099598175_0.jpg" alt="" />драма, комедия]]></description>
+		<pubDate>Mon, 18 Jan 2016 15:56:00 +1000</pubDate>
+	</item>
+
+	<item>
+		<title>Зачётный препод 2</title>
+		<link>http://habarovsk.MoiGorod.Ru/kino/2016/Zachetnyi_Prepod_2/</link>
+		<pdalink>http://habarovsk.MoiGorod.Ru/m/kino/movie.asp?m=2099598185</pdalink>
+		<description><![CDATA[<img border="0" align="right" src="http://mgrd.ru/u/kino/movies/2099598185_0.jpg" alt="" />комедия]]></description>
+		<pubDate>Mon, 25 Jan 2016 15:31:00 +1000</pubDate>
+	</item>
+
+	<item>
+		<title>Иван Царевич и Серый Волк 3</title>
+		<link>http://habarovsk.MoiGorod.Ru/kino/2015/Ivan_Carevich_I_Seryi_Volk_3/</link>
+		<pdalink>http://habarovsk.MoiGorod.Ru/m/kino/movie.asp?m=2099598156</pdalink>
+		<description><![CDATA[<img border="0" align="right" src="http://mgrd.ru/u/kino/movies/2099598156_0.jpg" alt="" />мультфильм, приключения, семейный]]></description>
+		<pubDate>Fri, 18 Dec 2015 22:36:00 +1000</pubDate>
+	</item>
+
+	<item>
+		<title>Игра на понижение</title>
+		<link>http://habarovsk.MoiGorod.Ru/kino/2016/Igra_Na_Ponizhenie/</link>
+		<pdalink>http://habarovsk.MoiGorod.Ru/m/kino/movie.asp?m=2099598176</pdalink>
+		<description><![CDATA[<img border="0" align="right" src="http://mgrd.ru/u/kino/movies/2099598176_0.jpg" alt="" />драма, биография]]></description>
+		<pubDate>Mon, 18 Jan 2016 16:00:00 +1000</pubDate>
+	</item>
+
+	<item>
+		<title>Крид: Наследие Рокки</title>
+		<link>http://habarovsk.MoiGorod.Ru/kino/2015/Krid_Nasledie_Rokki/</link>
+		<pdalink>http://habarovsk.MoiGorod.Ru/m/kino/movie.asp?m=2099598166</pdalink>
+		<description><![CDATA[<img border="0" align="right" src="http://mgrd.ru/u/kino/movies/2099598166_0.jpg" alt="" />драма, спорт]]></description>
+		<pubDate>Fri, 18 Dec 2015 23:06:00 +1000</pubDate>
+	</item>
+
+	<item>
+		<title>Кукла</title>
+		<link>http://habarovsk.MoiGorod.Ru/kino/2016/Kukla/</link>
+		<pdalink>http://habarovsk.MoiGorod.Ru/m/kino/movie.asp?m=2099598187</pdalink>
+		<description><![CDATA[<img border="0" align="right" src="http://mgrd.ru/u/kino/movies/2099598187_0.jpg" alt="" />ужасы, триллер]]></description>
+		<pubDate>Mon, 25 Jan 2016 15:42:00 +1000</pubDate>
+	</item>
+
+	<item>
+		<title>Кунг-фу Панда 3</title>
+		<link>http://habarovsk.MoiGorod.Ru/kino/2016/Kung-fu_Panda_3/</link>
+		<pdalink>http://habarovsk.MoiGorod.Ru/m/kino/movie.asp?m=2099598172</pdalink>
+		<description><![CDATA[<img border="0" align="right" src="http://mgrd.ru/u/kino/movies/2099598172_0.jpg" alt="" />мультфильм, боевик, комедия, приключения, семейный]]></description>
+		<pubDate>Wed, 13 Jan 2016 15:47:00 +1000</pubDate>
+	</item>
+
+	<item>
+		<title>Последний обряд</title>
+		<link>http://habarovsk.MoiGorod.Ru/kino/2016/Poslednii_Obryad/</link>
+		<pdalink>http://habarovsk.MoiGorod.Ru/m/kino/movie.asp?m=2099598182</pdalink>
+		<description><![CDATA[<img border="0" align="right" src="http://mgrd.ru/u/kino/movies/2099598182_0.jpg" alt="" />ужасы, триллер]]></description>
+		<pubDate>Mon, 18 Jan 2016 22:29:00 +1000</pubDate>
+	</item>
+
+	<item>
+		<title>Статус: Свободен</title>
+		<link>http://habarovsk.MoiGorod.Ru/kino/2016/Status_Svoboden/</link>
+		<pdalink>http://habarovsk.MoiGorod.Ru/m/kino/movie.asp?m=2099598174</pdalink>
+		<description><![CDATA[<img border="0" align="right" src="http://mgrd.ru/u/kino/movies/2099598174_0.jpg" alt="" />комедия, мелодрама]]></description>
+		<pubDate>Mon, 18 Jan 2016 15:51:00 +1000</pubDate>
+	</item>
+
+	<item>
+		<title>Элвин и бурундуки: Грандиозное бурундуключение</title>
+		<link>http://habarovsk.MoiGorod.Ru/kino/2015/Elvin_I_Burunduki_Grandioznoe_Burundukljuchenie/</link>
+		<pdalink>http://habarovsk.MoiGorod.Ru/m/kino/movie.asp?m=2099598164</pdalink>
+		<description><![CDATA[<img border="0" align="right" src="http://mgrd.ru/u/kino/movies/2099598164_0.jpg" alt="" />мультфильм, фэнтези, комедия, приключения, семейный, музыка]]></description>
+		<pubDate>Fri, 18 Dec 2015 23:02:00 +1000</pubDate>
+	</item>
+
+
+
+</channel>
+</rss>

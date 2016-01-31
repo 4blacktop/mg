@@ -18,7 +18,7 @@
 		<!-- Path to your custom app styles-->
 		<link rel="stylesheet" href="css/my-app.css">
 	</head>
-<body>
+<body class="theme-cyan">
 
 <!-- First, we need to add Panel's overlay that will overlays app while panel is opened -->
 <div class="panel-overlay"></div>
@@ -45,47 +45,6 @@
 					</div>
 				</li>
 				</a>
-				
-									
-				<a href="#tab2">
-				<li class="item-content list-panel-all close-panel item-link">
-				<div class="item-media"><i class="icon icon-folder-open-black"></i></div>
-					<div class="item-inner">
-						<div class="item-title">Кино</div>
-					</div>
-				</li>
-				</a>
-				
-									
-				<a href="#tab3">
-				<li class="item-content list-panel-all close-panel item-link">
-				<div class="item-media"><i class="icon icon-folder-open-black"></i></div>
-					<div class="item-inner">
-						<div class="item-title">События</div>
-					</div>
-				</li>
-				</a>
-				
-									
-				<a href="#tab4">
-				<li class="item-content list-panel-all close-panel item-link">
-				<div class="item-media"><i class="icon icon-folder-open-black"></i></div>
-					<div class="item-inner">
-						<div class="item-title">Валюты</div>
-					</div>
-				</li>
-				</a>
-								
-				<a href="#" data-catid="7" class="load-dynamic-page-category">
-				<li class="item-content list-panel-all close-panel item-link">
-				<div class="item-media"><i class="icon icon-folder-open-black"></i></div>
-					<div class="item-inner">
-						<div class="item-title">Кино</div>
-					</div>
-				</li>
-				</a>
-				
-				
 				
 												
 				<a href="#" data-postid="140" class="load-dynamic-page-post">
@@ -134,26 +93,7 @@
 			</ul>
 		</div>
 	
-	
-	
-	
-	
 
-	
-	
-	
-      <!-- Click on link with "close-panel" class will close panel -->
-	 <!-- 	 <p>Список категорий:</p>
-      <p><a href="index.html" class="back close-panel" data-force="true">На главную</a></p>
-      <p><a href="#" data-catid="3" class="close-panel item-link item-content load-dynamic-page-category">Великано</a></p>
-      <p><a href="#" data-catid="7" class="close-panel item-link item-content load-dynamic-page-category">Заимка/Ривьера</a></p>
-      <p><a href="#" data-postid="140" class="close-panel item-link item-content load-dynamic-page-post">140 пост</a></p>
-
-	  <br />
-      <p><a href="#" class="close-panel">Просто закрыть панель</a></p>
-	 -->
-
-		<!-- http://27biletov.ru/wp-json/wp/v2/posts?filter[category_name]=platinum-arena -->
 	</div>
 </div>
   
@@ -162,246 +102,13 @@
 <div class="view view-main"> <!-- Your main view, should have "view-main" class-->
 
 <!-- Home Page Template -->
-<!-- <script type="template" id="home-page"> -->
 <div class="pages navbar-fixed">
-	
-	
-	
-<div data-page="home" class="page toolbar-fixed navbar-fixed">
-	
-	<div class="navbar">
-		<div class="navbar-inner">
-			<div class="left"><a href="#" class="link icon-only open-panel"> <i class="icon icon-bars"></i></a></div>
-			<div class="center">MG</div>
-			<div class="right icon">
-				<a class="link icon-only" onclick="window.plugins.socialsharing.share(null, null, null,  'http://www.moigorod.ru/m/')" href="#" > <i class="icon icon-share" > </i></a> 
-				<a class="link icon-only" onclick="window.location.href = 'tel: +74212666777'; " href="#" > <i class="icon icon-phonecall" > </i></a>
-			</div>				
-		</div>
-	</div>
-		
-	<div class="toolbar tabbar">
-		<div class="toolbar-inner">
-			<a href="#tab1" class="active tab-link">Новости</a>
-			<a href="#tab2" class="tab-link">Скидки</a>
-			<a href="#tab3" class="tab-link">Кино</a>
-			<a href="#tab4" class="tab-link">События</a>
-			<a href="#tab5" class="tab-link">Валюта</a>
-
-		</div>
-	</div>
-
-	<div class="tabs-swipeable-wrap">
-		<div class="tabs">
-		
-			<div id="tab1" class="page-content tab active">
-				<div class="content-block content-news">
-					Ничего нет
-				</div>
-			</div>
-
-
-			<div id="tab2" class="page-content tab">
-				<div class="content-block content-cinema">
-					<p>Скидки</p>
-					<p>Ut ac lobortis lacus, non pellentesque arcu. Quisque sodales sapien malesuada, condimentum nunc at, viverra lacus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vivamus eu pulvinar turpis, id tristique quam. Aenean venenatis molestie diam, sit amet condimentum nisl pretium id. Donec diam tortor, mollis in vehicula id, vehicula consectetur nulla. Quisque posuere rutrum mauris, eu rutrum turpis blandit at. Proin volutpat tortor sit amet metus porttitor accumsan. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Ut dapibus posuere dictum.</p>
-					<p>Fusce luctus turpis nunc, id porta orci blandit eget. Aenean sodales quam nec diam varius, in ornare ipsum condimentum. Aenean eleifend, nulla sit amet volutpat adipiscing, ligula nulla pharetra risus, vitae consequat leo tortor eu nunc. Vivamus at fringilla metus. Duis neque lectus, sagittis in volutpat a, pretium vel turpis. Nam accumsan auctor libero, quis sodales felis faucibus quis. Etiam vestibulum sed nisl vel aliquet. Aliquam pellentesque leo a lacus ultricies scelerisque. Vestibulum vestibulum fermentum tincidunt. Proin eleifend metus non quam pretium, eu vehicula ipsum egestas. Nam eget nibh enim. Etiam sem leo, pellentesque a elit vel, egestas rhoncus enim. Morbi ultricies adipiscing tortor, vitae condimentum lacus hendrerit nec. Phasellus laoreet leo quis purus elementum, ut fringilla justo eleifend. Nunc ultricies a sapien vitae auctor. Aliquam id erat elementum, laoreet est et, dapibus ligula.</p>
-				</div>
-			</div>
-
-			
-			<div id="tab3" class="page-content tab">
-				<div class="content-block content-cinema">
-					<p>Кино</p>
-					<p>Ut ac lobortis lacus, non pellentesque arcu. Quisque sodales sapien malesuada, condimentum nunc at, viverra lacus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vivamus eu pulvinar turpis, id tristique quam. Aenean venenatis molestie diam, sit amet condimentum nisl pretium id. Donec diam tortor, mollis in vehicula id, vehicula consectetur nulla. Quisque posuere rutrum mauris, eu rutrum turpis blandit at. Proin volutpat tortor sit amet metus porttitor accumsan. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Ut dapibus posuere dictum.</p>
-					<p>Fusce luctus turpis nunc, id porta orci blandit eget. Aenean sodales quam nec diam varius, in ornare ipsum condimentum. Aenean eleifend, nulla sit amet volutpat adipiscing, ligula nulla pharetra risus, vitae consequat leo tortor eu nunc. Vivamus at fringilla metus. Duis neque lectus, sagittis in volutpat a, pretium vel turpis. Nam accumsan auctor libero, quis sodales felis faucibus quis. Etiam vestibulum sed nisl vel aliquet. Aliquam pellentesque leo a lacus ultricies scelerisque. Vestibulum vestibulum fermentum tincidunt. Proin eleifend metus non quam pretium, eu vehicula ipsum egestas. Nam eget nibh enim. Etiam sem leo, pellentesque a elit vel, egestas rhoncus enim. Morbi ultricies adipiscing tortor, vitae condimentum lacus hendrerit nec. Phasellus laoreet leo quis purus elementum, ut fringilla justo eleifend. Nunc ultricies a sapien vitae auctor. Aliquam id erat elementum, laoreet est et, dapibus ligula.</p>
-				</div>
-			</div>
-			
-			<div id="tab4" class="page-content tab">
-				<div class="content-block content-events">
-					<p>События</p>
-					<p>Nulla gravida libero eget lobortis iaculis. In sed elit eu nibh adipiscing faucibus. Sed ac accumsan lacus. In ut diam quis turpis fringilla volutpat. In ultrices dignissim consequat. Cras pretium tortor et lorem condimentum posuere. Nulla facilisi. Suspendisse pretium egestas lacus ac laoreet. Mauris rhoncus quis ipsum quis tristique. Vivamus ultricies urna quis nunc egestas, in euismod turpis fringilla. Nam tellus massa, vehicula eu sapien non, dapibus tempor lorem. Fusce placerat orci arcu, eu dignissim enim porttitor vel. Nullam porttitor vel dolor sed feugiat. Suspendisse potenti. Maecenas ac mattis odio. Sed vel ultricies lacus, sed posuere libero.</p>
-					<p>Nulla gravida libero eget lobortis iaculis. In sed elit eu nibh adipiscing faucibus. Sed ac accumsan lacus. In ut diam quis turpis fringilla volutpat. In ultrices dignissim consequat. Cras pretium tortor et lorem condimentum posuere. Nulla facilisi. Suspendisse pretium egestas lacus ac laoreet. Mauris rhoncus quis ipsum quis tristique. Vivamus ultricies urna quis nunc egestas, in euismod turpis fringilla. Nam tellus massa, vehicula eu sapien non, dapibus tempor lorem. Fusce placerat orci arcu, eu dignissim enim porttitor vel. Nullam porttitor vel dolor sed feugiat. Suspendisse potenti. Maecenas ac mattis odio. Sed vel ultricies lacus, sed posuere libero.</p>
-				</div>
-			</div>
-			
-			<div id="tab5" class="page-content tab">
-				<div class="content-block content-currency">
-					<p>Валюты</p>
-					<p>Nulla gravida libero eget lobortis iaculis. In sed elit eu nibh adipiscing faucibus. Sed ac accumsan lacus. In ut diam quis turpis fringilla volutpat. In ultrices dignissim consequat. Cras pretium tortor et lorem condimentum posuere. Nulla facilisi. Suspendisse pretium egestas lacus ac laoreet. Mauris rhoncus quis ipsum quis tristique. Vivamus ultricies urna quis nunc egestas, in euismod turpis fringilla. Nam tellus massa, vehicula eu sapien non, dapibus tempor lorem. Fusce placerat orci arcu, eu dignissim enim porttitor vel. Nullam porttitor vel dolor sed feugiat. Suspendisse potenti. Maecenas ac mattis odio. Sed vel ultricies lacus, sed posuere libero.</p>
-					<p>Nulla gravida libero eget lobortis iaculis. In sed elit eu nibh adipiscing faucibus. Sed ac accumsan lacus. In ut diam quis turpis fringilla volutpat. In ultrices dignissim consequat. Cras pretium tortor et lorem condimentum posuere. Nulla facilisi. Suspendisse pretium egestas lacus ac laoreet. Mauris rhoncus quis ipsum quis tristique. Vivamus ultricies urna quis nunc egestas, in euismod turpis fringilla. Nam tellus massa, vehicula eu sapien non, dapibus tempor lorem. Fusce placerat orci arcu, eu dignissim enim porttitor vel. Nullam porttitor vel dolor sed feugiat. Suspendisse potenti. Maecenas ac mattis odio. Sed vel ultricies lacus, sed posuere libero.</p>
-				</div>
-			</div>
-			
-		</div>
-	</div>
-		
-</div>
-
-	
-<!-- 	
-	
-		<div data-page="home" class="page">
-			<div class="navbar">
-				<div class="navbar-inner">
-					<div class="left"><a href="#" class="link icon-only open-panel"> <i class="icon icon-bars"></i></a></div>
-					<div class="center">Title</div>
-					<div class="right icon">
-						<a class="link icon-only" onclick="window.plugins.socialsharing.share(null, null, null,  'http://27biletov.ru')" href="#" > <i class="icon icon-share" > </i></a> 
-						<a class="link icon-only" onclick="window.location.href = 'tel: 99999'; " href="#" > <i class="icon icon-phonecall" > </i></a>
-						
-					</div>				
-				</div>
-			</div>
-			 
-			<div class="page-content">
-				<div class="content-block-title">
-					<h1>Добро пожаловать!</h1>
-				</div>
-
-				<div class="list-block">
-					<ul>
-					
-					<li><a href="rules.html" class="item-link">
-					<div class="item-content">
-						<div class="item-media"><i class="icon icon-f7"></i></div>
-						<div class="item-inner">
-							<div class="item-title">Условия</div>
-						</div>
-					</div></a></li>
-					
-					<li><a href="buyform.html" class="item-link">
-					<div class="item-content">
-						<div class="item-media"><i class="icon icon-f7"></i></div>
-						<div class="item-inner">
-							<div class="item-title">Купить</div>
-						</div>
-					</div></a></li>
-					
-					<li><a href="#" data-catid="3" class="item-link item-content load-dynamic-page-category">
-					<div class="item-inner"> 
-					<div class="item-title">Великано</div>
-					</div></a></li>
-					
-					<li><a href="#" data-catid="7" class="item-link item-content load-dynamic-page-category">
-					<div class="item-inner"> 
-					<div class="item-title">Заимка/Ривьера</div>
-					</div></a></li>
-					
-					<li><a href="#" data-postid="140" class="item-link item-content load-dynamic-page-post">
-					<div class="item-inner"> 
-					<div class="item-title">140 пост</div>
-					</div></a></li>
-					</ul>
-				</div>
-				
-				<div class="content-block">
-								<p>Привет! Это пре-альфа версия.</p>
-
-					<p><a href="#" class="alert-text-title">Alert With Text and Title</a></p>
-					<p><a href="#" class="open-panel">Открыть левую панель</a></p>
-					<div class="content-block-inner">
-					<p>Для рендеринга страниц работает шаблон-движок Template7. В настоящее время готовы:</p>
-					<p>1. Левая панель по свайпу с левой границы экрана, закрывается обратным свайпом или тапом в основное окно контента</p>
-					<p>2. Список категорий доступен из левой панели или с главной страницы</p>
-					<p>3. При переходе в категорию отображается список мероприятий</p>
-					<p>4. Material Design </p>
-					<p>5. В навбаре (сверху) иконка меню меняется на иконку "назад" если мы не на главной странице</p>
-					<p>6. Поддержка хардверной кнопки "назад" на устройстве</p>
-					<p>7. Навбар скрывается при скроллинге вниз, появляется при прокрутке до самого низа страницы, либо скроллинге вверх</p>
-					<p>Известная багофича: название мероприятия в списке категорий не совпадает с фактическим содержимым поста, это просто заглушки</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	 -->
-</div>
-<!-- </script>	 -->		
-		
-		
-<!-- List of Posts in Category Template -->
-<script type="text/template" id="category-page">
-<div class="pages navbar-fixed">
-	<div data-page="category" class="page">
-		<div class="navbar">
-			<div class="navbar-inner">
-					<div class="left"><a href="#" class="back link"> <i class="icon icon-back"></i></a></div>
-					<!-- <div class="center">Статьи</div> -->
-					<div class="right icon">
-						<!-- <a class="link icon-only" onclick="window.plugins.socialsharing.share(null, null, null,  '{{link}}')" href="#" > <i class="icon icon-share" > </i></a>  -->
-						<a class="link icon-only" onclick="window.location.href = 'tel: 999999'; " href="#" > <i class="icon icon-phonecall" > </i></a>
-					</div>	
-			</div>
-		</div>
-		  
-		<div class="page-content">
-		<p><a href="#" class="alert-text-title">Alert With Text and Title</a></p>
-		  <div class="content-block-title">Статьи</div>
-		  <div class="list-block">
-		  
-			<ul>{{#each this}}
-			  <li>
-			  
-				<a href="#" data-postid="{{id}}" class="item-content item-link load-dynamic-page-post">
-				  <div class="item-inner">
-					<div class="item-title">{{id}}. {{title.rendered}} {{date}}</div>
-				  </div>
-				</a>			  
-
-			  </li>{{/each}}
-			</ul>
-		  </div>
-		</div>
+	<div data-page="home" class="page toolbar-fixed navbar-fixed">
 	</div>
 </div>
-</script>		
 		
 		
-<!-- Post Content Template -->
-<script type="text/template" id="post-page">
-<!-- <div class="pages navbar-fixed toolbar-fixed"> -->
-<div class="pages navbar-fixed">
-	<div data-page="post" class="page">
-		<div class="navbar">
-			<div class="navbar-inner">
-				<div class="left"><a href="#" class="back link"> <i class="icon icon-back"></i></a></div>
-				<!-- <div class="center infotitle">{{title.rendered}}</div> -->
-				<div class="right icon">
-					<a class="link icon-only" href="#" > <i class="icon icon-star-white" > </i></a>
- 					<a class="link icon-only" onclick="window.plugins.socialsharing.share(null, null, null,  '{{link}}')" href="#" > <i class="icon icon-share" > </i></a> 
-					<a class="link icon-only" onclick="window.location.href = 'tel: 999999';" href="#" > <i class="icon icon-phonecall" ></i></a>
-				</div>	
-			</div>
-		</div>
 		
-		<div class="page-content hide-bars-on-scroll">
-		<div class="content-block">
-			<h1>{{title.rendered}}</h1>
-			<p class="buttons-row">
-		<a href="#" onclick="window.location.href = 'tel: 999999';" class="button button-big button-fill color-teal">Заказ по тел.</a>
-		<a href="buyform.html?linkurl={{link}}&linktitle={{title.rendered}}" class="button button-big button-fill color-green">Заказ онлайн</a>
-			</p>
-<!-- <p><a href="#" class="alert-text-title">Alert With Text and Title</a></p> -->
-			
-			<div class="content-block-inner">
-				<!-- <a href="buyform.html?linkurl={{link}}&linktitle={{title.rendered}}" class="item-content item-link">
-					<div class="item-inner">
-						<div class="item-title">Купить билет</div>
-					</div>
-				</a> -->	
-				<p>{{content.rendered}}</p>
-			</div>
-			
-		<p class="buttons-row">
-		<a href="#" onclick="window.location.href = 'tel: 999999';" class="button button-big button-fill color-teal">Заказ по тел.</a>
-		<a href="buyform.html?linkurl={{link}}&linktitle={{title.rendered}}" class="button button-big button-fill color-green">Заказ онлайн</a>
-		</p>
-		</div>	
-		</div>
-	</div>
-</div>
-</script>			
 </div>
 </div>
 
@@ -409,38 +116,8 @@
 <script type="text/javascript" src="cordova_plugins.js"></script>
 <script type="text/javascript" src="js/SocialSharing.js"></script>
 
-<!-- <script type="text/javascript" charset="utf-8">
-
-// Call onDeviceReady when PhoneGap is loaded.
-// At this point, the document has loaded but phonegap-1.0.0.js has not.
-// When PhoneGap is loaded and talking with the native device,
-// it will call the event deviceready.
-document.addEventListener("deviceready", onDeviceReady, false);
-function onDeviceReady() { // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
-document.addEventListener("backbutton", onBackKeyDown, false); // Register the event listener
-}
-function onBackKeyDown() { // Handle the back button
-	if(mainView.activePage.name=="home"){ navigator.app.exitApp(); }
-	else { mainView.router.back(); }
-	}
-</script>	 -->
-
-
-
-
 <script type="text/javascript" src="js/framework7.min.js"></script>
 <script type="text/javascript" src="js/my-app.js"></script>
-
-			  
-			    <!-- <a href="#" data-catid="7" class="item-link item-content load-dynamic-page-category"> -->
-				<!-- <a href="post.html" class="item-content item-link" data-context-name="cars.{{@index}}">
-				  <div class="item-inner">
-					<div class="item-title">{{title.rendered}} {{date}}</div>
-				  </div>
-				</a> -->
-				
-				
-				
 				
 	<div class="popup popup-services">
 		<div class="content-block-title">

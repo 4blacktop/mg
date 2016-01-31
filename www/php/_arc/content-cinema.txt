@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru">
+<head>
+
+	<title>Кино - г. Хабаровск ( MoiGorod.ru )</title>
+	
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<!-- combo : moigorodru-lite : start -->
+<link rel="stylesheet" type="text/css" href="http://www.moigorod.ru/u/combo/g7a0601a1124cf7130bf8e9581e06bf681704201593509.css" />
+<script charset="utf-8" type="text/javascript" src="http://www.moigorod.ru/u/combo/gc26465060bdf08444a9fba71b80d5a001704201593509.js"></script>
+<!-- combo : finish -->
+<base target="" />
+<script>
+var	g_BaseServer='http://www.moigorod.ru'.replace('http://',''),
+	vWindowStatus='Кино',
+	vCityName='Хабаровск',
+	vCityPfx='habarovsk',
+	g_CityIX=parseInt('680000'),
+	g_cookCityIX=parseInt('680000'),
+	cntChat='3',
+	sRegID=0,
+	gAvatar=false,
+	mgMail='',
+	glReklama='1',
+	newjs='v26',
+	ismobile=false,
+	noshit=false;
+</script>
+<title>Кино - г. Хабаровск ( MoiGorod.ru для мобильных устройств )</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="robots" content="all" />
+<link rel="stylesheet" type="text/css" href="/m/css/handheld.css?v5" />
+<link rel="icon" href="/favicon.ico" type="image/x-icon" />
+<script src="/m/js/serv.js?v6"></script>
+<script>var g_cookCityIX = parseInt('680000');checkCIX();</script>
+</head>
+<body name="pagetop" id="pagetop">
+
+<div class="topMenu"><b>Вы:</b> 
+Гость ( <a href="/m/my/?from=%2Fm%2Fkino%2F" class="dotlink">Войти</a> )
+</div>
+
+<!--noindex-->
+<br/>
+<div class="topCity"><h2 style="font-weight:normal;padding:0px;margin:0px;">г. Хабаровск</h2><a href="/m/home/city.asp">Изменить</a></div>
+<div style="text-align:left;padding-left:0.3em;">
+<a href="/m/"><img style="padding-top:5px" src="/m/i/logos/toplogo1.png" alt="MoiGorod.Ru Mobile!" border="0" /></a>
+</div>
+<script>if(!document.cookie){document.write('<div class="cfgAlert">Включите поддержку <b>Cookies</b> для корректного отображения сайта!</div>')}</script>
+<noscript><div class="cfgAlert">Включите поддержку <b>JavaScript</b> для корректного отображения сайта!</div></noscript>
+<!--/noindex-->
+<div id="mob">
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="locMenu"><tr>
+<th width="25%" class="s0"><a href="/m/events/">События</a></th>
+<th width="25%" class="s1"><a href="/m/kino/">Кино</a></th>
+<th width="25%" class="s0"><a href="/m/tv/">ТВ</a></th>
+<th width="25%" class="s0"><a href="/m/kino/movie.asp?type=cinema&d=0">Кинотеатры</a></th>
+</tr></table>
+<link rel="stylesheet" type="text/css" href="style.css?v3" />
+<h1 style="display:none;"><a class="topHead" href="/m/kino/">Кино</a></h1>
+<ul class="w"><li><a href="?ix=-1">30<sup>Сб</sup></a></li><li><a href="?ix=0">31<sup>Вс</sup></a></li><li><a href="?ix=1">1<sup>Пн</sup></a></li><li><a href="?ix=2">2<sup>Вт</sup></a></li><li><a href="?ix=3">3<sup>Ср</sup></a></li><li><a href="?ix=4">4<sup>Чт</sup></a></li><li><a href="?ix=5">5<sup>Пт</sup></a></li><li><a href="?ix=6">6<sup>Сб</sup></a></li><li><a href="?ix=7">7<sup>Вс</sup></a></li><li><a href="?ix=8">8<sup>Пн</sup></a></li>
+</ul>
+<h1>Киноафиша на сегодня</h1><ul class="list"><li><a href="movie.asp?m=2099598186"><img src="/uploads/kino/movies/thumb_120_2099598186_0.jpg" />13 часов: Тайные солдаты Бенгази<h3>13 Hours: The Secret Soldiers of Benghazi</h3></a> <span>боевик, триллер, драма, военный</span></li><li><a href="movie.asp?m=2099598171"><img src="/uploads/kino/movies/thumb_120_2099598171_0.jpg" />5-я волна<h3>The 5th Wave</h3></a> <span>фантастика, триллер, приключения</span></li><li><a href="movie.asp?m=2099598170"><img src="/uploads/kino/movies/thumb_120_2099598170_0.jpg" />Выживший<h3>The Revenant</h3></a> <span>триллер, драма, приключения, вестерн</span></li><li><a href="movie.asp?m=2099598184"><img src="/uploads/kino/movies/thumb_120_2099598184_0.jpg" />Девушка из Дании<h3>The Danish Gir</h3></a> <span>драма, мелодрама, биография</span></li><li><a href="movie.asp?m=2099598183"><img src="/uploads/kino/movies/thumb_120_2099598183_0.jpg" />Дедушка легкого поведения<h3>Dirty Grandpa</h3></a> <span>комедия</span></li><li><a href="movie.asp?m=2099598175"><img src="/uploads/kino/movies/thumb_120_2099598175_0.jpg" />Джой<h3>Joy</h3></a> <span>драма, комедия</span></li><li><a href="movie.asp?m=2099598185"><img src="/uploads/kino/movies/thumb_120_2099598185_0.jpg" />Зачётный препод 2<h3>Fack ju Gohte 2</h3></a> <span>комедия</span></li><li><a href="movie.asp?m=2099598156"><img src="/uploads/kino/movies/thumb_120_2099598156_0.jpg" />Иван Царевич и Серый Волк 3</a> <span>мультфильм, приключения, семейный</span></li><li><a href="movie.asp?m=2099598176"><img src="/uploads/kino/movies/thumb_120_2099598176_0.jpg" />Игра на понижение<h3>The Big Short</h3></a> <span>драма, биография</span></li><li><a href="movie.asp?m=2099598166"><img src="/uploads/kino/movies/thumb_120_2099598166_0.jpg" />Крид: Наследие Рокки<h3>Creed</h3></a> <span>драма, спорт</span></li><li><a href="movie.asp?m=2099598187"><img src="/uploads/kino/movies/thumb_120_2099598187_0.jpg" />Кукла<h3>The Boy</h3></a> <span>ужасы, триллер</span></li><li><a href="movie.asp?m=2099598172"><img src="/uploads/kino/movies/thumb_120_2099598172_0.jpg" />Кунг-фу Панда 3<h3>Kung Fu Panda 3</h3></a> <span>мультфильм, боевик, комедия, приключения, семейный</span></li><li><a href="movie.asp?m=2099598182"><img src="/uploads/kino/movies/thumb_120_2099598182_0.jpg" />Последний обряд<h3>Demonic</h3></a> <span>ужасы, триллер</span></li><li><a href="movie.asp?m=2099598174"><img src="/uploads/kino/movies/thumb_120_2099598174_0.jpg" />Статус: Свободен</a> <span>комедия, мелодрама</span></li><li><a href="movie.asp?m=2099598164"><img src="/uploads/kino/movies/thumb_120_2099598164_0.jpg" />Элвин и бурундуки: Грандиозное бурундуключение<h3>Alvin and the Chipmunks: The Road Chip</h3></a> <span>мультфильм, фэнтези, комедия, приключения, семейный, музыка</span></li></ul>
+<div id="footMenu">
+<div style="padding:0.3em; margin:1em 0;">
+	<a href="#pagetop">&uarr; Наверх</a>
+</div>
+<hr style="margin-top:1em;" />
+
+<a href="/m/">Главная</a>
+<a href="/m/news/">Новости</a>
+<a href="/m/board/">Доска объявлений<span style="color:#cf9">Новинка</span></a>
+<a href="/m/info/currency.asp">Валюты</a>
+<a href="/m/kino/">Афиша (кино)</a>
+<a href="/m/events/">Афиша (события)</a>
+<a href="/m/forum/">Форум<span style="color:#cf9">Новинка</span></a>
+<a href="/m/board/?cix=680000&cid=12350">Попутчики<span style="color:#cf9">Новинка</span></a>
+<a href="/m/tv/">ТВ</a>
+<a href="/m/love/">Знакомства</a>
+<a href="/m/my/?do=talk">Сообщения</a>
+<a href="http://www.rolo.ru/m/" target="_blank">Магазин<span style="color:#cf9">Новинка</span></a>
+<a href="/m/go/">Адреса</a>
+<a href="/m/weather/">Погода</a>
+<a href="/m/guest/">Конференции Онлайн</a>
+<a href="/m/sms/">SMS</a>
+<a href="/m/chat/">Чат!</a>
+<a href="/m/portal/">MoiGorod</a>
+	
+</div>
+
+</div>
+
+<!--noindex-->
+
+<div id="f">
+
+<form method="post" action="/m/home/feedback.asp?f=%2Fm%2Fkino%2F" class="feedback" style="padding:1em 0 0 0.3em">
+<b>Ваше мнение о MoiGorod.ru:</b><br/>
+<input type="text" name="txt" size="15" value="" /> <input type="submit" value="Отправить" /><div style="font-size:x-small">- Мнение, Емайл, Телефон</div>
+</form>
+
+<div style="margin:1em 0.3em;">Вид:&nbsp;&nbsp;<b>Мобильный</b>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="/?nomobile">Полноценный</a></div>
+
+<center>
+<div class="mg"><span style="color:#444;">&#xA9; m.MoiGorod.Ru</span> <span style="color:#fff">Mobile!</span></div>
+С 2005 года :-) &nbsp; &nbsp; <a href="/m/rss/"><img src="/m/i/rss.png" border="0" align="absmiddle" /></a>
+</center>
+
+</div>
+
+<script>mg.loaded=true</script>
+
+<!--/noindex-->
+
+<script src="/serv/js/mob-siteranks.js" defer="defer"></script>
+
+</body>
+</html>
