@@ -21,30 +21,105 @@ $arrayOut = array (
 	"news" => array (
 		"all" => array (
 			"posts" => array (
+				array(
+				"id" => "1",
+				"vendor" => "Площадь",
+				"model"  => "Ленина"
+				),
+				array(
+				"id" => "2",
+				"vendor" => "Карла",
+				"model"  => "Маркса"
+				),
+				array(
+				"id" => "1",
+				"vendor" => "Роза",
+				"model"  => "Люхембурк"
+				)
 			)
 		)
 	),
 	"sale" => array (
 		"all" => array (
 			"posts" => array (
+				array(
+				"id" => "1",
+				"vendor" => "Выставка",
+				"model"  => "Ван Гога"
+				),
+				array(
+				"id" => "2",
+				"vendor" => "Обувь",
+				"model"  => "Лабутены"
+				),
+				array(
+				"id" => "1",
+				"vendor" => "Штаны",
+				"model"  => "Охуительные"
+				)
 			)
 		)
 	),
 	"cinema" => array (
 		"all" => array (
 			"posts" => array (
+				array(
+				"id" => "1",
+				"vendor" => "Выставка",
+				"model"  => "Ван Гога"
+				),
+				array(
+				"id" => "2",
+				"vendor" => "Обувь",
+				"model"  => "Лабутены"
+				),
+				array(
+				"id" => "1",
+				"vendor" => "Штаны",
+				"model"  => "Охуительные"
+				)
 			)
 		)
 	),
 	"events" => array (
 		"all" => array (
 			"posts" => array (
+				array(
+				"id" => "1",
+				"vendor" => "Выставка",
+				"model"  => "Ван Гога"
+				),
+				array(
+				"id" => "2",
+				"vendor" => "Обувь",
+				"model"  => "Лабутены"
+				),
+				array(
+				"id" => "1",
+				"vendor" => "Штаны",
+				"model"  => "Охуительные"
+				)
 			)
 		)
 	),
 	"currency" => array (
 		"all" => array (
 			"posts" => array (
+				array(
+				"id" => "1",
+				"vendor" => "Выставка",
+				"model"  => "Ван Гога"
+				),
+				array(
+				"id" => "2",
+				"vendor" => "Обувь",
+				"model"  => "Лабутены"
+				),
+				array(
+				"id" => "1",
+				"vendor" => "Штаны",
+				"model"  => "Охуительные"
+				)
 			)
 		)
 	),

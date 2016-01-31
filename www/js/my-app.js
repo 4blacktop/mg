@@ -10,12 +10,13 @@ var myApp = new Framework7({
 // Export selectors engine
 var $$ = Dom7;
 // var jsonURL = 'http://scr.ru/mg/www/js/jsoncars.txt';
-var jsonURL = 'http://scr.ru/mg/www/php/jsontest.txt';
+// var jsonURL = 'http://scr.ru/mg/www/php/jsontest.txt';
+var jsonURL = 'jsontest.txt';
 
 // Ajax setting for timeout
 $$.ajaxSetup({
 	crossDomain: true, // don't know if it's working for CORS properly, on localhost - CORS failed during ajax form submit, regular submit ok
-	timeout: 30000, // 9 seconds
+	timeout: 9000, // 9 seconds
 	error: function(xhr) {
 	myApp.hideProgressbar();
 	var status = xhr.status;
