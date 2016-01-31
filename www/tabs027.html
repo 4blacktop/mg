@@ -15,10 +15,10 @@
 	<div class="toolbar tabbar">
 		<div class="toolbar-inner">
 			<a href="#tab1" class="active tab-link">Новости</a>
-			<!-- <a href="#tab2" class="tab-link">Скидки</a> -->
+			<a href="#tab2" class="tab-link">Скидки</a>
 			<a href="#tab3" class="tab-link">Кино</a>
 			<a href="#tab4" class="tab-link">События</a>
-			<!-- <a href="#tab5" class="tab-link">Валюты</a> -->
+			<a href="#tab5" class="tab-link">Валюты</a>
 
 		</div>
 	</div>
@@ -34,7 +34,7 @@
 						<li>
 						<a href="post.html" class="item-content item-link" data-context-name="news.all.posts.{{@index}}">
 						<div class="item-inner">
-						<div class="item-title">{{title}}</div>
+						<div class="item-title">{{vendor}} {{model}}</div>
 						</div>
 						</a>
 						</li>{{/each}}
@@ -43,7 +43,7 @@
 			</div>
 		</div>
 
-<!-- 
+
 		<div id="tab2" class="page-content tab">
 			<div class="content-block">
 				<p>Скидки</p>
@@ -52,7 +52,7 @@
 						<li>
 						<a href="post.html" class="item-content item-link" data-context-name="sale.all.posts.{{@index}}">
 						<div class="item-inner">
-						<div class="item-title">{{title}}</div>
+						<div class="item-title">{{vendor}} {{model}}</div>
 						</div>
 						</a>
 						</li>{{/each}}
@@ -60,16 +60,16 @@
 				</div> 
 			</div>
 		</div>
- -->
+<!-- 
 		<div id="tab3" class="page-content tab">
 			<div class="content-block">
 				<p>Кино</p>
 				<div class="list-block">
-					<ul>{{#each cinema.all.posts}}
+					<ul>{{#each sale.all.posts}}
 						<li>
 						<a href="car.html" class="item-content item-link" data-context-name="news.{{@index}}">
 						<div class="item-inner">
-						<div class="item-title">{{title}}</div>
+						<div class="item-title">{{vendor}} {{model}}</div>
 						</div>
 						</a>
 						</li>{{/each}}
@@ -82,11 +82,11 @@
 			<div class="content-block">
 				<p>События</p>
 				<div class="list-block">
-					<ul>{{#each events.all.posts}}
+					<ul>{{#each sale.all.posts}}
 						<li>
 						<a href="car.html" class="item-content item-link" data-context-name="news.{{@index}}">
 						<div class="item-inner">
-						<div class="item-title">{{title}}</div>
+						<div class="item-title">{{vendor}} {{model}}</div>
 						</div>
 						</a>
 						</li>{{/each}}
@@ -95,7 +95,7 @@
 			</div>
 		</div>
 		
-<!-- 		<div id="tab5" class="page-content tab">
+		<div id="tab5" class="page-content tab">
 			<div class="content-block">
 				<p>Валюты</p>
 				<div class="list-block">
@@ -103,15 +103,15 @@
 						<li>
 						<a href="car.html" class="item-content item-link" data-context-name="news.{{@index}}">
 						<div class="item-inner">
-						<div class="item-title">{{title}}</div>
+						<div class="item-title">{{vendor}} {{model}}</div>
 						</div>
 						</a>
 						</li>{{/each}}
 					</ul>
 				</div> 
 			</div>
-		</div> -->
-		
+		</div>
+		 -->
 	</div>
 			
 	</div>

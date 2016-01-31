@@ -5,20 +5,7 @@ set_time_limit(10);
 $mtime = microtime(true);
 echo '<pre><h1>Start!</h1>' . date("Ymd-His", time()+14400) . '<br /><br />';
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-$arrayTest = array (
+$parametrs = array (
 	"news" => array (
 		"all" => array (
 			"posts" => array (
@@ -63,7 +50,7 @@ $arrayTest = array (
 	)
 );
 
-$result = _json_encode($arrayTest);
+$result = _json_encode($parametrs);
 file_put_contents('jsontest.txt', $result);
 echo $result;
 

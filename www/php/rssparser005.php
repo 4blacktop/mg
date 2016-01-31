@@ -16,116 +16,6 @@ $context = stream_context_create($opts);
 
 echo '<pre><h1>Закешированы RSS XML!</h1>' . date("Ymd-His", time()+14400) . '<br /><br />';
 
-// Array to json convert
-$arrayOut = array (
-	"news" => array (
-		"all" => array (
-			"posts" => array (
-				array(
-				"id" => "1",
-				"vendor" => "Площадь",
-				"model"  => "Ленина"
-				),
-				array(
-				"id" => "2",
-				"vendor" => "Карла",
-				"model"  => "Маркса"
-				),
-				array(
-				"id" => "1",
-				"vendor" => "Роза",
-				"model"  => "Люхембурк"
-				)
-			)
-		)
-	),
-	"sale" => array (
-		"all" => array (
-			"posts" => array (
-				array(
-				"id" => "1",
-				"vendor" => "Выставка",
-				"model"  => "Ван Гога"
-				),
-				array(
-				"id" => "2",
-				"vendor" => "Обувь",
-				"model"  => "Лабутены"
-				),
-				array(
-				"id" => "1",
-				"vendor" => "Штаны",
-				"model"  => "Охуительные"
-				)
-			)
-		)
-	),
-	"cinema" => array (
-		"all" => array (
-			"posts" => array (
-				array(
-				"id" => "1",
-				"vendor" => "Выставка",
-				"model"  => "Ван Гога"
-				),
-				array(
-				"id" => "2",
-				"vendor" => "Обувь",
-				"model"  => "Лабутены"
-				),
-				array(
-				"id" => "1",
-				"vendor" => "Штаны",
-				"model"  => "Охуительные"
-				)
-			)
-		)
-	),
-	"events" => array (
-		"all" => array (
-			"posts" => array (
-				array(
-				"id" => "1",
-				"vendor" => "Выставка",
-				"model"  => "Ван Гога"
-				),
-				array(
-				"id" => "2",
-				"vendor" => "Обувь",
-				"model"  => "Лабутены"
-				),
-				array(
-				"id" => "1",
-				"vendor" => "Штаны",
-				"model"  => "Охуительные"
-				)
-			)
-		)
-	),
-	"currency" => array (
-		"all" => array (
-			"posts" => array (
-				array(
-				"id" => "1",
-				"vendor" => "Выставка",
-				"model"  => "Ван Гога"
-				),
-				array(
-				"id" => "2",
-				"vendor" => "Обувь",
-				"model"  => "Лабутены"
-				),
-				array(
-				"id" => "1",
-				"vendor" => "Штаны",
-				"model"  => "Охуительные"
-				)
-			)
-		)
-	),
-);
-
-
 // =====================================================================================
 // =============== Parsing XML RSS Channels and Save content to HTML Cache =============
 // =====================================================================================
@@ -134,10 +24,6 @@ $arrayOut = array (
 // $arrXmlNews = objectsIntoArray(simplexml_load_string(file_get_contents('http://www.moigorod.ru/uploads/rss/_headlines/680000/news-main.xml', false, $context))); // replace Category in URL
 $arrXmlNews = objectsIntoArray(simplexml_load_string(file_get_contents('news-main.xml', false, $context)));															// replace Category in URL
 echo '<hr />' . round((microtime(true) - $mtime) * 1, 4) . "\t<strong>Parsing News RSS... " . count($arrXmlNews['channel']['item']) . " elements</strong>"; flush(); // replace Category in echo
-
-
-
-
 foreach ($arrXmlNews['channel']['item'] as $item) {
 	if (file_exists("stop.txt")) {exit("<br />stop.txt!");}
 	$filename = str_ireplace("http://habarovsk.MoiGorod.Ru/m/news/?n=", "", $item["pdalink"]); 														// replace URL in str_ireplace
@@ -150,33 +36,9 @@ foreach ($arrXmlNews['channel']['item'] as $item) {
 	echo "\tDownload " . strlen($contentHTML) ." bytes\tFrom: " . $item["pdalink"] . "\tTo: " .$path; flush();
 	file_put_contents($path, $contentHTML);
 	}
-	
-	// Add data to array
-	$arrayOut['news']['all']['posts'][] = array(
-		"id" => $filename,
-		"title" => $item["title"],
-		"link" => $item["link"],
-		"pdalink" => $item["pdalink"],
-		"description" => $item["description"],
-		"pubDate" => $item["pubDate"],
-		
-		
-		"vendor" => $item["title"],
-		"model" => $item["pubDate"],
-		
-		
-		"content"  => $localContent
-	);
 }
 echo '<br />' . round((microtime(true) - $mtime) * 1, 4) . "\t<strong>Done!</strong>"; flush();
 
-print_r($arrayOut);
-
-$result = _json_encode($arrayOut);
-file_put_contents('jsontest.txt', $result);
-echo $result;
-
-/* 
 // all city events
 // $arrXmlEvents = objectsIntoArray(simplexml_load_string(file_get_contents('http://www.moigorod.ru/uploads/rss/_headlines/680000/events-all.xml', false, $context)));	// replace Category in URL
 $arrXmlEvents = objectsIntoArray(simplexml_load_string(file_get_contents('events-all.xml', false, $context)));															// replace Category in URL
@@ -195,9 +57,7 @@ foreach ($arrXmlEvents['channel']['item'] as $item) {
 	}
 }
 echo '<br />' . round((microtime(true) - $mtime) * 1, 4) . "\t<strong>Done!</strong>"; flush();
- */
-
-/* 
+ 
 // cinema today
 // $arrXmlCinema = objectsIntoArray(simplexml_load_string(file_get_contents('http://www.moigorod.ru/uploads/rss/_headlines/680000/cinema-newfilms.xml', false, $context)));// replace Category in URL
 $arrXmlCinema = objectsIntoArray(simplexml_load_string(file_get_contents('cinema-newfilms.xml', false, $context))); 														// replace Category in URL
@@ -216,7 +76,6 @@ foreach ($arrXmlCinema['channel']['item'] as $item) {
 	}
 }
 echo '<br />' . round((microtime(true) - $mtime) * 1, 4) . "\t<strong>Done!</strong>"; flush();
- */
 
 
 
@@ -283,37 +142,7 @@ function rndSleep($pauseMin,$pauseMax) {
 	sleep($pause);
 	}
 
-// alternative json_encode
-function _json_encode($val)
- {
-     if (is_string($val)) return '"'.addslashes($val).'"';
-     if (is_numeric($val)) return $val;
-     if ($val === null) return 'null';
-     if ($val === true) return 'true';
-     if ($val === false) return 'false';
 
-     $assoc = false;
-     $i = 0;
-     foreach ($val as $k=>$v){
-         if ($k !== $i++){
-             $assoc = true;
-             break;
-         }
-     }
-     $res = array();
-     foreach ($val as $k=>$v){
-         $v = _json_encode($v);
-         if ($assoc){
-             $k = '"'.addslashes($k).'"';
-             $v = $k.':'.$v;
-         }
-         $res[] = $v;
-     }
-     $res = implode(',', $res);
-     return ($assoc)? '{'.$res.'}' : '['.$res.']';
- }
-
-echo '<br /><br />Exec time: ' . round((microtime(true) - $mtime) * 1, 4) . ' s.</pre>';
 
 
 
