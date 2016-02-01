@@ -54,10 +54,14 @@ $arrayOut = array (
 // =====================================================================================
 // =============== Parsing XML RSS Channels and Save content to HTML Cache =============
 // =====================================================================================
+
 // all news
 // $arrXmlNews = objectsIntoArray(simplexml_load_string(file_get_contents('http://www.moigorod.ru/uploads/rss/_headlines/680000/news-main.xml', false, $context))); // replace Category in URL
 $arrXmlNews = objectsIntoArray(simplexml_load_string(file_get_contents('news-main.xml', false, $context)));															// replace Category in URL
 echo '<hr />' . round((microtime(true) - $mtime) * 1, 4) . "\t<strong>Parsing News RSS... " . count($arrXmlNews['channel']['item']) . " elements</strong>"; flush(); // replace Category in echo
+
+
+
 
 foreach ($arrXmlNews['channel']['item'] as $item) {
 	if (file_exists("stop.txt")) {exit("<br />stop.txt!");}
@@ -118,9 +122,7 @@ foreach ($arrXmlEvents['channel']['item'] as $item) {
 	);
 }
 echo '<br />' . round((microtime(true) - $mtime) * 1, 4) . "\t<strong>Done!</strong>"; flush();
- 
- 
- 
+
 // cinema today
 // $arrXmlCinema = objectsIntoArray(simplexml_load_string(file_get_contents('http://www.moigorod.ru/uploads/rss/_headlines/680000/cinema-newfilms.xml', false, $context)));// replace Category in URL
 $arrXmlCinema = objectsIntoArray(simplexml_load_string(file_get_contents('cinema-newfilms.xml', false, $context))); 														// replace Category in URL
@@ -140,29 +142,8 @@ foreach ($arrXmlCinema['channel']['item'] as $item) {
 	
 	$localContent = file_get_contents($path);
 	// </tr></table>(.*)<form method="get"
-	// preg_match('#\<\/tr\>\<\/table\>(.*)\<form.method\=\"get\"#sim', $localContent, $arrayTextLocalContent);
-	preg_match('#\<b\>Описание\:\<\/b\>(.*)\<form.method\=\"get\"#sim', $localContent, $arrayTextLocalContent);
-	// $textContent = strip_tags($arrayTextLocalContent[1], '<br><h1><h2><h3><h4><h5><h6>');
-	$textContent = trim(strip_tags($arrayTextLocalContent[1]));
-	// $textContent = htmlentities($textContent);
-	$textContent = str_ireplace('‘', "", $textContent);
-	$textContent = str_ireplace('’', "", $textContent);
-	$textContent = str_ireplace('”', "", $textContent);
-	$textContent = str_ireplace('"', "", $textContent);
-	$textContent = str_ireplace('\\', "", $textContent);
-	$textContent = str_ireplace('«', "", $textContent);
-	$textContent = str_ireplace('»', "", $textContent);
-	$textContent = str_ireplace(':', "", $textContent);
-	$textContent = str_ireplace('…', "", $textContent);
-	$textContent = str_ireplace('/', "", $textContent);
-	$textContent = str_ireplace("\n", "", $textContent);
-	$textContent = str_ireplace("\r", "", $textContent);
-	$textContent = str_ireplace("\f", "", $textContent);
-	$textContent = str_ireplace("\t", "", $textContent);
-	$textContent = str_ireplace("\b", "", $textContent);
-	$textContent = mb_convert_encoding($textContent, 'UTF-8', 'UTF-8');
-	
-	print_r($textContent);
+	preg_match('#\<\/tr\>\<\/table\>(.*)\<form.method\=\"get\"#sim', $content, $localContent);
+	print_r($localContent);
 	
 	// Add data to array
 	$arrayOut['cinema']['all']['posts'][] = array(
@@ -172,11 +153,8 @@ foreach ($arrXmlCinema['channel']['item'] as $item) {
 		"pdalink" => $item["pdalink"],
 		"description" => $item["description"],
 		"pubDate" => $item["pubDate"],
-		"content"  => $textContent
+		"content"  => $localContent
 	);
-		// "content"  => 'Содержимое текст Контент'
-		// "content"  => $textContent
-		// "content"  => $arrayTextLocalContent[1]
 }
 echo '<br />' . round((microtime(true) - $mtime) * 1, 4) . "\t<strong>Done!</strong>"; flush();
 
@@ -205,11 +183,11 @@ $currencyContent = trim(str_ireplace("</h4><br />", "</h4>", $currencyContent));
 
 
 
-// print_r($arrayOut);
+print_r($arrayOut);
 $result = _json_encode($arrayOut);
 file_put_contents('json680000-' . time() . '.txt', $result);
 file_put_contents('json680000.txt', $result);
-// echo $result;
+echo $result;
 echo '<br /><br />Exec time: ' . round((microtime(true) - $mtime) * 1, 4) . ' s.</pre>';
 
 

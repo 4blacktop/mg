@@ -18,7 +18,7 @@
 			<!-- <a href="#tab2" class="tab-link">Скидки</a> -->
 			<a href="#tab3" class="tab-link">Кино</a>
 			<a href="#tab4" class="tab-link">События</a>
-			<!-- <a href="#tab5" class="tab-link">Валюты</a> -->
+			<a href="#tab5" class="tab-link">Валюты</a> 
 
 		</div>
 	</div>
@@ -67,7 +67,7 @@
 				<div class="list-block">
 					<ul>{{#each cinema.all.posts}}
 						<li>
-						<a href="car.html" class="item-content item-link" data-context-name="news.{{@index}}">
+						<a href="post.html" class="item-content item-link" data-context-name="cinema.all.posts.{{@index}}">
 						<div class="item-inner">
 						<div class="item-title">{{title}}</div>
 						</div>
@@ -84,7 +84,7 @@
 				<div class="list-block">
 					<ul>{{#each events.all.posts}}
 						<li>
-						<a href="car.html" class="item-content item-link" data-context-name="news.{{@index}}">
+						<a href="post.html" class="item-content item-link" data-context-name="events.all.posts.{{@index}}">
 						<div class="item-inner">
 						<div class="item-title">{{title}}</div>
 						</div>
@@ -95,22 +95,25 @@
 			</div>
 		</div>
 		
-<!-- 		<div id="tab5" class="page-content tab">
+ 		<div id="tab5" class="page-content tab">
 			<div class="content-block">
 				<p>Валюты</p>
 				<div class="list-block">
-					<ul>{{#each sale.all.posts}}
+				{{#each currency.all.posts}}
+				{{content}}
+				{{/each}}
+<!-- 					<ul>{{#each currency.all.posts}}
 						<li>
-						<a href="car.html" class="item-content item-link" data-context-name="news.{{@index}}">
+						<a href="post.html" class="item-content item-link" data-context-name="currency.all.posts.{{@index}}">
 						<div class="item-inner">
-						<div class="item-title">{{title}}</div>
+						<div class="item-title">{{content}}</div>
 						</div>
 						</a>
 						</li>{{/each}}
 					</ul>
-				</div> 
+				</div>  -->
 			</div>
-		</div> -->
+		</div> 
 		
 	</div>
 			

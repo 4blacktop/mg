@@ -1,6 +1,6 @@
 // Initialize your app
 var myApp = new Framework7({
-	// template7Pages: true,
+	template7Pages: true,
 	material: true, //enable Material theme
 	modalTitle: 'MG',
 	modalButtonOk: 'Да',
@@ -9,8 +9,11 @@ var myApp = new Framework7({
 	
 // Export selectors engine
 var $$ = Dom7;
+// var jsonURL = 'http://scr.ru/mg/www/js/jsoncars.txt';
+// var jsonURL = 'http://scr.ru/mg/www/php/jsontest.txt';
+// var jsonURL = 'jsontest.txt';
 // var jsonURL = 'http://scr.ru/mg/www/php/json680000.txt';
-var jsonURL = 'http://27podarkov.ru/json680000.txt';
+var jsonURL = 'http://scr.ru/mg/www/php/json680000.txt';
 
 
 
@@ -26,17 +29,6 @@ $$.ajaxSetup({
 		});
 	}
 });
-
-// weather7 
-// myApp.homeTemplate = Template7.compile($$('#home-template').html()); 
-
-
-// Select Template
-// var template = $$('#random-template').html();
-var homeTemplate = $$('#home-template').html();
-
-// Compile and render
-var compiledHomeTemplate = Template7.compile(homeTemplate);
  
 // Add main View
 var mainView = myApp.addView('.view-main', {
@@ -53,72 +45,32 @@ function onBackKeyDown() { // Handle the back button
 	else { mainView.router.back(); }
 }
 
-myApp.buildHomeHTML = function () {
-
-	
-	// Get all text content from JSON and redirect to new page
-	$$.getJSON(jsonURL, function (json) {
-		// Template7.data = json;
-		// console.log( Template7.data );
-		console.log( json);
-		// mainView.router.load({
-			// url: 'tabs.html',
-			// context: Template7.data
-		// });
-		// var homeData = JSON.parse(weatherData);
-		// $$('.places-list ul').html(html);
-		
-		// Insert rendered template
-		// var html = myApp.homeTemplate(json);
-		// $$('#content-wrap').html(html);
-		
-		$$('#content-wrap').html(compiledHomeTemplate(json))
-		// $$('#content-wrap').html(compiledTemplate(json))
-	});
-};
-
-		
-	
-
-myApp.buildHomeHTML();
-
-/* 
-// Build details page
-$$('.list-block').on('click', 'a.item-link', function (e) {
-    var woeid = $$(this).attr('data-woeid');
-    var item;
-    var weatherData = JSON.parse(localStorage.w7Data);
-    for (var i = 0; i < weatherData.length; i++) {
-        if (weatherData[i].woeid === woeid) item = weatherData[i];
-    }
-    var pageContent = myApp.detailsTemplate(item);
-    mainView.loadContent(pageContent);
-});
- */
-
-
-
-
-
-
-
-
-
-
-
-	
 // progressbar strange working
 // var container = $$('body');
 // if (container.children('.progressbar, .progressbar-infinite').length) return; //don't run all this if there is a current progressbar loading
 // myApp.showProgressbar(container, 'multi');
 // myApp.hideProgressbar();
 		
+		
+		
+// Get all text content from JSON and redirect to new page
+$$.getJSON(jsonURL, function (json) {
+	Template7.data = json;
+	console.log( Template7.data );
+	// console.log( 'json');
+
+		// mainView.router.load({
+		// url: 'tabs.html',
+		// context: Template7.data
+		// });
+});
+	
 	
 // myApp.onPageInit('home',function(page){
 	// console.log( 'init home' );
 	// });
 	
-/* 	
+	
 // Initializing Post Page ====================================
 myApp.onPageInit('post',function(page){
 	console.log( 'post');
@@ -132,12 +84,12 @@ myApp.onPageInit('post',function(page){
 		// myApp.alert(mainView.activePage.name, 'Post!');
 	// });
 	
-	window.onscroll = function(ev) {
+/* 	window.onscroll = function(ev) {
 		if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
 			// you're at the bottom of the page
 			alert("you're at the bottom of the page");
 		}
-	}; 
+	}; */
 });
-*/
+  
   
