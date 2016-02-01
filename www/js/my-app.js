@@ -9,10 +9,8 @@ var myApp = new Framework7({
 	
 // Export selectors engine
 var $$ = Dom7;
-// var jsonURL = 'http://scr.ru/mg/www/php/json680000.txt';
-var jsonURL = 'http://27podarkov.ru/json680000.txt';
-
-
+var jsonURL = 'http://scr.ru/mg/www/php/json680000.txt';
+// var jsonURL = 'http://27podarkov.ru/json680000.txt';
 
 // Ajax setting for timeout
 $$.ajaxSetup({
@@ -27,20 +25,15 @@ $$.ajaxSetup({
 	}
 });
 
-// weather7 
-// myApp.homeTemplate = Template7.compile($$('#home-template').html()); 
+// Urban Dic version
+// var homeTemplate = $$('#home-template').html();// Select Template
+// var compiledHomeTemplate = Template7.compile(homeTemplate);// Compile and render
+myApp.compiledHomeTemplate = Template7.compile(homeTemplate = $$('#home-template').html());// Select, Compile and render
 
 
-// Select Template
-// var template = $$('#random-template').html();
-var homeTemplate = $$('#home-template').html();
 
-// Compile and render
-var compiledHomeTemplate = Template7.compile(homeTemplate);
- 
 // Add main View
 var mainView = myApp.addView('.view-main', {
-	// domCache: true //enable inline pages
 });
 
 // Call onDeviceReady when PhoneGap is loaded. At this point, the document has loaded but phonegap-1.0.0.js has not. When PhoneGap is loaded and talking with the native device, it will call the event deviceready.
@@ -58,27 +51,10 @@ myApp.buildHomeHTML = function () {
 	
 	// Get all text content from JSON and redirect to new page
 	$$.getJSON(jsonURL, function (json) {
-		// Template7.data = json;
-		// console.log( Template7.data );
 		console.log( json);
-		// mainView.router.load({
-			// url: 'tabs.html',
-			// context: Template7.data
-		// });
-		// var homeData = JSON.parse(weatherData);
-		// $$('.places-list ul').html(html);
-		
-		// Insert rendered template
-		// var html = myApp.homeTemplate(json);
-		// $$('#content-wrap').html(html);
-		
-		$$('#content-wrap').html(compiledHomeTemplate(json))
-		// $$('#content-wrap').html(compiledTemplate(json))
+		$$('#content-wrap').html(myApp.compiledHomeTemplate(json));
 	});
 };
-
-		
-	
 
 myApp.buildHomeHTML();
 
