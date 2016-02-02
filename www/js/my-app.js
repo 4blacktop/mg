@@ -58,7 +58,7 @@ myApp.buildHomeHTML = function () {
 		
 		// Insert data into template
 		var newsHtml = myApp.compiledNewsTemplate(json);
-		var saleHtml = myApp.compiledSaleTemplate(json);
+		// var saleHtml = myApp.compiledSaleTemplate(json);
 		var cinemaHtml = myApp.compiledCinemaTemplate(json);
 		var eventsHtml = myApp.compiledEventsTemplate(json);
 		var currencyHtml = myApp.compiledCurrencyTemplate(json);
