@@ -110,134 +110,204 @@
   
 
 <div class="views"> <!-- Views-->
-<div class="view view-main"> <!-- Your main view, should have "view-main" class-->
-	
-	
-
-<div class="pages navbar-fixed">
-<div id="content-wrap"></div><!-- Div for Result -->
-<script type="text/template" id="home-template"> <!-- Home Page Template -->
-
-	<div data-page="home" class="page toolbar-fixed navbar-fixed">
-
-
-	
-			<div class="navbar">
-				<div class="navbar-inner">
-					<div class="left"><a href="#" class="link icon-only open-panel"> <i class="icon icon-bars"></i></a></div>
-					<div class="center">MG</div>
-					<div class="right icon">
-						<a class="link icon-only" onclick="window.plugins.socialsharing.share(null, null, null,  'http://www.moigorod.ru/m/')" href="#" > <i class="icon icon-share" > </i></a> 
-						<a class="link icon-only" onclick="window.location.href = 'tel: +74212666777'; " href="#" > <i class="icon icon-phonecall" > </i></a>
-					</div>				
-				</div>
-			</div>
-			
-			<div class="toolbar tabbar">
-				<div class="toolbar-inner">
-					<a href="#tab1" class="active tab-link">Новости</a>
-					<a href="#tab2" class="tab-link">Скидки</a>
-					<a href="#tab3" class="tab-link">Кино</a>
-					<a href="#tab4" class="tab-link">События</a>
-					<a href="#tab5" class="tab-link">Валюты</a> 
-				</div>
-			</div>
-
-			<!-- <div class="tabs-swipeable-wrap"> -->
-			<div class="tabs-wrap">
-				<div class="tabs">
-					<div id="tab1" class="page-content tab active">
-						<div class="content-block">
-							<p>Новости</p>
-							<div class="list-block">
-								<ul>{{#each news.all.posts}}
-									<li>
-									<a href="post.html" class="item-content item-link" data-context-name="news.all.posts.{{@index}}">
-									<div class="item-inner">
-									<div class="item-title">{{title}}</div>
-									</div>
-									</a>
-									</li>{{/each}}
-								</ul>
+	<div class="view view-main"> <!-- Your main view, should have "view-main" class-->
+		<div class="pages navbar-fixed">
+			<div data-page="home" class="page toolbar-fixed navbar-fixed">
+				<div class="navbar">
+					<div class="navbar-inner">
+						<div class="left"><a href="#" class="link icon-only open-panel"> <i class="icon icon-bars"></i></a></div>
+						<div class="center">MG</div>
+						<div class="right icon">
+							<a class="link icon-only" onclick="window.plugins.socialsharing.share(null, null, null,  'http://www.moigorod.ru/m/')" href="#" > <i class="icon icon-share" > </i></a> 
+							<a class="link icon-only" onclick="window.location.href = 'tel: +74212666777'; " href="#" > <i class="icon icon-phonecall" > </i></a>
+						</div>				
+					</div>
+				</div> <!-- navbar -->
+				<div class="toolbar tabbar">
+					<div class="toolbar-inner">
+						<a href="#tab1" class="active tab-link">Новости</a>
+						<a href="#tab2" class="tab-link">Скидки</a>
+						<a href="#tab3" class="tab-link">Кино</a>
+						<a href="#tab4" class="tab-link">События</a>
+						<a href="#tab5" class="tab-link">Валюты</a> 
+					</div>
+				</div><!-- toolbar -->
+				<div class="tabs-swipeable-wrap">
+					<div class="tabs">
+						<div id="tab1" class="page-content tab active">
+							<div class="content-block">
+								<p>Новости</p>
+								<div class="list-block news-list">
+									<ul>
+									</ul>
+								</div> 
+							</div>
+						</div>
+						<div id="tab2" class="page-content tab">
+							<div class="content-block">
+								<p>Скидки</p>
+								<div class="list-block sale-list">
+									<ul>
+									</ul>
+								</div> 
+							</div>
+						</div>
+						<div id="tab3" class="page-content tab">
+							<div class="content-block">
+								<p>Кино</p>
+								<div class="list-block cinema-list">
+									<ul>
+									</ul>
+								</div> 
+							</div>
+						</div>
+						<div id="tab4" class="page-content tab">
+							<div class="content-block">
+								<p>События</p>
+								<div class="list-block events-list">
+									<ul>
+									</ul>
+								</div> 
+							</div>
+						</div>
+						<div id="tab5" class="page-content tab">
+							<div class="content-block">
+								<p>Валюты</p>
+								<div class="list-block currency-list">
+									<ul>
+									</ul>
+								</div>
 							</div> 
 						</div>
-					</div>
-				<div id="tab2" class="page-content tab">
-						<div class="content-block">
-							<p>Скидки</p>
-							<div class="list-block">
-								<ul>{{#each sale.all.posts}}
-									<li>
-									<a href="post.html" class="item-content item-link" data-context-name="sale.all.posts.{{@index}}">
-									<div class="item-inner">
-									<div class="item-title">{{title}}</div>
-									</div>
-									</a>
-									</li>{{/each}}
-								</ul>
-							</div> 
-						</div>
-					</div>
-					<div id="tab3" class="page-content tab">
-						<div class="content-block">
-							<p>Кино</p>
-							<div class="list-block">
-								<ul>{{#each cinema.all.posts}}
-									<li>
-									<a href="post.html" class="item-content item-link" data-context-name="cinema.all.posts.{{@index}}">
-									<div class="item-inner">
-									<div class="item-title">{{title}}</div>
-									</div>
-									</a>
-									</li>{{/each}}
-								</ul>
-							</div> 
-						</div>
-					</div>
-					<div id="tab4" class="page-content tab">
-						<div class="content-block">
-							<p>События</p>
-							<div class="list-block">
-								<ul>{{#each events.all.posts}}
-									<li>
-									<a href="post.html" class="item-content item-link" data-context-name="events.all.posts.{{@index}}">
-									<div class="item-inner">
-									<div class="item-title">{{title}}</div>
-									</div>
-									</a>
-									</li>{{/each}}
-								</ul>
-							</div> 
-						</div>
-					</div>
-					<div id="tab5" class="page-content tab">
-						<div class="content-block">
-							<p>Валюты</p>
-							<div class="list-block">
-							{{#each currency.all.posts}}
-							{{content}}
-							{{/each}}
-								<!--<ul>{{#each currency.all.posts}}
-									<li>
-									<a href="post.html" class="item-content item-link" data-context-name="currency.all.posts.{{@index}}">
-									<div class="item-inner">
-									<div class="item-title">{{content}}</div>
-									</div>
-									</a>
-									</li>{{/each}}
-								</ul>
-							</div>-->  
-						</div>
-					</div> 
-				</div>
-			</div>
-		
+					</div> <!-- tabs -->
+				</div> <!-- tabs-swipable-wrap -->
+			</div><!-- data-page="home" class="page toolbar-fixed navbar-fixed" -->
+		</div> <!-- pages navbar-fixed -->
+	</div><!-- Your main view, should have "view-main" class-->
+</div><!-- Views-->
+
+<!-- Templates-->	
+<script id="news-template" type="text/template">
+	{{#each news.all.posts}}
+	<li>
+	<a href="post.html" class="item-content item-link" data-context-name="news.all.posts.{{@index}}">
+	<div class="item-inner">
+	<div class="item-title">{{title}}</div>
 	</div>
-</script>
-</div>
+	</a>
+	</li>{{/each}}
+</script>	
 
-</div>
-</div>
+<script id="sale-template" type="text/template">
+	{{#each sale.all.posts}}
+	<li>
+	<a href="post.html" class="item-content item-link" data-context-name="sale.all.posts.{{@index}}">
+	<div class="item-inner">
+	<div class="item-title">{{title}}</div>
+	</div>
+	</a>
+	</li>{{/each}}
+</script>
+
+<script id="cinema-template" type="text/template">
+	{{#each cinema.all.posts}}
+	<li>
+	<a href="post.html" class="item-content item-link" data-context-name="cinema.all.posts.{{@index}}">
+	<div class="item-inner">
+	<div class="item-title">{{title}}</div>
+	</div>
+	</a>
+	</li>{{/each}}
+</script>
+
+<script id="events-template" type="text/template">
+	{{#each events.all.posts}}
+	<li>
+	<a href="post.html" class="item-content item-link" data-context-name="events.all.posts.{{@index}}">
+	<div class="item-inner">
+	<div class="item-title">{{title}}</div>
+	</div>
+	</a>
+	</li>{{/each}}
+</script>			
+
+<script id="currency-template" type="text/template">
+	{{#each currency.all.posts}}
+	{{content}}
+	{{/each}}
+</script>									
+<!-- End of Templates-->									
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<!-- old template temporary  -->
+		<!--<script type="text/template" id="post-template">  Post Page Template -->
+			<!--<div data-page="post" class="page navbar-fixed"> 
+			
+				<div class="navbar">
+					<div class="navbar-inner">
+						<div class="left"><a href="#" class="back link"> <i class="icon icon-back"></i></a></div>
+						<div class="center">MG</div>
+						<div class="right icon">
+							<a class="link icon-only" onclick="window.plugins.socialsharing.share(null, null, null,  '{{pdalink}}')" href="#" > <i class="icon icon-share" > </i></a> 
+							<a class="link icon-only" onclick="window.location.href = 'tel: +74212666777'; " href="#" > <i class="icon icon-phonecall" > </i></a>
+						</div>				
+					</div>
+				</div>
+				
+				<div class="page-content">	
+					<div class="content-block">
+					<div class="content-block-inner">
+					  <h3>{{title}}</h3>
+						<p><b>{{title}}</b><br />
+						<b>Описание:</b> {{description}}<br />
+						<b>Дата публикации:</b> {{pubDate}}<br />
+						<b>URL:</b> - {{link}}</li><br />
+						<b>Mobile URL:</b> - {{pdalink}}</p>
+						<br /><br />
+						{{content}}
+					</div>
+					</div>
+				</div>
+				
+			</div>-->
+		<!--</script> End Post Page Template -->	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <script type="text/javascript" src="cordova.js"></script>
 <script type="text/javascript" src="cordova_plugins.js"></script>
@@ -246,10 +316,10 @@
 <script type="text/javascript" src="js/framework7.min.js"></script>
 <script type="text/javascript" src="js/my-app.js"></script>
 				
-	<div class="popup popup-services">
-		<div class="content-block-title">
-			<h1>Условия заказа</h1>
-		</div>		 
+<div class="popup popup-services">
+	<div class="content-block-title">
+		<h1>Условия заказа</h1>
+	</div>		 
 	<div class="content-block">
 		<p><a href="#" class="close-popup">Закрыть</a></p>
 		<div class="content-block-inner">
@@ -276,7 +346,7 @@
 		</div>
 		<p><a href="#" class="close-popup">Закрыть</a></p>
 	</div>
-	</div>
-	
+</div>
+
 </body>
 </html>

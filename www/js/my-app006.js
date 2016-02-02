@@ -1,17 +1,16 @@
 // Initialize your app
 var myApp = new Framework7({
-	template7Pages: true,
+	// template7Pages: true,
 	material: true, //enable Material theme
 	modalTitle: 'MG',
 	modalButtonOk: 'Да',
 	modalButtonCancel: 'Нет',
-	// allowDuplicateUrls: true, // allow loading of new pages that have same url as currently "active" page in View
 });
 	
 // Export selectors engine
 var $$ = Dom7;
-// var jsonURL = 'http://scr.ru/mg/www/php/json680000.txt';
-var jsonURL = 'http://27podarkov.ru/json680000.txt';
+var jsonURL = 'http://scr.ru/mg/www/php/json680000.txt';
+// var jsonURL = 'http://27podarkov.ru/json680000.txt';
 
 // Ajax setting for timeout
 $$.ajaxSetup({
@@ -26,12 +25,13 @@ $$.ajaxSetup({
 	}
 });
 
+// Urban Dic version
+// var homeTemplate = $$('#home-template').html();// Select Template
+// var compiledHomeTemplate = Template7.compile(homeTemplate);// Compile and render
+
 // Select, Compile and render template
-myApp.compiledNewsTemplate = Template7.compile(homeTemplate = $$('#news-template').html());// Select, Compile and render
-myApp.compiledSaleTemplate = Template7.compile(homeTemplate = $$('#sale-template').html());// Select, Compile and render
-myApp.compiledCinemaTemplate = Template7.compile(homeTemplate = $$('#cinema-template').html());// Select, Compile and render
-myApp.compiledEventsTemplate = Template7.compile(homeTemplate = $$('#events-template').html());// Select, Compile and render
-myApp.compiledCurrencyTemplate = Template7.compile(homeTemplate = $$('#currency-template').html());// Select, Compile and render
+myApp.compiledHomeTemplate = Template7.compile(homeTemplate = $$('#home-template').html());
+myApp.compiledPostTemplate = Template7.compile(homeTemplate = $$('#post-template').html());// Select, Compile and render
 
 // Add main View
 var mainView = myApp.addView('.view-main', {
@@ -48,67 +48,35 @@ function onBackKeyDown() { // Handle the back button
 }
 
 myApp.buildHomeHTML = function () {
+	// Get all text content from JSON and redirect to new page
 	$$.getJSON(jsonURL, function (json) {
 		Template7.data = json;
-		// console.log( Template7.data );
+		console.log( Template7.data );
 		console.log( json);
-		
-		// Insert data into templae
-		var newsHtml = myApp.compiledNewsTemplate(json);
-		var saleHtml = myApp.compiledSaleTemplate(json);
-		var cinemaHtml = myApp.compiledCinemaTemplate(json);
-		var eventsHtml = myApp.compiledEventsTemplate(json);
-		var currencyHtml = myApp.compiledCurrencyTemplate(json);
-
-		// Insert HTML data into page
-		$$('.news-list ul').html(newsHtml);
-		$$('.sale-list ul').html(saleHtml);
-		$$('.cinema-list ul').html(cinemaHtml);
-		$$('.events-list ul').html(eventsHtml);
-		$$('.currency-list ul').html(currencyHtml);
+		$$('#content-wrap').html(myApp.compiledHomeTemplate(json));
 	});
 };
 
+myApp.buildHomeHTML();
 
-	myApp.buildHomeHTML();
-
-/* 	
-	// var mySwiper = $$('.page')[0].swiper;
+// Build details page
+$$('.list-block').on('click', 'a.item-link', function (e) {
 	
-	  // var mySwiper = myApp.swiper('.page'); // found
-	  // var mySwiper = $$('.page')[0].swiper;
-	  var mySwiper = $$('.swiper-container').swiper;
-	mySwiper.update();
-	console.log( mySwiper);
-	 */
+			console.log( Template7.data );
+		console.log( json);
+    // var woeid = $$(this).attr('data-woeid');
+    // var item;
+    // var weatherData = JSON.parse(localStorage.w7Data);
+    // for (var i = 0; i < weatherData.length; i++) {
+        // if (weatherData[i].woeid === woeid) item = weatherData[i];
+    // }
+    // var pageContent = myApp.detailsTemplate(item);
+    // mainView.loadContent(pageContent);
 	
-// myApp.onPageBeforeInit('post',function(page){
-// myApp.onPageBeforeAnimation('post',function(page){
-// console.log(  'post page');
-// });
-
-/* 
-// Initializing Home Page ====================================
-myApp.onPageBeforeAnimation('home',function(page){
-	console.log( 'myApp.onPageBeforeAnimation home');
-
-	// Build details page
-	// $$('.places-list').on('click', 'a.item-link', function (e) {
 	
-	// });
-
+	// $$('#content-wrap').html(myApp.compiledPostTemplate(Template7.data.news.all.posts));
+	// data-context-name="events.all.posts.{{@index}}"
 });
- */
-
-
-
-
-
-
-
-
-
-
 
 
 

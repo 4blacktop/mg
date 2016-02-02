@@ -1,6 +1,6 @@
 // Initialize your app
 var myApp = new Framework7({
-	template7Pages: true,
+	// template7Pages: true,
 	material: true, //enable Material theme
 	modalTitle: 'MG',
 	modalButtonOk: 'Да',
@@ -10,8 +10,8 @@ var myApp = new Framework7({
 	
 // Export selectors engine
 var $$ = Dom7;
-// var jsonURL = 'http://scr.ru/mg/www/php/json680000.txt';
-var jsonURL = 'http://27podarkov.ru/json680000.txt';
+var jsonURL = 'http://scr.ru/mg/www/php/json680000.txt';
+// var jsonURL = 'http://27podarkov.ru/json680000.txt';
 
 // Ajax setting for timeout
 $$.ajaxSetup({
@@ -25,6 +25,10 @@ $$.ajaxSetup({
 		});
 	}
 });
+
+// Urban Dic version
+// var homeTemplate = $$('#home-template').html();// Select Template
+// var compiledHomeTemplate = Template7.compile(homeTemplate);// Compile and render
 
 // Select, Compile and render template
 myApp.compiledNewsTemplate = Template7.compile(homeTemplate = $$('#news-template').html());// Select, Compile and render
@@ -48,25 +52,22 @@ function onBackKeyDown() { // Handle the back button
 }
 
 myApp.buildHomeHTML = function () {
+	// Get all text content from JSON and redirect to new page
 	$$.getJSON(jsonURL, function (json) {
 		Template7.data = json;
 		// console.log( Template7.data );
 		console.log( json);
+		// $$('#content-wrap').html(myApp.compiledHomeTemplate(json));
 		
-		// Insert data into templae
-		var newsHtml = myApp.compiledNewsTemplate(json);
-		var saleHtml = myApp.compiledSaleTemplate(json);
-		var cinemaHtml = myApp.compiledCinemaTemplate(json);
-		var eventsHtml = myApp.compiledEventsTemplate(json);
-		var currencyHtml = myApp.compiledCurrencyTemplate(json);
-
-		// Insert HTML data into page
-		$$('.news-list ul').html(newsHtml);
-		$$('.sale-list ul').html(saleHtml);
-		$$('.cinema-list ul').html(cinemaHtml);
-		$$('.events-list ul').html(eventsHtml);
-		$$('.currency-list ul').html(currencyHtml);
+		// weatherData = JSON.parse(weatherData);
+		var html = myApp.compiledNewsTemplate(json);
+		$$('.news-list ul').html(html);
+		
+		// var pageContent = myApp.compiledHomeTemplate(json);
+	// mainView.loadContent(pageContent);
 	});
+		// console.log( 'buildHomeHTML');
+		// console.log( mainView.activePage.name);
 };
 
 
