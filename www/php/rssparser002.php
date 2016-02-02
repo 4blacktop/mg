@@ -4,10 +4,6 @@ header("Content-Type: text/html; charset=utf-8");
 set_time_limit(600);
 $mtime = microtime(true);
 
-// Pause Settings
-$pauseMin = 2;
-$pauseMin = 7;
-
 // Create a stream
 $opts = array(
 	'http'=>array(
@@ -71,11 +67,9 @@ foreach ($arrXmlNews['channel']['item'] as $item) {
 	if (file_exists($path)) {
 		echo "\tCached ok"; flush();
 	} else {
-	rndSleep($pauseMin,$pauseMax);
 	$contentHTML = file_get_contents($item["pdalink"], false, $context);
 	echo "\tDownload " . strlen($contentHTML) ." bytes\tFrom: " . $item["pdalink"] . "\tTo: " .$path; flush();
-	if ($contentHTML) { file_put_contents($path, $contentHTML); }
-	else { echo "ERROR! NULL content: " . $path; }
+	file_put_contents($path, $contentHTML);
 	}
 	
 	// Add data to array
@@ -107,11 +101,9 @@ foreach ($arrXmlEvents['channel']['item'] as $item) {
 	if (file_exists($path)) {
 		echo "\tCached ok"; flush();
 	} else {
-	rndSleep($pauseMin,$pauseMax);
 	$contentHTML = file_get_contents($item["pdalink"], false, $context);
 	echo "\tDownload " . strlen($contentHTML) ." bytes\tFrom: " . $item["pdalink"] . "\tTo: " .$path; flush();
-	if ($contentHTML) { file_put_contents($path, $contentHTML); }
-	else { echo "ERROR! NULL content: " . $path; }
+	file_put_contents($path, $contentHTML);
 	}
 	
 	// Add data to array
@@ -141,11 +133,9 @@ foreach ($arrXmlCinema['channel']['item'] as $item) {
 	if (file_exists($path)) {
 		echo "\tCached ok"; flush();
 	} else {
-	rndSleep($pauseMin,$pauseMax);
 	$contentHTML = file_get_contents($item["pdalink"], false, $context);
 	echo "\tDownload " . strlen($contentHTML) ." bytes\tFrom: " . $item["pdalink"] . "\tTo: " .$path; flush();
-	if ($contentHTML) { file_put_contents($path, $contentHTML); }
-	else { echo "ERROR! NULL content: " . $path; }
+	file_put_contents($path, $contentHTML);
 	}
 	
 	$localContent = file_get_contents($path);
@@ -206,8 +196,6 @@ $currencyContent = str_ireplace("</b>", "</h4>", $currencyContent);
 $currencyContent = strip_tags($currencyContent, '<br><h1><h2><h3><h4><h5><h6>');
 $currencyContent = trim(str_ireplace("</h4><br />", "</h4>", $currencyContent));
 	// Add data to array
-		if ($currencyContent) { file_put_contents($path, $contentHTML); }
-	else {echo "ERROR! NULL content: CURRENCY";}
 	$arrayOut['currency']['all']['posts'][] = array(
 		"content"  => $currencyContent
 	);

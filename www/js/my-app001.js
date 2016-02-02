@@ -54,8 +54,7 @@ myApp.buildHomeHTML = function () {
 	$$.getJSON(jsonURL, function (json) {
 		Template7.data = json;
 		// console.log( Template7.data );
-		// console.log( Template7.data );
-		console.log( json );
+		console.log( 'buildHomeHTML');
 		
 		// Insert blank data into page
 		$$('.news-list ul').html('');
@@ -98,8 +97,7 @@ ptrContent.on('refresh', function (e) { // Add 'refresh' listener on it
 		myApp.buildHomeHTML();
         
         myApp.pullToRefreshDone();// When loading done, we need to reset it
-    // }, 2000);
-    });
+    }, 2000);
 });
 
 myApp.buildHomeHTML();

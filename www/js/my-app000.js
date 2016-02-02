@@ -16,7 +16,7 @@ var jsonURL = 'http://scr.ru/mg/www/php/json680000.txt';
 // Ajax setting for timeout
 $$.ajaxSetup({
 	crossDomain: true, // don't know if it's working for CORS properly, on localhost - CORS failed during ajax form submit, regular submit ok
-	timeout: 9000, // 9 seconds, same as timeout in  ptrContent.on setTimeout
+	timeout: 9000, // 9 seconds
 	error: function(xhr) {
 	myApp.hideProgressbar();
 	var status = xhr.status;
@@ -25,18 +25,6 @@ $$.ajaxSetup({
 		});
 	}
 });
-
-// Back Button! Call onDeviceReady when PhoneGap is loaded. At this point, the document has loaded but phonegap-1.0.0.js has not. When PhoneGap is loaded and talking with the native device, it will call the event deviceready.
-document.addEventListener("deviceready", onDeviceReady, false);
-function onDeviceReady() { // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
-	document.addEventListener("backbutton", onBackKeyDown, false); // Register the event listener backButton
-}
-function onBackKeyDown() { // Handle the back button
-	if(mainView.activePage.name == "home"){ navigator.app.exitApp(); }
-	else { mainView.router.back(); }
-}
-
-
 
 // Select, Compile and render template
 myApp.compiledNewsTemplate = Template7.compile(homeTemplate = $$('#news-template').html());// Select, Compile and render
@@ -49,20 +37,21 @@ myApp.compiledCurrencyTemplate = Template7.compile(homeTemplate = $$('#currency-
 var mainView = myApp.addView('.view-main', {
 });
 
+// Back Button! Call onDeviceReady when PhoneGap is loaded. At this point, the document has loaded but phonegap-1.0.0.js has not. When PhoneGap is loaded and talking with the native device, it will call the event deviceready.
+document.addEventListener("deviceready", onDeviceReady, false);
+function onDeviceReady() { // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
+	document.addEventListener("backbutton", onBackKeyDown, false); // Register the event listener backButton
+}
+function onBackKeyDown() { // Handle the back button
+	if(mainView.activePage.name == "home"){ navigator.app.exitApp(); }
+	else { mainView.router.back(); }
+}
 
 myApp.buildHomeHTML = function () {
 	$$.getJSON(jsonURL, function (json) {
 		Template7.data = json;
 		// console.log( Template7.data );
-		// console.log( Template7.data );
-		console.log( json );
-		
-		// Insert blank data into page
-		$$('.news-list ul').html('');
-		$$('.sale-list ul').html('');
-		$$('.cinema-list ul').html('');
-		$$('.events-list ul').html('');
-		$$('.currency-list ul').html('');
+		console.log( json);
 		
 		// Insert data into template
 		var newsHtml = myApp.compiledNewsTemplate(json);
@@ -77,75 +66,10 @@ myApp.buildHomeHTML = function () {
 		$$('.cinema-list ul').html(cinemaHtml);
 		$$('.events-list ul').html(eventsHtml);
 		$$('.currency-list ul').html(currencyHtml);
-		
-		myApp.pullToRefreshDone();
 	});
 };
 
-
-// Pull to refresh content
-var ptrContent = $$('.pull-to-refresh-content');
-ptrContent.on('refresh', function (e) { // Add 'refresh' listener on it
-	// myApp.alert('buildHomeHTML', 'Home!');
-	setTimeout(function () {
-		// console.log('buildHomeHTML');
-		// Insert blank data into page
-		$$('.news-list ul').html('');
-		$$('.sale-list ul').html('');
-		$$('.cinema-list ul').html('');
-		$$('.events-list ul').html('');
-		$$('.currency-list ul').html('');
-		myApp.buildHomeHTML();
-        
-        myApp.pullToRefreshDone();// When loading done, we need to reset it
-    // }, 2000);
-    });
-});
-
 myApp.buildHomeHTML();
-
-
-
-
-// $$('.demo-progressbar-infinite-multi-overlay .button').on('click', function () {
-    // var container = $$('body');
-    // if (container.children('.progressbar, .progressbar-infinite').length) return; //don't run all this if there is a current progressbar loading
-    // myApp.showProgressbar(container, 'multi');
-    // setTimeout(function () {
-        // myApp.hideProgressbar();
-    // }, 5000);
-// });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* 	
 	// var mySwiper = $$('.page')[0].swiper;
