@@ -11,10 +11,11 @@ var myApp = new Framework7({
 // Export selectors engine
 var $$ = Dom7;
 // var jsonURL = 'http://scr.ru/mg/www/php/json680000.txt';
-var jsonURL = 'http://27podarkov.ru/json680000.txt';
+var jsonURL = 'http://27podarkov.ru/mg-json/json680000.txt';
 
 // Ajax setting for timeout
 $$.ajaxSetup({
+	cache: false,
 	crossDomain: true, // don't know if it's working for CORS properly, on localhost - CORS failed during ajax form submit, regular submit ok
 	timeout: 9000, // 9 seconds, same as timeout in  ptrContent.on setTimeout
 	error: function(xhr) {
