@@ -133,7 +133,7 @@
 					<div class="toolbar tabbar">
 						<div class="toolbar-inner">
 							<a href="#tab1" class="active tab-link">Новости</a>
-							<a href="#tab2" class="tab-link">Скидки</a>
+							<!-- <a href="#tab2" class="tab-link">Скидки</a> -->
 							<a href="#tab3" class="tab-link">Кино</a>
 							<a href="#tab4" class="tab-link">События</a>
 							<a href="#tab5" class="tab-link">Валюты</a> 
@@ -153,7 +153,7 @@
 									</div> 
 								</div>
 							</div>
-							<div id="tab2" class="page-content tab">
+<!-- 							<div id="tab2" class="page-content tab">
 								<div class="content-block">
 									<p>Скидки</p>
 									<div class="list-block sale-list">
@@ -161,7 +161,7 @@
 										</ul>
 									</div> 
 								</div>
-							</div>
+							</div> -->
 							<div id="tab3" class="page-content tab">
 								<div class="content-block">
 									<p>Кино</p>
@@ -200,7 +200,7 @@
 <script id="news-template" type="text/template">
 	{{#each news.all.posts}}
 	<li>
-	<a href="post.html" class="item-content item-link no-ripple" data-context-name="news.all.posts.{{@index}}">
+	<a href="post.html" class="item-content item-link" data-context-name="news.all.posts.{{@index}}">
 	<div class="item-inner">
 	<div class="item-title">{{title}}</div>
 	</div>
@@ -211,7 +211,7 @@
 <script id="sale-template" type="text/template">
 	{{#each sale.all.posts}}
 	<li>
-	<a href="post.html" class="item-content item-link no-ripple" data-context-name="sale.all.posts.{{@index}}">
+	<a href="post.html" class="item-content item-link" data-context-name="sale.all.posts.{{@index}}">
 	<div class="item-inner">
 	<div class="item-title">{{title}}</div>
 	</div>
@@ -222,7 +222,7 @@
 <script id="cinema-template" type="text/template">
 	{{#each cinema.all.posts}}
 	<li>
-	<a href="post.html" class="item-content item-link no-ripple" data-context-name="cinema.all.posts.{{@index}}">
+	<a href="post.html" class="item-content item-link" data-context-name="cinema.all.posts.{{@index}}">
 	<div class="item-inner">
 	<div class="item-title">{{title}}</div>
 	</div>
@@ -233,7 +233,7 @@
 <script id="events-template" type="text/template">
 	{{#each events.all.posts}}
 	<li>
-	<a href="post.html" class="item-content item-link no-ripple" data-context-name="events.all.posts.{{@index}}">
+	<a href="post.html" class="item-content item-link" data-context-name="events.all.posts.{{@index}}">
 	<div class="item-inner">
 	<div class="item-title">{{title}}</div>
 	</div>

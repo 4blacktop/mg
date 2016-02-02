@@ -41,7 +41,7 @@ function onBackKeyDown() { // Handle the back button
 
 // Select, Compile and render template
 myApp.compiledNewsTemplate = Template7.compile(homeTemplate = $$('#news-template').html());// Select, Compile and render
-myApp.compiledSaleTemplate = Template7.compile(homeTemplate = $$('#sale-template').html());// Select, Compile and render
+// myApp.compiledSaleTemplate = Template7.compile(homeTemplate = $$('#sale-template').html());// Select, Compile and render
 myApp.compiledCinemaTemplate = Template7.compile(homeTemplate = $$('#cinema-template').html());// Select, Compile and render
 myApp.compiledEventsTemplate = Template7.compile(homeTemplate = $$('#events-template').html());// Select, Compile and render
 myApp.compiledCurrencyTemplate = Template7.compile(homeTemplate = $$('#currency-template').html());// Select, Compile and render
@@ -54,16 +54,7 @@ var mainView = myApp.addView('.view-main', {
 myApp.buildHomeHTML = function () {
 	$$.getJSON(jsonURL, function (json) {
 		Template7.data = json;
-		// console.log( Template7.data );
-		// console.log( Template7.data );
-		console.log( json );
-		
-		// Insert blank data into page
-		$$('.news-list ul').html('');
-		$$('.sale-list ul').html('');
-		$$('.cinema-list ul').html('');
-		$$('.events-list ul').html('');
-		$$('.currency-list ul').html('');
+		// $$('.news-list ul').html(''); // Insert blank data into page
 		
 		// Insert data into template
 		var newsHtml = myApp.compiledNewsTemplate(json);
@@ -74,7 +65,7 @@ myApp.buildHomeHTML = function () {
 
 		// Insert HTML data into page
 		$$('.news-list ul').html(newsHtml);
-		$$('.sale-list ul').html(saleHtml);
+		// $$('.sale-list ul').html(saleHtml);
 		$$('.cinema-list ul').html(cinemaHtml);
 		$$('.events-list ul').html(eventsHtml);
 		$$('.currency-list ul').html(currencyHtml);
@@ -90,12 +81,6 @@ ptrContent.on('refresh', function (e) { // Add 'refresh' listener on it
 	// myApp.alert('buildHomeHTML', 'Home!');
 	setTimeout(function () {
 		// console.log('buildHomeHTML');
-		// Insert blank data into page
-		$$('.news-list ul').html('');
-		$$('.sale-list ul').html('');
-		$$('.cinema-list ul').html('');
-		$$('.events-list ul').html('');
-		$$('.currency-list ul').html('');
 		myApp.buildHomeHTML();
         
         myApp.pullToRefreshDone();// When loading done, we need to reset it
