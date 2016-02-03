@@ -89,7 +89,7 @@ ptrContent.on('refresh', function (e) { // Add 'refresh' listener on it
 });
 
 myApp.buildHomeHTML();
-navigator.splashscreen.hide();
+navigator.splashscreen.hide(); // Phonegap splashscreen plugin hide picture
 
 
 

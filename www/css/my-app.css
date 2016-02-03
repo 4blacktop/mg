@@ -101,3 +101,26 @@ i.icon.icon-msg-whatsapp {
  	background-image: url("../img/msg-whatsapp.svg"); 
 }
 
+i.icon.icon-settings-black {
+  width: 24px;
+  height: 24px;
+ 	background-image: url("../img/ic_settings_black_24px.svg"); 
+}
+
+i.icon.icon-info-black {
+  width: 24px;
+  height: 24px;
+ 	background-image: url("../img/ic_info_black_24px.svg"); 
+}
+
+i.icon.icon-noteadd-black {
+  width: 24px;
+  height: 24px;
+ 	background-image: url("../img/ic_note_add_black_24px.svg"); 
+}
+
+i.icon.icon-noteadd-white {
+  width: 24px;
+  height: 24px;
+ 	background-image: url("../img/ic_note_add_white_24px.svg"); 
+}

@@ -20,6 +20,30 @@ $context = stream_context_create($opts);
 
 echo '<pre><h1>Используются локальные RSS XML!<br />Ущербный XML для Новостей</h1>' . date("Ymd-His", time()+14400) . '<br /><br />';
 
+// =====================================================================================
+// ======================================= Settings  ===================================
+// =====================================================================================
+
+// counting from ZERO!!!
+$newsQty   = 29;
+$cinemaQty = 29;
+$eventsQty = 29;
+
+// News XML URL
+// $arrXmlNews = objectsIntoArray(simplexml_load_string(file_get_contents('http://www.moigorod.ru/uploads/rss/_headlines/680000/news-main.xml', false, $context))); // replace Category in URL
+$arrXmlNews = objectsIntoArray(simplexml_load_string(file_get_contents('xml/news-main.xml', false, $context)));															// replace Category in URL
+
+
+// Events XML URL
+// $arrXmlEvents = objectsIntoArray(simplexml_load_string(file_get_contents('http://www.moigorod.ru/uploads/rss/_headlines/680000/events-all.xml', false, $context)));	// replace Category in URL
+$arrXmlEvents = objectsIntoArray(simplexml_load_string(file_get_contents('xml/events-all.xml', false, $context)));															// replace Category in URL
+
+
+// Cinema XML URL
+// $arrXmlCinema = objectsIntoArray(simplexml_load_string(file_get_contents('http://www.moigorod.ru/uploads/rss/_headlines/680000/cinema-newfilms.xml', false, $context)));// replace Category in URL
+$arrXmlCinema = objectsIntoArray(simplexml_load_string(file_get_contents('xml/cinema-newfilms.xml', false, $context))); 														// replace Category in URL
+
+
 // Array to json convert
 $arrayOut = array (
 	"news" => array (
@@ -58,15 +82,14 @@ $arrayOut = array (
 // =====================================================================================
 // =============== Parsing XML RSS Channels and Save content to HTML Cache =============
 // =====================================================================================
-// all news
-// $arrXmlNews = objectsIntoArray(simplexml_load_string(file_get_contents('http://www.moigorod.ru/uploads/rss/_headlines/680000/news-main.xml', false, $context))); // replace Category in URL
-$arrXmlNews = objectsIntoArray(simplexml_load_string(file_get_contents('xml/news-main.xml', false, $context)));															// replace Category in URL
 echo '<hr />' . round((microtime(true) - $mtime) * 1, 4) . "\t<strong>Parsing News RSS... " . count($arrXmlNews['channel']['item']) . " elements</strong>"; flush(); // replace Category in echo
 
-foreach ($arrXmlNews['channel']['item'] as $item) {
+
+// all news ============================================================================
+foreach ($arrXmlNews['channel']['item'] as $key => $item) {
 	if (file_exists("stop.txt")) {exit("<br />stop.txt!");}
 	$filename = str_ireplace("http://habarovsk.MoiGorod.Ru/m/news/?n=", "", $item["pdalink"]); 														// replace URL in str_ireplace
-	echo '<br />' . round((microtime(true) - $mtime) * 1, 4) . "\tChecking news/" . $filename . ".html"; flush(); 									// replace Category in "checking "
+	echo '<br />' . round((microtime(true) - $mtime) * 1, 4) . "\t$key. Checking news/" . $filename . ".html"; flush(); 									// replace Category in "checking "
 	$path = "news/$filename.html"; 																													// replace folder in path variable
 	if (file_exists($path)) {
 		echo "\tCached ok"; flush();
@@ -82,6 +105,17 @@ foreach ($arrXmlNews['channel']['item'] as $item) {
 	// Parse local HTML files for JSON
 	$localContent = file_get_contents($path);
 	preg_match('#\<div.id\=\"nb\"\>(.*?)\<\/div\>#sim', $localContent, $arrayTextLocalContent);
+	preg_match('#<img[^>]*>#si', $arrayTextLocalContent[1], $imgTag);
+	$imgTag = str_ireplace('src="/', 'width="100%" src="http://www.moigorod.ru/', $imgTag[0]);
+
+// <img src="/uploads/news/2146446564/ddt6ru_t.jpg">	
+// src="http://www.moigorod.ru/uploads/news/2146446564/ddt6ru_t.jpg 	
+	
+	// <img src="/uploads/news/2146446564/ddt6ru_t.jpg">
+	// $imgTag = 
+	
+	// print_r($imgTag);
+	
 	$textContent = strip_tags(($arrayTextLocalContent[1]), '<br><i>');
 	$textContent = trim($textContent);
 	$textContent = prepareJSON($textContent);
@@ -96,23 +130,23 @@ foreach ($arrXmlNews['channel']['item'] as $item) {
 		"pdalink" => $item["pdalink"],
 		"description" => $item["description"],
 		"pubDate" => $item["pubDate"],
+		"img" => $imgTag,
 		"content"  => $textContent
 	);
+if ( $key > $newsQty ) { 
+	echo "<br />MAX # of News reached: Break!";
+	break;
+	}	
 }
 echo '<br />' . round((microtime(true) - $mtime) * 1, 4) . "\t<strong>Done!</strong>"; flush();
 
 
-// <div id="nb">
-
-
-// all city events
-// $arrXmlEvents = objectsIntoArray(simplexml_load_string(file_get_contents('http://www.moigorod.ru/uploads/rss/_headlines/680000/events-all.xml', false, $context)));	// replace Category in URL
-$arrXmlEvents = objectsIntoArray(simplexml_load_string(file_get_contents('xml/events-all.xml', false, $context)));															// replace Category in URL
+// all city events ========================================================================
 echo '<hr />' . round((microtime(true) - $mtime) * 1, 4) . "\t<strong>Parsing Events RSS... " . count($arrXmlEvents['channel']['item']) . " elements</strong>"; flush(); // replace Category in echo
-foreach ($arrXmlEvents['channel']['item'] as $item) {
+foreach ($arrXmlEvents['channel']['item'] as $key => $item) {
 	if (file_exists("stop.txt")) {exit("<br />stop.txt!");}
 	$filename = str_ireplace("http://habarovsk.MoiGorod.Ru/m/events/?id=", "", $item["pdalink"]); 													// replace URL in str_ireplace
-	echo '<br />' . round((microtime(true) - $mtime) * 1, 4) . "\tChecking events/" . $filename . ".html"; flush(); 								// replace Category in "checking "
+	echo '<br />' . round((microtime(true) - $mtime) * 1, 4) . "\t$key. Checking events/" . $filename . ".html"; flush(); 								// replace Category in "checking "
 	$path = "events/$filename.html"; 																												// replace folder in path variable
 	if (file_exists($path)) {
 		echo "\tCached ok"; flush();
@@ -126,10 +160,7 @@ foreach ($arrXmlEvents['channel']['item'] as $item) {
 	
 	// Parse local HTML files for JSON
 	$localContent = file_get_contents($path);
-	// preg_match('#\<div.id\=\"nb\"\>(.*?)\<\/div\>#sim', $localContent, $arrayTextLocalContent);
 	preg_match('#\<\/a\>\<br\/\>\<p\>(.*)\<div.id\=\"footMenu\"\>#sim', $localContent, $arrayTextLocalContent);
-	// preg_match('#\<\/a\>\<br\/\>\<p\>(.*?)\<br\>#sim', $localContent, $arrayTextLocalContent);
-	// print_r($arrayTextLocalContent);
 	$textContent = strip_tags(($arrayTextLocalContent[1]), '<br><i>');
 	$textContent = trim($textContent);
 	$textContent = prepareJSON($textContent);
@@ -142,23 +173,27 @@ foreach ($arrXmlEvents['channel']['item'] as $item) {
 		"pdalink" => $item["pdalink"],
 		"description" => $item["description"],
 		"pubDate" => $item["pubDate"],
-		"content"  => $textContent
+		"content"  => ''
 	);
+		// "content"  => $textContent
 	
-	print_r($textContent);
+	// print_r($textContent);
+	if ( $key > $eventsQty ) { 
+	echo "<br />MAX # of Events reached: Break!";
+	break;
+	}		
 }
 echo '<br />' . round((microtime(true) - $mtime) * 1, 4) . "\t<strong>Done!</strong>"; flush();
  
  
  
-// cinema today
-// $arrXmlCinema = objectsIntoArray(simplexml_load_string(file_get_contents('http://www.moigorod.ru/uploads/rss/_headlines/680000/cinema-newfilms.xml', false, $context)));// replace Category in URL
-$arrXmlCinema = objectsIntoArray(simplexml_load_string(file_get_contents('xml/cinema-newfilms.xml', false, $context))); 														// replace Category in URL
+// cinema today =========================================================================
+
 echo '<hr />' . round((microtime(true) - $mtime) * 1, 4) . "\t<strong>Parsing Cinema RSS... " . count($arrXmlCinema['channel']['item']) . " elements</strong>"; flush(); 	// replace Category in echo
-foreach ($arrXmlCinema['channel']['item'] as $item) {
+foreach ($arrXmlCinema['channel']['item'] as $key => $item) {
 	if (file_exists("stop.txt")) {exit("<br />stop.txt!");}
 	$filename = str_ireplace("http://habarovsk.MoiGorod.Ru/m/kino/movie.asp?m=", "", $item["pdalink"]); 											// replace URL in str_ireplace
-	echo '<br />' . round((microtime(true) - $mtime) * 1, 4) . "\tChecking cinema/" . $filename . ".html"; flush(); 								// replace Category in "checking "
+	echo '<br />' . round((microtime(true) - $mtime) * 1, 4) . "\t$key. Checking cinema/" . $filename . ".html"; flush(); 								// replace Category in "checking "
 	$path = "cinema/$filename.html"; 																												// replace folder in path variable
 	if (file_exists($path)) {
 		echo "\tCached ok"; flush();
@@ -201,6 +236,10 @@ foreach ($arrXmlCinema['channel']['item'] as $item) {
 		// "content"  => 'Содержимое текст Контент'
 		// "content"  => $textContent
 		// "content"  => $arrayTextLocalContent[1]
+if ( $key > $cinemaQty ) { 
+	echo "<br />MAX # of Cinema reached: Break!";
+	break;
+	}			
 }
 echo '<br />' . round((microtime(true) - $mtime) * 1, 4) . "\t<strong>Done!</strong>"; flush();
 
