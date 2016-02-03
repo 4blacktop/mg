@@ -39,12 +39,12 @@
   
   <gap:plugin name="nl.x-services.plugins.socialsharing" spec="4.3.8" source="pgb" />
   
-  
-  
-  
   <icon src="icon.png"/>
-  
-  <!-- <icon src="www/res/icon/blackberry/icon-80.png" gap:platform="blackberry"/>
+  <icon src="www/res/icon/android/icon-36-ldpi.png" gap:platform="android" gap:qualifier="ldpi"/>
+  <icon src="www/res/icon/android/icon-48-mdpi.png" gap:platform="android" gap:qualifier="mdpi"/>
+  <icon src="www/res/icon/android/icon-72-hdpi.png" gap:platform="android" gap:qualifier="hdpi"/>
+  <icon src="www/res/icon/android/icon-96-xhdpi.png" gap:platform="android" gap:qualifier="xhdpi"/>
+  <icon src="www/res/icon/blackberry/icon-80.png" gap:platform="blackberry"/>
   <icon src="www/res/icon/blackberry/icon-80.png" gap:platform="blackberry" gap:state="hover"/>
   <icon src="www/res/icon/ios/icon-57.png" gap:platform="ios" width="57" height="57"/>
   <icon src="www/res/icon/ios/icon-72.png" gap:platform="ios" width="72" height="72"/>
@@ -53,7 +53,6 @@
   <icon src="www/res/icon/webos/icon-64.png" gap:platform="webos"/>
   <icon src="www/res/icon/windows-phone/icon-48.png" gap:platform="winphone"/>
   <icon src="www/res/icon/windows-phone/icon-173-tile.png" gap:platform="winphone" gap:role="background"/>
-  
   <gap:splash src="www/res/screen/android/screen-ldpi-portrait.png" gap:platform="android" gap:qualifier="port-ldpi"/>
   <gap:splash src="www/res/screen/android/screen-mdpi-portrait.png" gap:platform="android" gap:qualifier="port-mdpi"/>
   <gap:splash src="www/res/screen/android/screen-hdpi-portrait.png" gap:platform="android" gap:qualifier="port-hdpi"/>
@@ -64,7 +63,7 @@
   <gap:splash src="www/res/screen/ios/screen-iphone-portrait-568h-2x.png" gap:platform="ios" width="640" height="1136"/>
   <gap:splash src="www/res/screen/ios/screen-ipad-portrait.png" gap:platform="ios" width="768" height="1024"/>
   <gap:splash src="www/res/screen/ios/screen-ipad-landscape.png" gap:platform="ios" width="1024" height="768"/>
-  <gap:splash src="www/res/screen/windows-phone/screen-portrait.jpg" gap:platform="winphone"/> -->
+  <gap:splash src="www/res/screen/windows-phone/screen-portrait.jpg" gap:platform="winphone"/>
   <access origin="*"/>
   <plugin name="cordova-plugin-whitelist" version="1"/>
   <allow-intent href="http://*/*"/>
@@ -75,25 +74,6 @@
   <allow-intent href="geo:*"/>
   <platform name="android">
     <allow-intent href="market:*"/>
-	
-	
-  
-  <!-- <icon src="www/res/icon/android/icon-36-ldpi.png" gap:platform="android" gap:qualifier="ldpi"/>
-  <icon src="www/res/icon/android/icon-48-mdpi.png" gap:platform="android" gap:qualifier="mdpi"/>
-  <icon src="www/res/icon/android/icon-72-hdpi.png" gap:platform="android" gap:qualifier="hdpi"/>
-  <icon src="www/res/icon/android/icon-96-xhdpi.png" gap:platform="android" gap:qualifier="xhdpi"/> -->
-			<!-- qualifier OR density? -->
-		<icon src="www/res/android/icon/ldpi.png" qualifier="ldpi" />
-		<icon src="www/res/android/icon/mdpi.png" qualifier="mdpi" />
-		<icon src="www/res/android/icon/hdpi.png" qualifier="hdpi" />
-		<icon src="www/res/android/icon/xhdpi.png" qualifier="xhdpi" />
-		
-		<splash src="www/res/android/screen/ldpi.png" platform="android" qualifier="ldpi" />
-		<splash src="www/res/android/screen/mdpi.png" platform="android" qualifier="mdpi" />
-		<splash src="www/res/android/screen/hdpi.png" platform="android" qualifier="hdpi" />
-		<splash src="www/res/android/screen/xhdpi.png" platform="android" qualifier="xhdpi" />
-		
-		
   </platform>
   <platform name="ios">
     <allow-intent href="itms:*"/>

@@ -4,6 +4,10 @@ header("Content-Type: text/html; charset=utf-8");
 set_time_limit(600);
 $mtime = microtime(true);
 
+// Pause Settings
+$pauseMin = 2;
+$pauseMin = 7;
+
 // Create a stream
 $opts = array(
 	'http'=>array(
@@ -14,7 +18,7 @@ $opts = array(
 	);
 $context = stream_context_create($opts);
 
-echo '<pre><h1>Закешированы RSS XML!</h1>' . date("Ymd-His", time()+14400) . '<br /><br />';
+echo '<pre><h1>НЕЕЕЕЕ Закешированы RSS XML!</h1>' . date("Ymd-His", time()+14400) . '<br /><br />';
 
 // Array to json convert
 $arrayOut = array (
@@ -54,14 +58,10 @@ $arrayOut = array (
 // =====================================================================================
 // =============== Parsing XML RSS Channels and Save content to HTML Cache =============
 // =====================================================================================
-
 // all news
-// $arrXmlNews = objectsIntoArray(simplexml_load_string(file_get_contents('http://www.moigorod.ru/uploads/rss/_headlines/680000/news-main.xml', false, $context))); // replace Category in URL
-$arrXmlNews = objectsIntoArray(simplexml_load_string(file_get_contents('news-main.xml', false, $context)));															// replace Category in URL
+$arrXmlNews = objectsIntoArray(simplexml_load_string(file_get_contents('http://www.moigorod.ru/uploads/rss/_headlines/680000/news-main.xml', false, $context))); // replace Category in URL
+// $arrXmlNews = objectsIntoArray(simplexml_load_string(file_get_contents('news-main.xml', false, $context)));															// replace Category in URL
 echo '<hr />' . round((microtime(true) - $mtime) * 1, 4) . "\t<strong>Parsing News RSS... " . count($arrXmlNews['channel']['item']) . " elements</strong>"; flush(); // replace Category in echo
-
-
-
 
 foreach ($arrXmlNews['channel']['item'] as $item) {
 	if (file_exists("stop.txt")) {exit("<br />stop.txt!");}
@@ -71,9 +71,11 @@ foreach ($arrXmlNews['channel']['item'] as $item) {
 	if (file_exists($path)) {
 		echo "\tCached ok"; flush();
 	} else {
+	rndSleep($pauseMin,$pauseMax);
 	$contentHTML = file_get_contents($item["pdalink"], false, $context);
 	echo "\tDownload " . strlen($contentHTML) ." bytes\tFrom: " . $item["pdalink"] . "\tTo: " .$path; flush();
-	file_put_contents($path, $contentHTML);
+	if ($contentHTML) { file_put_contents($path, $contentHTML); }
+	else { echo "ERROR! NULL content: " . $path; }
 	}
 	
 	// Add data to array
@@ -94,9 +96,9 @@ echo '<br />' . round((microtime(true) - $mtime) * 1, 4) . "\t<strong>Done!</str
 
 
 // all city events
-// $arrXmlEvents = objectsIntoArray(simplexml_load_string(file_get_contents('http://www.moigorod.ru/uploads/rss/_headlines/680000/events-all.xml', false, $context)));	// replace Category in URL
-$arrXmlEvents = objectsIntoArray(simplexml_load_string(file_get_contents('events-all.xml', false, $context)));															// replace Category in URL
- echo '<hr />' . round((microtime(true) - $mtime) * 1, 4) . "\t<strong>Parsing Events RSS... " . count($arrXmlEvents['channel']['item']) . " elements</strong>"; flush(); // replace Category in echo
+$arrXmlEvents = objectsIntoArray(simplexml_load_string(file_get_contents('http://www.moigorod.ru/uploads/rss/_headlines/680000/events-all.xml', false, $context)));	// replace Category in URL
+// $arrXmlEvents = objectsIntoArray(simplexml_load_string(file_get_contents('events-all.xml', false, $context)));															// replace Category in URL
+echo '<hr />' . round((microtime(true) - $mtime) * 1, 4) . "\t<strong>Parsing Events RSS... " . count($arrXmlEvents['channel']['item']) . " elements</strong>"; flush(); // replace Category in echo
 foreach ($arrXmlEvents['channel']['item'] as $item) {
 	if (file_exists("stop.txt")) {exit("<br />stop.txt!");}
 	$filename = str_ireplace("http://habarovsk.MoiGorod.Ru/m/events/?id=", "", $item["pdalink"]); 													// replace URL in str_ireplace
@@ -105,9 +107,11 @@ foreach ($arrXmlEvents['channel']['item'] as $item) {
 	if (file_exists($path)) {
 		echo "\tCached ok"; flush();
 	} else {
+	rndSleep($pauseMin,$pauseMax);
 	$contentHTML = file_get_contents($item["pdalink"], false, $context);
 	echo "\tDownload " . strlen($contentHTML) ." bytes\tFrom: " . $item["pdalink"] . "\tTo: " .$path; flush();
-	file_put_contents($path, $contentHTML);
+	if ($contentHTML) { file_put_contents($path, $contentHTML); }
+	else { echo "ERROR! NULL content: " . $path; }
 	}
 	
 	// Add data to array
@@ -122,10 +126,12 @@ foreach ($arrXmlEvents['channel']['item'] as $item) {
 	);
 }
 echo '<br />' . round((microtime(true) - $mtime) * 1, 4) . "\t<strong>Done!</strong>"; flush();
-
+ 
+ 
+ 
 // cinema today
-// $arrXmlCinema = objectsIntoArray(simplexml_load_string(file_get_contents('http://www.moigorod.ru/uploads/rss/_headlines/680000/cinema-newfilms.xml', false, $context)));// replace Category in URL
-$arrXmlCinema = objectsIntoArray(simplexml_load_string(file_get_contents('cinema-newfilms.xml', false, $context))); 														// replace Category in URL
+$arrXmlCinema = objectsIntoArray(simplexml_load_string(file_get_contents('http://www.moigorod.ru/uploads/rss/_headlines/680000/cinema-newfilms.xml', false, $context)));// replace Category in URL
+// $arrXmlCinema = objectsIntoArray(simplexml_load_string(file_get_contents('cinema-newfilms.xml', false, $context))); 														// replace Category in URL
 echo '<hr />' . round((microtime(true) - $mtime) * 1, 4) . "\t<strong>Parsing Cinema RSS... " . count($arrXmlCinema['channel']['item']) . " elements</strong>"; flush(); 	// replace Category in echo
 foreach ($arrXmlCinema['channel']['item'] as $item) {
 	if (file_exists("stop.txt")) {exit("<br />stop.txt!");}
@@ -135,15 +141,38 @@ foreach ($arrXmlCinema['channel']['item'] as $item) {
 	if (file_exists($path)) {
 		echo "\tCached ok"; flush();
 	} else {
+	rndSleep($pauseMin,$pauseMax);
 	$contentHTML = file_get_contents($item["pdalink"], false, $context);
 	echo "\tDownload " . strlen($contentHTML) ." bytes\tFrom: " . $item["pdalink"] . "\tTo: " .$path; flush();
-	file_put_contents($path, $contentHTML);
+	if ($contentHTML) { file_put_contents($path, $contentHTML); }
+	else { echo "ERROR! NULL content: " . $path; }
 	}
 	
 	$localContent = file_get_contents($path);
 	// </tr></table>(.*)<form method="get"
-	preg_match('#\<\/tr\>\<\/table\>(.*)\<form.method\=\"get\"#sim', $content, $localContent);
-	print_r($localContent);
+	// preg_match('#\<\/tr\>\<\/table\>(.*)\<form.method\=\"get\"#sim', $localContent, $arrayTextLocalContent);
+	preg_match('#\<b\>Описание\:\<\/b\>(.*)\<form.method\=\"get\"#sim', $localContent, $arrayTextLocalContent);
+	// $textContent = strip_tags($arrayTextLocalContent[1], '<br><h1><h2><h3><h4><h5><h6>');
+	$textContent = trim(strip_tags($arrayTextLocalContent[1]));
+	// $textContent = htmlentities($textContent);
+	$textContent = str_ireplace('‘', "", $textContent);
+	$textContent = str_ireplace('’', "", $textContent);
+	$textContent = str_ireplace('”', "", $textContent);
+	$textContent = str_ireplace('"', "", $textContent);
+	$textContent = str_ireplace('\\', "", $textContent);
+	$textContent = str_ireplace('«', "", $textContent);
+	$textContent = str_ireplace('»', "", $textContent);
+	$textContent = str_ireplace(':', "", $textContent);
+	$textContent = str_ireplace('…', "", $textContent);
+	$textContent = str_ireplace('/', "", $textContent);
+	$textContent = str_ireplace("\n", "", $textContent);
+	$textContent = str_ireplace("\r", "", $textContent);
+	$textContent = str_ireplace("\f", "", $textContent);
+	$textContent = str_ireplace("\t", "", $textContent);
+	$textContent = str_ireplace("\b", "", $textContent);
+	$textContent = mb_convert_encoding($textContent, 'UTF-8', 'UTF-8');
+	
+	print_r($textContent);
 	
 	// Add data to array
 	$arrayOut['cinema']['all']['posts'][] = array(
@@ -153,8 +182,11 @@ foreach ($arrXmlCinema['channel']['item'] as $item) {
 		"pdalink" => $item["pdalink"],
 		"description" => $item["description"],
 		"pubDate" => $item["pubDate"],
-		"content"  => $localContent
+		"content"  => $textContent
 	);
+		// "content"  => 'Содержимое текст Контент'
+		// "content"  => $textContent
+		// "content"  => $arrayTextLocalContent[1]
 }
 echo '<br />' . round((microtime(true) - $mtime) * 1, 4) . "\t<strong>Done!</strong>"; flush();
 
@@ -174,6 +206,8 @@ $currencyContent = str_ireplace("</b>", "</h4>", $currencyContent);
 $currencyContent = strip_tags($currencyContent, '<br><h1><h2><h3><h4><h5><h6>');
 $currencyContent = trim(str_ireplace("</h4><br />", "</h4>", $currencyContent));
 	// Add data to array
+		if ($currencyContent) { file_put_contents($path, $contentHTML); }
+	else {echo "ERROR! NULL content: CURRENCY";}
 	$arrayOut['currency']['all']['posts'][] = array(
 		"content"  => $currencyContent
 	);
@@ -183,11 +217,11 @@ $currencyContent = trim(str_ireplace("</h4><br />", "</h4>", $currencyContent));
 
 
 
-print_r($arrayOut);
+// print_r($arrayOut);
 $result = _json_encode($arrayOut);
 file_put_contents('json680000-' . time() . '.txt', $result);
 file_put_contents('json680000.txt', $result);
-echo $result;
+// echo $result;
 echo '<br /><br />Exec time: ' . round((microtime(true) - $mtime) * 1, 4) . ' s.</pre>';
 
 
@@ -229,7 +263,7 @@ function optimizeArray($array)
 // pause rnd seconds
 function rndSleep($pauseMin,$pauseMax) {
 	$pause = rand ($pauseMin,$pauseMax); 
-	echo "<br />Pause $pause s.";
+	echo "\tPause $pause s.";
 	flush();
 	sleep($pause);
 	}
