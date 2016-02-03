@@ -18,6 +18,11 @@
   <preference name="disable-cursor" value="false"/>
   <preference name="android-minSdkVersion" value="14"/>
   <preference name="android-installLocation" value="auto"/>
+  
+	<preference name="SplashScreen" value="www/res/android/screen/xhdpi.9.png" />
+	<preference name="SplashScreenDelay" value="3000" />
+  
+  
   <gap:plugin name="org.apache.cordova.battery-status"/>
   <gap:plugin name="org.apache.cordova.camera"/>
   <gap:plugin name="org.apache.cordova.media-capture"/>
@@ -39,11 +44,13 @@
   
   
   <gap:plugin name="nl.x-services.plugins.socialsharing" spec="4.3.8" source="pgb" />
-  
+  <plugin name="org.apache.cordova.splashscreen" spec="1.0.0" source="pgb" />
   
   
   
   <icon src="icon.png"/>
+  <splash src="splash.png" />
+
   
   <!-- <icon src="www/res/icon/blackberry/icon-80.png" gap:platform="blackberry"/>
   <icon src="www/res/icon/blackberry/icon-80.png" gap:platform="blackberry" gap:state="hover"/>
@@ -102,9 +109,9 @@
     <allow-intent href="itms-apps:*"/>
   </platform>
   
-  
+	<!-- social sharing plugin installed -->
 	<feature name="SocialSharing">
-	<param name="android-package" value="nl.xservices.plugins.SocialSharing" />
+		<param name="android-package" value="nl.xservices.plugins.SocialSharing" />
 	</feature>
 
 </widget>
