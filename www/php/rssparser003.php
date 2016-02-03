@@ -206,22 +206,20 @@ foreach ($arrXmlCinema['channel']['item'] as $key => $item) {
 	
 	// Parse local HTML files for JSON
 	$localContent = file_get_contents($path);
+	// </tr></table>(.*)<form method="get"
+	// preg_match('#\<\/tr\>\<\/table\>(.*)\<form.method\=\"get\"#sim', $localContent, $arrayTextLocalContent);
 	preg_match('#\<b\>Описание\:\<\/b\>(.*)\<form.method\=\"get\"#sim', $localContent, $arrayTextLocalContent);
+	// $textContent = strip_tags($arrayTextLocalContent[1], '<br><h1><h2><h3><h4><h5><h6>');
+	// $textContent = trim(strip_tags($arrayTextLocalContent[1]));
 	
-	$textContent = trim($arrayTextLocalContent[1]);
-	$textContent = strip_tags($textContent, '<br><b></b><i></i><br /><br/>');
-	// print_r($textContent);
+	$textContent = strip_tags(($arrayTextLocalContent[1]), '<br><i>');
+	$textContent = trim($textContent);
+	// $textContent = htmlentities($textContent);
+	
+	
 	$textContent = prepareJSON($textContent);
 	
-	preg_match('#\<\/tr\>\<\/table\>(.*?)<a href="(.*?)\".style#sim', $localContent, $imgUrl);
-	$imgTag = str_ireplace('/uploads', '<img src="http://www.moigorod.ru/uploads', $imgUrl[2]) . '" /><br />';
 	
-	preg_match('#\<fieldset\>\<legend\>(.*?)\<div.class\=\"dsc\"\>#sim', $localContent, $todaySchedule);
-	$todaySchedule = $todaySchedule[1];
-	$todaySchedule = '<h3>' . str_ireplace('</legend>', '</h3>', $todaySchedule);
-	$todaySchedule = trim($todaySchedule);
-	$todaySchedule = strip_tags($todaySchedule, '<h3></h3><br><b></b><i></i><br /><br/>');
-	// print_r($todaySchedule);
 	
 	// Add data to array
 	$arrayOut['cinema']['all']['posts'][] = array(
@@ -231,17 +229,16 @@ foreach ($arrXmlCinema['channel']['item'] as $key => $item) {
 		"pdalink" => $item["pdalink"],
 		"description" => $item["description"],
 		"pubDate" => $item["pubDate"],
-		"img" => $imgTag,
-		"content"  => $textContent . $todaySchedule
+		"content"  => $textContent
 	);
 		// "content"  => $textContent
 		// "content"  => 'Содержимое текст Контент'
 		// "content"  => $textContent
 		// "content"  => $arrayTextLocalContent[1]
-	if ( $key > $cinemaQty ) { 
-		echo "<br />MAX # of Cinema reached: Break!";
-		break;
-		}			
+if ( $key > $cinemaQty ) { 
+	echo "<br />MAX # of Cinema reached: Break!";
+	break;
+	}			
 }
 echo '<br />' . round((microtime(true) - $mtime) * 1, 4) . "\t<strong>Done!</strong>"; flush();
 
@@ -371,7 +368,7 @@ function prepareJSON($textContent)
 	$textContent = str_ireplace('»', "", $textContent);
 	$textContent = str_ireplace(':', "", $textContent);
 	$textContent = str_ireplace('…', "", $textContent);
-	// $textContent = str_ireplace('/', "", $textContent);
+	$textContent = str_ireplace('/', "", $textContent);
 	$textContent = str_ireplace("\n", "", $textContent);
 	$textContent = str_ireplace("\r", "", $textContent);
 	$textContent = str_ireplace("\f", "", $textContent);

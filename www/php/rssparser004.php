@@ -210,18 +210,11 @@ foreach ($arrXmlCinema['channel']['item'] as $key => $item) {
 	
 	$textContent = trim($arrayTextLocalContent[1]);
 	$textContent = strip_tags($textContent, '<br><b></b><i></i><br /><br/>');
-	// print_r($textContent);
+	print_r($textContent);
 	$textContent = prepareJSON($textContent);
 	
 	preg_match('#\<\/tr\>\<\/table\>(.*?)<a href="(.*?)\".style#sim', $localContent, $imgUrl);
 	$imgTag = str_ireplace('/uploads', '<img src="http://www.moigorod.ru/uploads', $imgUrl[2]) . '" /><br />';
-	
-	preg_match('#\<fieldset\>\<legend\>(.*?)\<div.class\=\"dsc\"\>#sim', $localContent, $todaySchedule);
-	$todaySchedule = $todaySchedule[1];
-	$todaySchedule = '<h3>' . str_ireplace('</legend>', '</h3>', $todaySchedule);
-	$todaySchedule = trim($todaySchedule);
-	$todaySchedule = strip_tags($todaySchedule, '<h3></h3><br><b></b><i></i><br /><br/>');
-	// print_r($todaySchedule);
 	
 	// Add data to array
 	$arrayOut['cinema']['all']['posts'][] = array(
@@ -232,7 +225,7 @@ foreach ($arrXmlCinema['channel']['item'] as $key => $item) {
 		"description" => $item["description"],
 		"pubDate" => $item["pubDate"],
 		"img" => $imgTag,
-		"content"  => $textContent . $todaySchedule
+		"content"  => $textContent
 	);
 		// "content"  => $textContent
 		// "content"  => 'Содержимое текст Контент'
