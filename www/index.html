@@ -123,16 +123,13 @@
 <div class="views"> <!-- Views-->
 	<div class="view view-main"> <!-- Your main view, should have "view-main" class-->
 		<div class="pages navbar-fixed">
-			<div data-page="home" class="page toolbar-fixed navbar-fixed" data-ptr-distance="55">
-				
-					<!-- Default pull to refresh layer-->
-					<div class="pull-to-refresh-layer">
-						<div class="preloader"></div>
-						<div class="pull-to-refresh-arrow"></div>
-					</div><!-- Default pull to refresh layer-->
+			<!-- <div data-page="home" class="page"> -->
+				<div data-page="home" class="page toolbar-fixed navbar-fixed">
+				<!-- <div class="page-content toolbar-fixed navbar-fixed pull-to-refresh-content" data-ptr-distance="55"> -->
+
 					
 					
-					<div class="navbar pull-to-refresh-content" data-ptr-distance="55">
+					<div class="navbar">
 						<div class="navbar-inner">
 							<div class="left"><a href="#" class="link icon-only open-panel"> <i class="icon icon-bars"></i></a></div>
 							<div class="center">MG</div>
@@ -154,12 +151,19 @@
 						</div>
 					</div><!-- toolbar -->
 					
+					<div class="page-content pull-to-refresh-content" data-ptr-distance="55">
+										<!-- Default pull to refresh layer-->
+					<div class="pull-to-refresh-layer">
+						<div class="preloader"></div>
+						<div class="pull-to-refresh-arrow"></div>
+					</div><!-- Default pull to refresh layer-->
+					
 					<div class="tabs-swipeable-wrap">
 						<div class="tabs">
 						
 
 						
-							<div id="tab1" class="page-content tab active">
+							<div id="tab1" class="tab active ">
 								<div class="content-block">
 									<p>Новости</p>
 									<div class="list-block news-list">
@@ -168,7 +172,7 @@
 									</div> 
 								</div>
 							</div>
-<!-- 							<div id="tab2" class="page-content tab">
+<!-- 							<div id="tab2" class="tab">
 								<div class="content-block">
 									<p>Скидки</p>
 									<div class="list-block sale-list">
@@ -177,7 +181,7 @@
 									</div> 
 								</div>
 							</div> -->
-							<div id="tab3" class="page-content tab">
+							<div id="tab3" class="tab">
 								<div class="content-block">
 									<p>Кино</p>
 									<div class="list-block cinema-list">
@@ -186,7 +190,7 @@
 									</div> 
 								</div>
 							</div>
-							<div id="tab4" class="page-content tab">
+							<div id="tab4" class="tab">
 								<div class="content-block">
 									<p>События</p>
 									<div class="list-block events-list">
@@ -195,7 +199,7 @@
 									</div> 
 								</div>
 							</div>
-							<div id="tab5" class="page-content tab">
+							<div id="tab5" class="tab">
 								<div class="content-block">
 									<p>Валюты</p>
 									<div class="list-block currency-list">
@@ -205,6 +209,7 @@
 								</div> 
 							</div>
 						</div> <!-- tabs -->
+				</div><!-- data-page-content -->
 					</div> <!-- tabs-swipable-wrap -->
 			</div><!-- data-page="home" class="page toolbar-fixed navbar-fixed" -->
 		</div> <!-- pages navbar-fixed -->
