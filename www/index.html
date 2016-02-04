@@ -123,7 +123,7 @@
 <div class="views"> <!-- Views-->
 	<div class="view view-main"> <!-- Your main view, should have "view-main" class-->
 		<div class="pages navbar-fixed">
-			<div data-page="home" class="page toolbar-fixed navbar-fixed pull-to-refresh-content" data-ptr-distance="55">
+			<div data-page="home" class="page toolbar-fixed navbar-fixed" data-ptr-distance="55">
 				
 					<!-- Default pull to refresh layer-->
 					<div class="pull-to-refresh-layer">
@@ -215,7 +215,7 @@
 <script id="news-template" type="text/template">
 	{{#each news.all.posts}}
 	<li>
-	<a href="post.html" class="item-content item-link" data-context-name="news.all.posts.{{@index}}">
+	<a href="post.html" class="item-content item-link no-ripple" data-context-name="news.all.posts.{{@index}}">
 	<div class="item-inner">
 	<div class="item-title">{{title}}</div>
 	</div>
@@ -226,7 +226,7 @@
 <script id="sale-template" type="text/template">
 	{{#each sale.all.posts}}
 	<li>
-	<a href="post.html" class="item-content item-link" data-context-name="sale.all.posts.{{@index}}">
+	<a href="post.html" class="item-content item-link no-ripple" data-context-name="sale.all.posts.{{@index}}">
 	<div class="item-inner">
 	<div class="item-title">{{title}}</div>
 	</div>
@@ -237,7 +237,7 @@
 <script id="cinema-template" type="text/template">
 	{{#each cinema.all.posts}}
 	<li>
-	<a href="post.html" class="item-content item-link" data-context-name="cinema.all.posts.{{@index}}">
+	<a href="post.html" class="item-content item-link no-ripple" data-context-name="cinema.all.posts.{{@index}}">
 	<div class="item-inner">
 	<div class="item-title">{{title}}</div>
 	</div>
@@ -248,7 +248,7 @@
 <script id="events-template" type="text/template">
 	{{#each events.all.posts}}
 	<li>
-	<a href="post.html" class="item-content item-link" data-context-name="events.all.posts.{{@index}}">
+	<a href="post.html" class="item-content item-link no-ripple" data-context-name="events.all.posts.{{@index}}">
 	<div class="item-inner">
 	<div class="item-title">{{title}}</div>
 	</div>
