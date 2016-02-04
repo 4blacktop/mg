@@ -122,9 +122,8 @@
 
 <div class="views"> <!-- Views-->
 	<div class="view view-main"> <!-- Your main view, should have "view-main" class-->
-
 		<div class="pages navbar-fixed">
-			<div data-page="home" class="page toolbar-fixed navbar-fixed" data-ptr-distance="55">
+			<div data-page="home" class="page toolbar-fixed navbar-fixed pull-to-refresh-content" data-ptr-distance="55">
 				
 					
 					<div class="navbar">
@@ -148,17 +147,17 @@
 							<a href="#tab5" class="tab-link">Валюты</a> 
 						</div>
 					</div><!-- toolbar -->
-					
-
+					<!-- Default pull to refresh layer-->
+					<div class="pull-to-refresh-layer">
+						<div class="preloader"></div>
+						<div class="pull-to-refresh-arrow"></div>
+					</div><!-- Default pull to refresh layer-->
 					<div class="tabs-swipeable-wrap">
-						<div class="tabs pull-to-refresh-content">
+						<div class="tabs">
 						
+
 						
-							<div id="tab1" class="page-content tab active ">
-								<div class="pull-to-refresh-layer"><!-- Default pull to refresh layer-->
-									<div class="preloader"></div>
-									<div class="pull-to-refresh-arrow"></div>
-								</div><!-- Default pull to refresh layer-->
+							<div id="tab1" class="page-content tab active">
 								<div class="content-block">
 									<h3>Новости</h3>
 									<div class="list-block news-list">
@@ -167,7 +166,7 @@
 									</div> 
 								</div>
 							</div>
-<!-- 							<div id="tab2" class="page-content tab pull-to-refresh-content">
+<!-- 							<div id="tab2" class="page-content tab">
 								<div class="content-block">
 									<p>Скидки</p>
 									<div class="list-block sale-list">
@@ -176,11 +175,7 @@
 									</div> 
 								</div>
 							</div> -->
-							<div id="tab3" class="page-content tab pull-to-refresh-content">
-								<div class="pull-to-refresh-layer"><!-- Default pull to refresh layer-->
-									<div class="preloader"></div>
-									<div class="pull-to-refresh-arrow"></div>
-								</div><!-- Default pull to refresh layer-->
+							<div id="tab3" class="page-content tab">
 								<div class="content-block">
 									<h3>Кино</h3>
 									<div class="list-block cinema-list">
@@ -189,12 +184,8 @@
 									</div> 
 								</div>
 							</div>
-							<div id="tab4" class="page-content tab pull-to-refresh-content">
-							<div class="pull-to-refresh-layer"><!-- Default pull to refresh layer-->
-								<div class="preloader"></div>
-								<div class="pull-to-refresh-arrow"></div>
-							</div><!-- Default pull to refresh layer-->
-							<div class="content-block">
+							<div id="tab4" class="page-content tab">
+								<div class="content-block">
 									<h3>События</h3>
 									<div class="list-block events-list">
 										<ul>
@@ -202,11 +193,7 @@
 									</div> 
 								</div>
 							</div>
-							<div id="tab5" class="page-content tab pull-to-refresh-content">
-								<div class="pull-to-refresh-layer"><!-- Default pull to refresh layer-->
-									<div class="preloader"></div>
-									<div class="pull-to-refresh-arrow"></div>
-								</div><!-- Default pull to refresh layer-->
+							<div id="tab5" class="page-content tab">
 								<div class="content-block">
 									<h3>Валюты</h3>
 									<div class="list-block currency-list">
