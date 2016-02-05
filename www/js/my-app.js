@@ -3,6 +3,7 @@ var myApp = new Framework7({
 	template7Pages: true,
 	material: true, //enable Material theme
 	modalTitle: 'MG',
+	pushstate: true,
 	modalButtonOk: 'Да',
 	modalButtonCancel: 'Нет',
 	// allowDuplicateUrls: true, // allow loading of new pages that have same url as currently "active" page in View
@@ -10,8 +11,8 @@ var myApp = new Framework7({
 	
 // Export selectors engine
 var $$ = Dom7;
-var jsonURL = 'http://scr.ru/mg/www/php/json680000.txt';
-// var jsonURL = 'http://27podarkov.ru/mg-json/json680000.txt';
+// var jsonURL = 'http://scr.ru/mg/www/php/json680000.txt';
+var jsonURL = 'http://27podarkov.ru/mg-json/json680000.txt';
 
 // Ajax setting for timeout
 $$.ajaxSetup({

@@ -47,9 +47,7 @@
   <plugin name="org.apache.cordova.splashscreen" spec="1.0.0" source="pgb" />
   
   
-  
-  <icon src="icon.png"/>
-  <splash src="splash.png" />
+
 
   
   <!-- <icon src="www/res/icon/blackberry/icon-80.png" gap:platform="blackberry"/>
@@ -84,9 +82,6 @@
   
   <platform name="android">
 		<allow-intent href="market:*"/>
-
-
-
 		<!-- <icon src="www/res/icon/android/icon-36-ldpi.png" gap:platform="android" gap:qualifier="ldpi"/>
 		<icon src="www/res/icon/android/icon-48-mdpi.png" gap:platform="android" gap:qualifier="mdpi"/>
 		<icon src="www/res/icon/android/icon-72-hdpi.png" gap:platform="android" gap:qualifier="hdpi"/>
@@ -96,18 +91,23 @@
 		<icon src="www/res/android/icon/mdpi.png" qualifier="mdpi" />
 		<icon src="www/res/android/icon/hdpi.png" qualifier="hdpi" />
 		<icon src="www/res/android/icon/xhdpi.png" qualifier="xhdpi" />
+		<icon src="www/res/android/icon/xxhdpi.png" qualifier="xxhdpi" />
+		<icon src="www/res/android/icon/xxxhdpi.png" qualifier="xxxhdpi" />
 
 		<splash src="www/res/android/screen/ldpi.9.png" platform="android" qualifier="ldpi" />
 		<splash src="www/res/android/screen/mdpi.9.png" platform="android" qualifier="mdpi" />
 		<splash src="www/res/android/screen/hdpi.9.png" platform="android" qualifier="hdpi" />
 		<splash src="www/res/android/screen/xhdpi.9.png" platform="android" qualifier="xhdpi" />
-
-
   </platform>
   <platform name="ios">
     <allow-intent href="itms:*"/>
     <allow-intent href="itms-apps:*"/>
   </platform>
+  
+  
+    
+  <icon src="icon.png"/>
+  <splash src="splash.png" />
   
 	<!-- social sharing plugin installed -->
 	<feature name="SocialSharing">
