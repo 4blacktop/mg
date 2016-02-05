@@ -10,8 +10,8 @@ var myApp = new Framework7({
 	
 // Export selectors engine
 var $$ = Dom7;
-// var jsonURL = 'http://scr.ru/mg/www/php/json680000.txt';
-var jsonURL = 'http://27podarkov.ru/mg-json/json680000.txt';
+var jsonURL = 'http://scr.ru/mg/www/php/json680000.txt';
+// var jsonURL = 'http://27podarkov.ru/mg-json/json680000.txt';
 
 // Ajax setting for timeout
 $$.ajaxSetup({
@@ -70,8 +70,8 @@ myApp.buildHomeHTML = function () {
 		$$('.events-list ul').html(eventsHtml);
 		$$('.currency-list ul').html(currencyHtml);
 		
-		myApp.pullToRefreshDone();// When loading done, we need to reset it
 	});
+		myApp.pullToRefreshDone();// When loading done, we need to reset it
 };
 
 
@@ -84,8 +84,8 @@ ptrContent.on('refresh', function (e) { // Add 'refresh' listener on it
 		myApp.buildHomeHTML();
         
         myApp.pullToRefreshDone();
-    }, 1000);
-    // });
+    // }, 3000);
+    });
 });
 
 myApp.buildHomeHTML();
