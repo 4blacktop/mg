@@ -93,7 +93,8 @@
 			<!-- <input type="submit" value="Тест отправить" class="confirm-title-ok-cancel button button-big button-fill color-green">  -->
 		</ul>
 		  
-		<p><!-- <b>Изображение:</b>  --><img style="width:120px;visibility:hidden;display:none;" id="camera_image" src="" /></p>
+		
+		<!-- <p><b>Изображение:</b><img style="width:120px;visibility:hidden;display:none;" id="camera_image" src="" /></p> -->
 	
 		<p class="buttons-row">
 		  <a href="#" onclick="takePicture();" class="button button-big button-fill button-raised color-blue">Сделать фото</a>
@@ -102,6 +103,20 @@
 			
 		</div>
 		</form>
+				<!-- Camera -->
+						<div>
+					<h3>Камера:</h3>
+					<b>Статус:</b> <span id="camera_status"></span><br>
+					<b>Изображение:</b> <img style="width:120px;visibility:hidden;display:none;" id="camera_image" src="" />
+				</div>
+				
+								<!-- Actions -->
+				<div>
+					<input type="button" onclick="takePicture();" value="Сделать фото" /><br/>
+					<input type="button" onclick="selectPicture();" value="Select Picture from Library" /><br/>
+					<input type="button" onclick="uploadPicture();" value="Отправить новость" />
+				</div>
+				<br/>
 				
 
 				<!-- <div>
