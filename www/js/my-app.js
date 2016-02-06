@@ -93,239 +93,117 @@ myApp.buildHomeHTML(); // Load content on startup
 navigator.splashscreen.hide(); // Phonegap splashscreen plugin hide picture
 
 
-/** * Take picture with camera */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/** * Take picture with camera  */
 function takePicture() {
-    navigator.camera.getPicture(
-	function(uri) {
-		var img = document.getElementById('camera_image');
-		img.style.visibility = "visible";
-		img.style.display = "block";
-		img.src = uri;
-		document.getElementById('camera_status').innerHTML = "Success";
-	},
-	function(e) {
-		console.log("Error getting picture: " + e);
-		document.getElementById('camera_status').innerHTML = "Error getting picture.";
-	},
-	{ quality: 50, destinationType: navigator.camera.DestinationType.FILE_URI}
-	);
+	navigator.camera.getPicture(
+		function(uri) {
+			var img = document.getElementById('camera_image');
+			img.style.visibility = "visible";
+			img.style.display = "block";
+			img.src = uri;
+			document.getElementById('camera_status').innerHTML = "Успешно";
+		},
+		function(e) {
+			console.log("Error getting picture: " + e);
+			document.getElementById('camera_status').innerHTML = "Ошибка! Не удалось сделать фото.";
+		},
+		{ quality: 50, destinationType: navigator.camera.DestinationType.FILE_URI});
 };
 
-
-
-/** * Select picture from library */
+/**  * Select picture from library  */
 function selectPicture() {
-    navigator.camera.getPicture(
-	/* ...  */       
-	
-	
-	{ quality: 50,
-	destinationType: navigator.camera.DestinationType.FILE_URI,
-	sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY}
-	);
+	navigator.camera.getPicture(
+		function(uri) {
+			var img = document.getElementById('camera_image');
+			img.style.visibility = "visible";
+			img.style.display = "block";
+			img.src = uri;
+			document.getElementById('camera_status').innerHTML = "Все отлично, спасибо!";
+		},
+		function(e) {
+			console.log("Error getting picture: " + e);
+			document.getElementById('camera_status').innerHTML = "Ошибка, повторите.";
+		},
+		{ quality: 50, destinationType: navigator.camera.DestinationType.FILE_URI, sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY});
 };
 
-
-
-
-var ft = new FileTransfer();
-ft.upload(uri, serverUrl, successCallback, errorCallback, options);
-
-/** * Upload current picture */
-function uploadPicture() {		
-	// Get URI of picture to upload    
+/**  * Upload current picture  */
+function uploadPicture() {
+	
+	// Get URI of picture to upload
 	var img = document.getElementById('camera_image');
-    var imageURI = img.src;
-    if (!imageURI || (img.style.display == "none")) {
-        document.getElementById('camera_status').innerHTML = "Take picture or select picture from library first.";
-	return;
-    }        
-
-// Verify server has been entered
-    server = document.getElementById('serverUrl').value;    if (server) {
-		// Specify transfer options
-        var options = new FileUploadOptions();
-        options.fileKey="file";        options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
-        options.mimeType="image/jpeg";
-        options.chunkedMode = false;
-        // Transfer picture to server
-        var ft = new FileTransfer();
-        ft.upload(imageURI, server, function(r) {
-            document.getElementById('camera_status').innerHTML = "Upload successful: "+
-            r.bytesSent+" bytes uploaded.";
-			}, function(error) {
-				document.getElementById('camera_status').innerHTML = "Upload failed: Code = "+
-				error.code;
-				}, options);
-				}}
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// $$('.demo-progressbar-infinite-multi-overlay .button').on('click', function () {
-    // var container = $$('body');
-    // if (container.children('.progressbar, .progressbar-infinite').length) return; //don't run all this if there is a current progressbar loading
-    // myApp.showProgressbar(container, 'multi');
-    // setTimeout(function () {
-        // myApp.hideProgressbar();
-    // }, 5000);
-// });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* 	
-	// var mySwiper = $$('.page')[0].swiper;
+	var imageURI = img.src;
+	if (!imageURI || (img.style.display == "none")) {
+		document.getElementById('camera_status').innerHTML = "Сделайте фотографию или выберите из списка.";
+		return;
+	}
 	
-	  // var mySwiper = myApp.swiper('.page'); // found
-	  // var mySwiper = $$('.page')[0].swiper;
-	  var mySwiper = $$('.swiper-container').swiper;
-	mySwiper.update();
-	console.log( mySwiper);
-	 */
-	
-// myApp.onPageBeforeInit('post',function(page){
-// myApp.onPageBeforeAnimation('post',function(page){
-// console.log(  'post page');
-// });
-
-/* 
-// Initializing Home Page ====================================
-myApp.onPageBeforeAnimation('home',function(page){
-	console.log( 'myApp.onPageBeforeAnimation home');
-
-	// Build details page
-	// $$('.places-list').on('click', 'a.item-link', function (e) {
-	
-	// });
-
-});
- */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
-// progressbar strange working
-// var container = $$('body');
-// if (container.children('.progressbar, .progressbar-infinite').length) return; //don't run all this if there is a current progressbar loading
-// myApp.showProgressbar(container, 'multi');
-// myApp.hideProgressbar();
+	// Verify server has been entered
+	server = document.getElementById('serverUrl').value;
+	if (server) {
 		
+		// Specify transfer options
+		var options = new FileUploadOptions();
+		options.fileKey="file";
+		options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
+		options.mimeType="image/jpeg";
+		options.chunkedMode = false;
+
+		// Transfer picture to server
+		var ft = new FileTransfer();
+		ft.upload(imageURI, server, function(r) {
+			document.getElementById('camera_status').innerHTML = "Загрузка ОК: "+r.bytesSent+" байт загружено.";            	
+		}, function(error) {
+			document.getElementById('camera_status').innerHTML = "Ошибка: Code = "+error.code;            	
+		}, options);
+	}
+}
+
+/**  * View pictures uploaded to the server  */
+function viewUploadedPictures() {
 	
-// myApp.onPageInit('home',function(page){
-	// console.log( 'init home' );
-	// });
-	
-/* 	
-// Initializing Post Page ====================================
-myApp.onPageInit('post',function(page){
-	console.log( 'post');
-	// console.log( $$(page));
-	// console.log( page);
-		// myApp.alert(mainView.activePage.name, 'Post!');
-	// console.log( Template7.data);
-	// console.log(Template7.data.news.all.posts)
-	
-	// $$(page.container).on('click','.alert-text-title',function(){
-		// myApp.alert(mainView.activePage.name, 'Post!');
-	// });
-	
-	window.onscroll = function(ev) {
-		if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-			// you're at the bottom of the page
-			alert("you're at the bottom of the page");
-		}
-	}; 
-});
-*/
+	// Get server URL
+	server = document.getElementById('serverUrl').value;
+	if (server) {
+		
+		// Get HTML that lists all pictures on server using XHR	
+		var xmlhttp = new XMLHttpRequest();
+
+		// Callback function when XMLHttpRequest is ready
+		xmlhttp.onreadystatechange=function(){
+			if(xmlhttp.readyState === 4){
+
+				// HTML is returned, which has pictures to display
+				if (xmlhttp.status === 200) {
+					document.getElementById('server_images').innerHTML = xmlhttp.responseText;
+				}
+
+				// If error
+				else {
+					document.getElementById('server_images').innerHTML = "Не удалось загрузить изображение с сервера.";
+				}
+			}
+		};
+		xmlhttp.open("GET", server , true);
+		xmlhttp.send();       	
+	}	
+}
+
+
   
