@@ -21,6 +21,24 @@
 <p>Отправьте нам новость - расскажите, что произошло и приложите самую лучшую фотографию.</p>
 <p>Друзья! Мы заботимся о вашем времени и трафике и для экономии обрабатываем фото автоматически - в среднем, отправка изображения - это всего 79 КБ трафика и доли секунды времени.</p>
 <p>Авторы самых интересных новостей по итогам месяца получат сюрпризы!</p>
+
+<!-- Camera -->
+<div>
+    <h3>Camera:</h3>
+    <b>Status:</b>
+    <span id="camera_status"></span><br>
+    <b>Image:</b>
+	<img style="width:120px;visibility:hidden;display:none;" id="camera_image" src="" />
+</div>
+
+<!-- Actions -->
+<div>
+    <input type="button" onclick="takePicture();" value="Take Picture" /><br/>
+    <input type="button" onclick="selectPicture();" value="Select Picture from Library" /><br/>
+    <input type="button" onclick="uploadPicture();" value="Upload Picture" />
+</div>
+
+
         </div>
 		</div>
 	</div>
