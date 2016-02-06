@@ -124,3 +124,21 @@ i.icon.icon-noteadd-white {
   height: 24px;
  	background-image: url("../img/ic_note_add_white_24px.svg"); 
 }
+
+i.icon.icon-contacts-black {
+  width: 24px;
+  height: 24px;
+ 	background-image: url("../img/ic_contacts_black_24px.svg"); 
+}
+
+i.icon.icon-person-black {
+  width: 24px;
+  height: 24px;
+ 	background-image: url("../img/ic_person_black_24px.svg"); 
+}
+
+i.icon.icon-create-black {
+  width: 24px;
+  height: 24px;
+ 	background-image: url("../img/ic_create_black_24px.svg"); 
+}

@@ -123,10 +123,15 @@ function takePicture() {
 			console.log("Error getting picture: " + e);
 			document.getElementById('camera_status').innerHTML = "Ошибка! Не удалось сделать фото.";
 		},
-		{ quality: 50, destinationType: navigator.camera.DestinationType.FILE_URI});
+		{ 
+		quality: 50,
+		saveToPhotoAlbum: true,
+		destinationType: navigator.camera.DestinationType.FILE_URI
+		}
+	);
 };
 
-/**  * Select picture from library  */
+/**  * Select picture from library  
 function selectPicture() {
 	navigator.camera.getPicture(
 		function(uri) {
@@ -141,7 +146,7 @@ function selectPicture() {
 			document.getElementById('camera_status').innerHTML = "Ошибка, повторите.";
 		},
 		{ quality: 50, destinationType: navigator.camera.DestinationType.FILE_URI, sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY});
-};
+};*/
 
 /**  * Upload current picture  */
 function uploadPicture() {
@@ -168,10 +173,14 @@ function uploadPicture() {
 		// Transfer picture to server
 		var ft = new FileTransfer();
 		ft.upload(imageURI, server, function(r) {
-			document.getElementById('camera_status').innerHTML = "Загрузка ОК: "+r.bytesSent+" байт отправлено.";            	
-			myApp.alert( "Новость загружена. Держите нас в курсе!<br />Отправлено: " +r.bytesSent+" байт.", 'Спасибо!', function () {
+			document.getElementById('camera_status').innerHTML = "Загрузка ОК: "+r.bytesSent+" байт отправлено.";  
+			document.getElementById("newstext").value = '';   // clear news text data    
+			var img = document.getElementById('camera_image'); // clear photo thumbnail  
+			img.style.visibility = "hidden";
+			img.style.display = "none";			
+			myApp.alert( "Новость загружена.<br />Держите нас в курсе!", 'Благодарим '+r.bytesSent+" раз!", function () {
 			// $$(".back").click();
-			// clear all data
+			
 			});
 		}, function(error) {
 			document.getElementById('camera_status').innerHTML = "Ошибка: Code = "+error.code;myApp.alert( "Ошибка: Code = "+error.code, 'Ошибка!', function () {
