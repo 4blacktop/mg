@@ -119,9 +119,8 @@ navigator.splashscreen.hide(); // Phonegap splashscreen plugin hide picture
 	});
 
 }); */
-/**
- * Take picture with camera
- */
+
+/** * Take picture */
 function takePicture() {
 	navigator.camera.getPicture(
 		function(uri) {
@@ -135,12 +134,11 @@ function takePicture() {
 			console.log("Error getting picture: " + e);
 			document.getElementById('camera_status').innerHTML = "Error getting picture.";
 		},
-		{ quality: 50, destinationType: navigator.camera.DestinationType.FILE_URI});
+		{ quality: 50, destinationType: navigator.camera.DestinationType.FILE_URI, saveToPhotoAlbum: true});
 };
+		// { quality: 50, destinationType: navigator.camera.DestinationType.FILE_URI, targetWidth: 1024, targetHeight: 576, saveToPhotoAlbum: true});
 
-/**
- * Select picture from library
- */
+/** * Select picture from library */
 function selectPicture() {
 	navigator.camera.getPicture(
 		function(uri) {
@@ -156,6 +154,7 @@ function selectPicture() {
 		},
 		{ quality: 50, destinationType: navigator.camera.DestinationType.FILE_URI, sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY});
 };
+		// { quality: 50, destinationType: navigator.camera.DestinationType.FILE_URI, sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY, targetWidth: 1024, targetHeight: 576});
 
 /**
  * Upload current picture
@@ -165,18 +164,18 @@ function uploadPicture() {
 	// Get URI of picture to upload
 	var img = document.getElementById('camera_image');
 	var imageURI = img.src;
-	var newstext = document.getElementById('newstext').value;
 	if (!imageURI || (img.style.display == "none")) {
-		
 		document.getElementById('camera_status').innerHTML = "Take picture or select picture from library first.";
 		return;
 	}
+
+	// Get newstext to upload, if null - ask to fill the input
+	var newstext = document.getElementById('newstext').value;
 	if (!newstext) {
 		myApp.alert('Пожалуйста, введите текст новости.');
 		// document.getElementById('camera_status').innerHTML = "Take picture or select picture from library first.";
 		return;
 	}
-	
 	
 	// Verify server has been entered
 	server = document.getElementById('serverUrl').value;
@@ -192,11 +191,19 @@ function uploadPicture() {
 		// Transfer picture to server
 		var ft = new FileTransfer();
 		ft.upload(imageURI, server, function(r) {
-			document.getElementById('camera_status').innerHTML = "Upload successful: "+r.bytesSent+" bytes uploaded.";            	
+			document.getElementById('camera_status').innerHTML = "Upload successful: "+r.bytesSent+" bytes uploaded.";  
+			
+			// send form data to server
+			document.getElementById("imageurl").value  = options.fileName;
+			myApp.alert('imageurl: '+options.fileName);
+			$$('form.ajax-submit').trigger('submit');
+          	
 		}, function(error) {
 			document.getElementById('camera_status').innerHTML = "Upload failed: Code = "+error.code;            	
 		}, options);
 	}
+	
+	
 }
 
 /**
