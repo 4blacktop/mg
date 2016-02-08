@@ -177,12 +177,13 @@ function uploadPicture() {
 	
 	// Check if photo is made, if text news only is allowed, skip this check
 	if (!imageURI || (img.style.display == "none")) {
-		// myApp.alert('Вы забыли сделать фото!<br />А ведь так новость читать гораздо интереснее.');
+	// if (!imageURI) {
+		myApp.alert('Вы забыли сделать фото!<br />А ведь так новость читать гораздо интереснее.');
 		// document.getElementById('camera_status').innerHTML = "Take picture or select picture from library first.";
 		// document.getElementById("imageurl").value = options.fileName;
 		
 		var idName = document.getElementById('name').value;
-		myApp.confirm(idName, 'К этой новости нет изображения.<br />Хотите сделать фото?', 
+		myApp.confirm(idName, 'К этой новости нет изображения.<br />Хотите сделать или выбрать фото?', 
 			function () {
 				return;
 			},
@@ -222,12 +223,13 @@ function uploadPicture() {
 			document.getElementById("imageurl").value = options.fileName;
 			$$('form.ajax-submit').trigger('submit');
 			myApp.alert('Новость отправлена!<br />Благодарим Вас!<br />filename: '+options.fileName,r.bytesSent);
+			myApp.hidePreloader();
           	
 		}, function(error) {
 			myApp.alert('Произошла неизвестная ошибка. Пожалуйста, попробуйте снова.');
 			document.getElementById('camera_status').innerHTML = "Upload failed: Code = "+error.code;            	
+			myApp.hidePreloader();
 		}, options);
-		myApp.hidePreloader();
 	}
 }
 
