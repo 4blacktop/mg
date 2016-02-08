@@ -94,7 +94,7 @@ myApp.buildHomeHTML(); // Load content on startup
 
 myApp.onPageInit('sendnews',function(page){
 	document.getElementById("imageurl").value = null; // erasing any saved value due to autosave form
-	myApp.alert(document.getElementById("imageurl").value,'imageurl');
+	// myApp.alert(document.getElementById("imageurl").value,'imageurl');
 	// myApp.alert('imageurl');
 });
 
@@ -192,7 +192,7 @@ function uploadPicture() {
 	// Check if photo is made, if text news only is allowed, skip this check
 	if (!imageURI || (img.style.display == "none")) {
 	// if (!imageURI) {
-		myApp.alert('Вы забыли сделать фото!<br />А ведь так новость читать гораздо интереснее.');
+		// myApp.alert('Вы забыли сделать фото!<br />А ведь так новость читать гораздо интереснее.');
 		// document.getElementById('camera_status').innerHTML = "Take picture or select picture from library first.";
 		// document.getElementById("imageurl").value = options.fileName;
 		
