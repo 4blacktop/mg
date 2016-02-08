@@ -169,10 +169,9 @@ function uploadPicture() {
 	
 	// Check if photo is made, if text news only is allowed, skip this check
 	if (!imageURI || (img.style.display == "none")) {
+		myApp.alert('Вы забыли сделать фото!<br />А ведь так новость читать гораздо интереснее.');
 		document.getElementById('camera_status').innerHTML = "Take picture or select picture from library first.";
 		document.getElementById("imageurl").value = options.fileName;
-			myApp.alert('Благодарим Вас!<br />Пишите еще!','Новость отправлена');
-			$$('form.ajax-submit').trigger('submit');
 		return;
 	}
 	
