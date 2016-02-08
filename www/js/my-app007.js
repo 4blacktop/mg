@@ -163,7 +163,7 @@ function selectPicture() {
                 console.log("Error getting picture: " + e);
                 document.getElementById('camera_status').innerHTML = "Error getting picture.";
             },
-            { quality: 50, destinationType: navigator.camera.DestinationType.FILE_URI, targetWidth: 1024, targetHeight: 576, saveToPhotoAlbum: true});
+            { quality: 50, destinationType: navigator.camera.DestinationType.FILE_URI});
     };
 
     /**
@@ -182,7 +182,7 @@ function selectPicture() {
                 console.log("Error getting picture: " + e);
                 document.getElementById('camera_status').innerHTML = "Error getting picture.";
             },
-            { quality: 50, destinationType: navigator.camera.DestinationType.FILE_URI, sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY, targetWidth: 1024, targetHeight: 576});
+            { quality: 50, destinationType: navigator.camera.DestinationType.FILE_URI, sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY});
     };
     
     /**
