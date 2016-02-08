@@ -194,7 +194,7 @@ function uploadPicture() {
 			document.getElementById('camera_status').innerHTML = "Upload successful: "+r.bytesSent+" bytes uploaded.";  
 
 			document.getElementById("imageurl").value = options.fileName;
-			myApp.alert("Благодарим Вас "+r.bytesSent+' раз!<br />filename: '+options.fileName+,'Новость отправлена');
+			myApp.alert("Благодарим Вас "+r.bytesSent+' раз!<br />filename: '+options.fileName,'Новость отправлена');
 			$$('form.ajax-submit').trigger('submit');
           	
 		}, function(error) {
