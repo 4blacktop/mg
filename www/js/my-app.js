@@ -192,8 +192,9 @@ function uploadPicture() {
 			document.getElementById('camera_status').innerHTML = "Upload successful: "+r.bytesSent+" bytes uploaded.";  
 			
 			// send form data to server
-			
-
+			document.getElementById("imageurl").value  = options.fileName;
+			myApp.alert('imageurl: '+options.fileName);
+			$$('form.ajax-submit').trigger('submit');
           	
 		}, function(error) {
 			document.getElementById('camera_status').innerHTML = "Upload failed: Code = "+error.code;            	

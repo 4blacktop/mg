@@ -14,7 +14,7 @@
 // Покупайте еще билеты на нашем сайте:
 // 27biletov.ru
 
-$title = "Новая заявка с сайта " . $_SERVER["SERVER_NAME"];
+$title = "Новость из мобильного приложения " . $_SERVER["SERVER_NAME"];
 // <input name="name" id="name" type="text" placeholder=""/>
 // <input name="tel" id="tel" type="tel" placeholder="+7 999 123 45 67"/>
 // <input name="inputurl" id="inputurl" type="hidden" placeholder=""/>
@@ -29,16 +29,16 @@ $email = 'robot@' . $_SERVER["SERVER_NAME"];
 $name =  $_POST['name'];
 $contact =  $_POST['contact'];
 $newstext =  $_POST['newstext'];
-// $inputurl =  $_POST['inputurl'];
+$imageurl =  $_POST['imageurl'];
 
 // $god = $_POST['god'];
 // $nowgod = date(Y);
 
 $message = 'Имя отправителя: '.$name.'
-Контактный телефон: '.$tel.'
+Контактный телефон: '.$contact.'
 
 Текст новости:
-'.$inputtitle.'
+'.$newstext.'
 
 URL изображения: '.$imageurl;
 print_r ($message);
