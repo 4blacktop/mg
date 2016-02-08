@@ -11,8 +11,8 @@ var myApp = new Framework7({
 	
 // Export selectors engine
 var $$ = Dom7;
-// var jsonURL = 'http://scr.ru/mg/www/php/json680000.txt';
-var jsonURL = 'http://27podarkov.ru/mg-json/json680000.txt';
+var jsonURL = 'http://scr.ru/mg/www/php/json680000.txt';
+// var jsonURL = 'http://27podarkov.ru/mg-json/json680000.txt';
 
 // Ajax setting for timeout
 $$.ajaxSetup({
@@ -83,19 +83,27 @@ ptrContent.on('refresh', function (e) { // Add 'refresh' listener on it
 	setTimeout(function () {
 		// console.log('buildHomeHTML');
 		myApp.buildHomeHTML();
-        
         myApp.pullToRefreshDone();
-    }, 1000);
-    // });
+    // }, 1000);
+    });
 });
+
 
 myApp.buildHomeHTML(); // Load content on startup
-navigator.splashscreen.hide(); // Phonegap splashscreen plugin hide picture
+// navigator.splashscreen.hide(); // Phonegap splashscreen plugin hide picture
 
 myApp.onPageInit('sendnews',function(page){
-	document.getElementById("imageurl").value = ''; // erasing any saved value due to autosave form
 	myApp.alert(document.getElementById("imageurl").value,'imageurl');
+	document.getElementById("imageurl").value = ''; // erasing any saved value due to autosave form
+	// myApp.alert('imageurl');
 });
+
+/* 
+myApp.onPageInit('about',function(page){
+	// myApp.alert(document.getElementById("imageurl").value,'imageurl');
+	// document.getElementById("imageurl").value = ''; // erasing any saved value due to autosave form
+	myApp.alert('about');
+}); */
 
 // Initializing Buyform Page ====================================
 /* myApp.onPageInit('sendnews',function(page){
@@ -123,6 +131,8 @@ myApp.onPageInit('sendnews',function(page){
 	});
 
 }); */
+
+
 /**
  * Take picture with camera
  */
