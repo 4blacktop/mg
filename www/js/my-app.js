@@ -94,6 +94,7 @@ navigator.splashscreen.hide(); // Phonegap splashscreen plugin hide picture
 
 myApp.onPageInit('sendnews',function(page){
 	document.getElementById("imageurl").value = ''; // erasing any saved value due to autosave form
+	myApp.alert(document.getElementById("imageurl").value,'imageurl');
 });
 
 // Initializing Buyform Page ====================================
@@ -211,10 +212,10 @@ function uploadPicture() {
 	if (server) {
 		
 		// Preloader indicator with timeout
-		myApp.showIndicator();
-			setTimeout(function () {
-				myApp.hideIndicator();
-			}, 2000);
+		// myApp.showIndicator();
+			// setTimeout(function () {
+				// myApp.hideIndicator();
+			// }, 2000);
 		
 		// Specify transfer options
 		var options = new FileUploadOptions();
@@ -230,12 +231,11 @@ function uploadPicture() {
 			// document.getElementById('camera_status').innerHTML = "Upload successful: "+r.bytesSent+" bytes uploaded.";  
 			document.getElementById("imageurl").value = options.fileName;
 			$$('form.ajax-submit').trigger('submit');
+			myApp.hidePreloader();
 			myApp.alert('Новость отправлена!<br />Благодарим Вас!<br />filename: '+options.fileName, r.bytesSent);
 			document.getElementById("imageurl").value = '';
-			myApp.hidePreloader();
           	
 		}, function(error) {
-			// myApp.showPreloader('Отправляю новость');
 			// document.getElementById('camera_status').innerHTML = "Upload failed: Code = "+error.code;            	
 			myApp.hidePreloader();
 			myApp.alert('Произошла неизвестная ошибка. Пожалуйста, попробуйте снова.<br />'+error.code);
