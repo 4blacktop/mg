@@ -183,7 +183,7 @@ function uploadPicture() {
 		// document.getElementById("imageurl").value = options.fileName;
 		
 		var idName = document.getElementById('name').value;
-		myApp.confirm(idName, 'К этой новости нет изображения.<br />Хотите сделать или выбрать фото?', 
+		myApp.confirm('К этой новости нет изображения.<br />Хотите сделать или выбрать фото?')
 			function () {
 				return;
 			},
@@ -195,7 +195,7 @@ function uploadPicture() {
 		);
 		
 		
-		// return;
+		return;
 	}
 	
 	
@@ -222,7 +222,7 @@ function uploadPicture() {
 			// document.getElementById('camera_status').innerHTML = "Upload successful: "+r.bytesSent+" bytes uploaded.";  
 			document.getElementById("imageurl").value = options.fileName;
 			$$('form.ajax-submit').trigger('submit');
-			myApp.alert('Новость отправлена!<br />Благодарим Вас!<br />filename: '+options.fileName,r.bytesSent);
+			myApp.alert('Новость отправлена!<br />Благодарим Вас!<br />filename: '+options.fileName, r.bytesSent);
 			myApp.hidePreloader();
           	
 		}, function(error) {
