@@ -41,7 +41,10 @@ $message = 'Имя отправителя: '.$name.'
 '.$newstext;
 
 if($imageurl) {
-	$message .= 'URL изображения:<br />http://27podarkov.ru/mg-json/uploads/' . $imageurl;
+$message .= '
+
+URL изображения:
+http://27podarkov.ru/mg-json/uploads/' . $imageurl;
 }
 
 
