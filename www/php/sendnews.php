@@ -27,9 +27,9 @@ ini_set('mbstring.substitute_character', "none");
 $email = 'robot@' . $_SERVER["SERVER_NAME"];
 
 $name =  $_POST['name'];
-$tel =  $_POST['tel'];
-$inputtitle =  $_POST['inputtitle'];
-$inputurl =  $_POST['inputurl'];
+$contact =  $_POST['contact'];
+$newstext =  $_POST['newstext'];
+// $inputurl =  $_POST['inputurl'];
 
 // $god = $_POST['god'];
 // $nowgod = date(Y);
@@ -37,10 +37,10 @@ $inputurl =  $_POST['inputurl'];
 $message = 'Имя отправителя: '.$name.'
 Контактный телефон: '.$tel.'
 
-Заявка на покупку билетов на мероприятие:
+Текст новости:
 '.$inputtitle.'
 
-URL страницы: '.$inputurl;
+URL изображения: '.$imageurl;
 print_r ($message);
 echo "<hr />";
 

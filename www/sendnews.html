@@ -1,5 +1,5 @@
 <div class="pages navbar-fixed">
-<div data-page="post" class="page navbar-fixed"> 
+<div data-page="sendnews" class="page navbar-fixed"> 
 	
 	<div class="navbar">
 		<div class="navbar-inner">
@@ -26,10 +26,11 @@
 				<p><b>Авторы самых интересных новостей по итогам месяца получат сюрпризы!</b></p>
 
 
-		<form id="buyformid" class="list-block store-data" method="POST" action="http://27biletov.ru/buyform.php">
+		<form id="buyformid" class="list-block store-data" method="POST" action="http://27biletov.ru/sendnews.php">
 		<div class="list-block inputs-list">
 		<ul>
 			<input id="serverUrl" type="hidden" value="http://27podarkov.ru/mg-json/upload.php" />
+			<input name="imageurl" id="imageurl" type="hidden" placeholder=""/>
 		
 			<li>
 			  <div class="item-content">
@@ -66,6 +67,7 @@
 				</div>
 			  </div>
 			</li>
+			
 			
 <!-- 			<li>
 			  <div class="item-content">
@@ -110,7 +112,7 @@
     
     <div>
         <h3>Server URL for upload.php:</h3>
-        <input id="serverUrl" type="text" value="http://27podarkov.ru/mg-json/upload.php" />
+        <!-- <input id="serverUrl" type="text" value="http://27podarkov.ru/mg-json/upload.php" /> -->
     </div>
     <br/>
 
