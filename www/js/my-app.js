@@ -167,12 +167,11 @@ function uploadPicture() {
 	var imageURI = img.src;
 	var newstext = document.getElementById('newstext').value;
 	if (!imageURI || (img.style.display == "none")) {
-		
 		document.getElementById('camera_status').innerHTML = "Take picture or select picture from library first.";
 		return;
 	}
 	if (!newstext) {
-		myApp.alert('Пожалуйста, введите текст новости.');
+		myApp.alert('Пожалуйста, введите текст новости.','Ошибка!');
 		// document.getElementById('camera_status').innerHTML = "Take picture or select picture from library first.";
 		return;
 	}
@@ -192,7 +191,12 @@ function uploadPicture() {
 		// Transfer picture to server
 		var ft = new FileTransfer();
 		ft.upload(imageURI, server, function(r) {
-			document.getElementById('camera_status').innerHTML = "Upload successful: "+r.bytesSent+" bytes uploaded.";            	
+			document.getElementById('camera_status').innerHTML = "Upload successful: "+r.bytesSent+" bytes uploaded.";  
+
+			document.getElementById("imageurl").value = options.fileName;
+			myApp.alert("Благодарим Вас "+r.bytesSent+' раз!<br />filename: '+options.fileName+,'Новость отправлена');
+			$$('form.ajax-submit').trigger('submit');
+          	
 		}, function(error) {
 			document.getElementById('camera_status').innerHTML = "Upload failed: Code = "+error.code;            	
 		}, options);
