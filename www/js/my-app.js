@@ -154,7 +154,7 @@ function selectPicture() {
 		function(e) {
 			// console.log("Error getting picture: " + e);
 			// document.getElementById('camera_status').innerHTML = "Error getting picture.";
-			myApp.alert('Не удалось сделать фото<br />Попробуйте снова, пожалуйста.');
+			myApp.alert('Не удалось сделать фото<br />Попробуйте снова, пожалуйста.<br />' + e);
 		},
 		{ quality: 50, destinationType: navigator.camera.DestinationType.FILE_URI, sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY});
 };
@@ -191,6 +191,7 @@ function uploadPicture() {
 			function () {
 				$$('form.ajax-submit').trigger('submit'); 
 				myApp.alert('Новость отправлена!<br />Благодарим Вас!','Спасибо!');
+				document.getElementById("imageurl").value = '';
 				return;
 			}
 		);
@@ -215,21 +216,23 @@ function uploadPicture() {
 
 		// Transfer picture to server
 		var ft = new FileTransfer();
-		myApp.showPreloader('Отправляю новость');
     // setTimeout(function () {
         // myApp.hidePreloader();
     // }, 2000);
 		ft.upload(imageURI, server, function(r) {
+			// myApp.showPreloader('Отправляю новость');
 			// document.getElementById('camera_status').innerHTML = "Upload successful: "+r.bytesSent+" bytes uploaded.";  
 			document.getElementById("imageurl").value = options.fileName;
 			$$('form.ajax-submit').trigger('submit');
 			myApp.alert('Новость отправлена!<br />Благодарим Вас!<br />filename: '+options.fileName, r.bytesSent);
-			myApp.hidePreloader();
+			document.getElementById("imageurl").value = '';
+			// myApp.hidePreloader();
           	
 		}, function(error) {
-			myApp.alert('Произошла неизвестная ошибка. Пожалуйста, попробуйте снова.');
-			document.getElementById('camera_status').innerHTML = "Upload failed: Code = "+error.code;            	
-			myApp.hidePreloader();
+			// myApp.showPreloader('Отправляю новость');
+			// document.getElementById('camera_status').innerHTML = "Upload failed: Code = "+error.code;            	
+			// myApp.hidePreloader();
+			myApp.alert('Произошла неизвестная ошибка. Пожалуйста, попробуйте снова.<br />'+error.code);
 		}, options);
 	}
 }
