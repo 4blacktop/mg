@@ -15,7 +15,7 @@ $opts = array(
 	);
 $context = stream_context_create($opts);
 
-echo '<pre><h1>Проверь кино - афиша должна быть на сегодня!</h1>' . date("Ymd-His", time()+14400) . '<br /><br />';
+echo '<pre><h1>Кино не актаульно (ДЕБАГ)!</h1>' . date("Ymd-His", time()+14400) . '<br /><br />';
 
 // =====================================================================================
 // ======================================= Settings  ===================================
@@ -231,9 +231,9 @@ foreach ($arrXmlCinema['channel']['item'] as $key => $item) {
 	$path = "cinema/$filename.html"; // replace folder in path variable
 	
 	// DO NOT check existing files because every day cinema schedule must be actual
-	// if (file_exists($path)) {// COMMENT THIS LINE!!! 
-		// echo "\t*** DO NOT CACHE! *** Cached ok"; flush(); // COMMENT THIS LINE!!! 
-	// } else {// COMMENT THIS LINE!!! 
+	if (file_exists($path)) {// COMMENT THIS LINE!!! 
+		echo "\t*** DO NOT CACHE! *** Cached ok"; flush(); // COMMENT THIS LINE!!! 
+	} else {// COMMENT THIS LINE!!! 
 	
 	
 	rndSleep($pauseMin,$pauseMax);
@@ -242,7 +242,7 @@ foreach ($arrXmlCinema['channel']['item'] as $key => $item) {
 	if ($contentHTML) { file_put_contents($path, $contentHTML); }
 	else { echo "ERROR! NULL content: " . $path; }
 	
-	// } // COMMENT THIS LINE!!! DO NOT check existing files because every day cinema schedule must be actual
+	} // COMMENT THIS LINE!!! DO NOT check existing files because every day cinema schedule must be actual
 	
 	// Parse local HTML files for JSON
 	$localContent = file_get_contents($path);

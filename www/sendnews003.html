@@ -1,0 +1,66 @@
+<div class="pages navbar-fixed">
+<div data-page="post" class="page navbar-fixed"> 
+	
+	<div class="navbar">
+		<div class="navbar-inner">
+			<div class="left"><a href="#" class="back link"> <i class="icon icon-back"></i></a></div>
+			<div class="center">MG</div>
+			<div class="right icon">
+				<!-- <a class="link icon-only" onclick="window.plugins.socialsharing.share(null, null, null,  '{{pdalink}}')" href="#" > <i class="icon icon-share" > </i></a>  -->
+				<!-- <a class="link icon-only" href="#" > <i class="icon icon-noteadd-white" > </i></a> -->
+				<a class="link icon-only" onclick="window.location.href = 'tel: +74212666777'; " href="#" > <i class="icon icon-phonecall" > </i></a>
+			</div>				
+		</div>
+	</div>
+	
+	<div class="page-content">	
+		<div class="content-block">
+        <div class="content-block-inner">
+           <h3>Отправьте новость</h3>
+<p>Вы стали очевидцем интересного события?</p>
+<p>Отправьте нам новость - расскажите, что произошло и приложите самую лучшую фотографию.</p>
+<p>Друзья! Мы заботимся о вашем времени и трафике и для экономии обрабатываем фото автоматически - в среднем, отправка изображения - это всего 79 КБ трафика и доли секунды времени.</p>
+<p>Авторы самых интересных новостей по итогам месяца получат сюрпризы!</p>
+
+    <h3>PhoneGap Camera Upload Demo</h3>
+    
+    <div>
+        <h3>Server URL for upload.php:</h3>
+        <input id="serverUrl" type="text" value="http://27podarkov.ru/mg-json/upload.php" />
+    </div>
+    <br/>
+
+	<!-- Camera -->
+	<div>
+		<h3>Camera:</h3>
+		<b>Status:</b> <span id="camera_status"></span><br>
+        <b>Image:</b> <img style="width:120px;visibility:hidden;display:none;" id="camera_image" src="" />
+	</div>
+        
+    <!-- Actions -->
+    <div>
+        <input type="button" onclick="takePicture();" value="Take Picture" /><br/>
+        <input type="button" onclick="selectPicture();" value="Select Picture from Library" /><br/>
+        <input type="button" onclick="uploadPicture();" value="Upload Picture" />
+    </div>
+    <br/>
+    
+    <!-- Server pictures -->
+    <div>
+        <h3>Server:</h3>
+        <b>Images on server:</b>
+        <div id="server_images"></div>
+    </div>
+
+    <!-- Actions -->
+    <div>
+        <input type="button" onclick="viewUploadedPictures();" value="View Uploaded Pictures" />
+    </div>
+
+
+        </div>
+		</div>
+	</div>
+		
+</div>
+</div>
