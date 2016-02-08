@@ -38,13 +38,10 @@ $message = 'Имя отправителя: '.$name.'
 Контакт: '.$contact.'
 
 Текст новости:
-'.$newstext;
+'.$newstext.'
 
-if($imageurl) {
-	$message .= 'URL изображения:<br />http://27podarkov.ru/mg-json/uploads/' . $imageurl;
-}
-
-
+URL изображения:
+http://27podarkov.ru/mg-json/uploads/'.$imageurl;
 print_r ($message);
 echo "<hr />";
 

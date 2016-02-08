@@ -171,9 +171,23 @@ function uploadPicture() {
 	
 	// Check if photo is made, if text news only is allowed, skip this check
 	if (!imageURI || (img.style.display == "none")) {
-		myApp.alert('Вы забыли сделать фото!<br />А ведь так новость читать гораздо интереснее.');
-		document.getElementById('camera_status').innerHTML = "Take picture or select picture from library first.";
+		// myApp.alert('Вы забыли сделать фото!<br />А ведь так новость читать гораздо интереснее.');
+		// document.getElementById('camera_status').innerHTML = "Take picture or select picture from library first.";
 		// document.getElementById("imageurl").value = options.fileName;
+		
+		$$('form.ajax-submit').trigger('submit');
+		var idName = document.getElementById('name').value;
+		var idTel = document.getElementById('tel').value;
+		myApp.confirm(idName, 'К этой новости нет изображения.<br />Хотите сделать фото?', 
+			function () {
+				return;
+			},
+			function () {
+				$$('form.ajax-submit').trigger('submit'); // form sends via old button, but ajax timeout problem!!!
+			}
+		);
+		
+		
 		return;
 	}
 	
