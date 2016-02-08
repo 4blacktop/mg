@@ -11,8 +11,8 @@ var myApp = new Framework7({
 	
 // Export selectors engine
 var $$ = Dom7;
-var jsonURL = 'http://scr.ru/mg/www/php/json680000.txt';
-// var jsonURL = 'http://27podarkov.ru/mg-json/json680000.txt';
+// var jsonURL = 'http://scr.ru/mg/www/php/json680000.txt';
+var jsonURL = 'http://27podarkov.ru/mg-json/json680000.txt';
 
 // Ajax setting for timeout
 $$.ajaxSetup({
@@ -93,8 +93,8 @@ myApp.buildHomeHTML(); // Load content on startup
 // navigator.splashscreen.hide(); // Phonegap splashscreen plugin hide picture
 
 myApp.onPageInit('sendnews',function(page){
+	document.getElementById("imageurl").value = null; // erasing any saved value due to autosave form
 	myApp.alert(document.getElementById("imageurl").value,'imageurl');
-	document.getElementById("imageurl").value = ''; // erasing any saved value due to autosave form
 	// myApp.alert('imageurl');
 });
 
@@ -205,7 +205,7 @@ function uploadPicture() {
 			function () {
 				$$('form.ajax-submit').trigger('submit'); 
 				myApp.alert('Новость отправлена!<br />Благодарим Вас!','Спасибо!');
-				document.getElementById("imageurl").value = '';
+				document.getElementById("imageurl").value = null;
 				return;
 			}
 		);
@@ -243,7 +243,7 @@ function uploadPicture() {
 			$$('form.ajax-submit').trigger('submit');
 			myApp.hidePreloader();
 			myApp.alert('Новость отправлена!<br />Благодарим Вас!<br />filename: '+options.fileName, r.bytesSent);
-			document.getElementById("imageurl").value = '';
+			document.getElementById("imageurl").value = null;
           	
 		}, function(error) {
 			// document.getElementById('camera_status').innerHTML = "Upload failed: Code = "+error.code;            	
