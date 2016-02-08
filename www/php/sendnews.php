@@ -35,12 +35,13 @@ $imageurl =  $_POST['imageurl'];
 // $nowgod = date(Y);
 
 $message = 'Имя отправителя: '.$name.'
-Контактный телефон: '.$contact.'
+Контакт: '.$contact.'
 
 Текст новости:
 '.$newstext.'
 
-URL изображения: '.$imageurl;
+URL изображения:
+http://27podarkov.ru/mg-json/uploads/'.$imageurl;
 print_r ($message);
 echo "<hr />";
 

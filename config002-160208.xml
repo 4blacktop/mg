@@ -20,7 +20,7 @@
   <preference name="android-installLocation" value="auto"/>
   
 	<preference name="SplashScreen" value="www/res/android/screen/xhdpi.9.png" />
-	<preference name="SplashScreenDelay" value="5000" />
+	<preference name="SplashScreenDelay" value="3000" />
   
   
   <gap:plugin name="org.apache.cordova.battery-status"/>

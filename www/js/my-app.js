@@ -166,10 +166,13 @@ function uploadPicture() {
 	var img = document.getElementById('camera_image');
 	var imageURI = img.src;
 	var newstext = document.getElementById('newstext').value;
-	if (!imageURI || (img.style.display == "none")) {
-		document.getElementById('camera_status').innerHTML = "Take picture or select picture from library first.";
-		return;
-	}
+	
+	// Check if photo is made, if text news only is allowed, skip this check
+	// if (!imageURI || (img.style.display == "none")) {
+		// document.getElementById('camera_status').innerHTML = "Take picture or select picture from library first.";
+		// return;
+	// }
+	
 	if (!newstext) {
 		myApp.alert('Пожалуйста, введите текст новости.','Ошибка!');
 		// document.getElementById('camera_status').innerHTML = "Take picture or select picture from library first.";
@@ -194,7 +197,7 @@ function uploadPicture() {
 			document.getElementById('camera_status').innerHTML = "Upload successful: "+r.bytesSent+" bytes uploaded.";  
 
 			document.getElementById("imageurl").value = options.fileName;
-			myApp.alert("Благодарим Вас "+r.bytesSent+' раз!<br />filename: '+options.fileName,'Новость отправлена');
+			myApp.alert('Новость отправлена!<br />Благодарим Вас!<br />filename: '+options.fileName,r.bytesSent);
 			$$('form.ajax-submit').trigger('submit');
           	
 		}, function(error) {
