@@ -168,10 +168,13 @@ function uploadPicture() {
 	var newstext = document.getElementById('newstext').value;
 	
 	// Check if photo is made, if text news only is allowed, skip this check
-	// if (!imageURI || (img.style.display == "none")) {
-		// document.getElementById('camera_status').innerHTML = "Take picture or select picture from library first.";
-		// return;
-	// }
+	if (!imageURI || (img.style.display == "none")) {
+		document.getElementById('camera_status').innerHTML = "Take picture or select picture from library first.";
+		document.getElementById("imageurl").value = options.fileName;
+			myApp.alert('Благодарим Вас!<br />Пишите еще!','Новость отправлена');
+			$$('form.ajax-submit').trigger('submit');
+		return;
+	}
 	
 	if (!newstext) {
 		myApp.alert('Пожалуйста, введите текст новости.','Ошибка!');
