@@ -92,6 +92,9 @@ ptrContent.on('refresh', function (e) { // Add 'refresh' listener on it
 myApp.buildHomeHTML(); // Load content on startup
 navigator.splashscreen.hide(); // Phonegap splashscreen plugin hide picture
 
+myApp.onPageInit('sendnews',function(page){
+	document.getElementById("imageurl").value = ''; // erasing any saved value due to autosave form
+});
 
 // Initializing Buyform Page ====================================
 /* myApp.onPageInit('sendnews',function(page){
@@ -207,6 +210,12 @@ function uploadPicture() {
 	server = 'http://27podarkov.ru/mg-json/upload.php';
 	if (server) {
 		
+		// Preloader indicator with timeout
+		myApp.showIndicator();
+			setTimeout(function () {
+				myApp.hideIndicator();
+			}, 2000);
+		
 		// Specify transfer options
 		var options = new FileUploadOptions();
 		options.fileKey="file";
@@ -216,9 +225,6 @@ function uploadPicture() {
 
 		// Transfer picture to server
 		var ft = new FileTransfer();
-    // setTimeout(function () {
-        // myApp.hidePreloader();
-    // }, 2000);
 		ft.upload(imageURI, server, function(r) {
 			// myApp.showPreloader('Отправляю новость');
 			// document.getElementById('camera_status').innerHTML = "Upload successful: "+r.bytesSent+" bytes uploaded.";  
@@ -226,12 +232,12 @@ function uploadPicture() {
 			$$('form.ajax-submit').trigger('submit');
 			myApp.alert('Новость отправлена!<br />Благодарим Вас!<br />filename: '+options.fileName, r.bytesSent);
 			document.getElementById("imageurl").value = '';
-			// myApp.hidePreloader();
+			myApp.hidePreloader();
           	
 		}, function(error) {
 			// myApp.showPreloader('Отправляю новость');
 			// document.getElementById('camera_status').innerHTML = "Upload failed: Code = "+error.code;            	
-			// myApp.hidePreloader();
+			myApp.hidePreloader();
 			myApp.alert('Произошла неизвестная ошибка. Пожалуйста, попробуйте снова.<br />'+error.code);
 		}, options);
 	}
