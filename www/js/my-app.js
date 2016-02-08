@@ -72,7 +72,7 @@ myApp.buildHomeHTML = function () {
 		$$('.currency-list ul').html(currencyHtml);
 		
 	});
-		myApp.pullToRefreshDone();// When loading done, we need to reset it
+	myApp.pullToRefreshDone();// When loading done, we need to reset it
 };
 
 
@@ -85,8 +85,8 @@ ptrContent.on('refresh', function (e) { // Add 'refresh' listener on it
 		myApp.buildHomeHTML();
         
         myApp.pullToRefreshDone();
-    // }, 3000);
-    });
+    }, 1000);
+    // });
 });
 
 myApp.buildHomeHTML(); // Load content on startup
@@ -129,11 +129,12 @@ function takePicture() {
 			img.style.visibility = "visible";
 			img.style.display = "block";
 			img.src = uri;
-			document.getElementById('camera_status').innerHTML = "Success";
+			// document.getElementById('camera_status').innerHTML = "Success";
 		},
 		function(e) {
-			console.log("Error getting picture: " + e);
-			document.getElementById('camera_status').innerHTML = "Error getting picture.";
+			myApp.alert('Не удалось сделать фото<br />Попробуйте снова, пожалуйста.' + e);
+			// console.log("Error getting picture: " + e);
+			// document.getElementById('camera_status').innerHTML = "Error getting picture.";
 		},
 		{ quality: 50, destinationType: navigator.camera.DestinationType.FILE_URI});
 };
@@ -148,11 +149,11 @@ function selectPicture() {
 			img.style.visibility = "visible";
 			img.style.display = "block";
 			img.src = uri;
-			document.getElementById('camera_status').innerHTML = "Success";
+			// document.getElementById('camera_status').innerHTML = "Success";
 		},
 		function(e) {
-			console.log("Error getting picture: " + e);
-			document.getElementById('camera_status').innerHTML = "Error getting picture.";
+			// console.log("Error getting picture: " + e);
+			// document.getElementById('camera_status').innerHTML = "Error getting picture.";
 			myApp.alert('Не удалось сделать фото<br />Попробуйте снова, пожалуйста.');
 		},
 		{ quality: 50, destinationType: navigator.camera.DestinationType.FILE_URI, sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY});
@@ -172,7 +173,7 @@ function uploadPicture() {
 	if (!imageURI || (img.style.display == "none")) {
 		myApp.alert('Вы забыли сделать фото!<br />А ведь так новость читать гораздо интереснее.');
 		document.getElementById('camera_status').innerHTML = "Take picture or select picture from library first.";
-		document.getElementById("imageurl").value = options.fileName;
+		// document.getElementById("imageurl").value = options.fileName;
 		return;
 	}
 	
@@ -184,7 +185,8 @@ function uploadPicture() {
 	
 	
 	// Verify server has been entered
-	server = document.getElementById('serverUrl').value;
+	// server = document.getElementById('serverUrl').value;
+	server = 'http://27podarkov.ru/mg-json/upload.php';
 	if (server) {
 		
 		// Specify transfer options
@@ -196,17 +198,21 @@ function uploadPicture() {
 
 		// Transfer picture to server
 		var ft = new FileTransfer();
+		myApp.showPreloader('Отправляю новость');
+    // setTimeout(function () {
+        // myApp.hidePreloader();
+    // }, 2000);
 		ft.upload(imageURI, server, function(r) {
-			document.getElementById('camera_status').innerHTML = "Upload successful: "+r.bytesSent+" bytes uploaded.";  
-
+			// document.getElementById('camera_status').innerHTML = "Upload successful: "+r.bytesSent+" bytes uploaded.";  
 			document.getElementById("imageurl").value = options.fileName;
-			myApp.alert('Новость отправлена!<br />Благодарим Вас!<br />filename: '+options.fileName,r.bytesSent);
 			$$('form.ajax-submit').trigger('submit');
+			myApp.alert('Новость отправлена!<br />Благодарим Вас!<br />filename: '+options.fileName,r.bytesSent);
           	
 		}, function(error) {
 			myApp.alert('Произошла неизвестная ошибка. Пожалуйста, попробуйте снова.');
 			document.getElementById('camera_status').innerHTML = "Upload failed: Code = "+error.code;            	
 		}, options);
+		myApp.hidePreloader();
 	}
 }
 
