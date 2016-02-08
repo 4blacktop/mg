@@ -193,18 +193,10 @@ function selectPicture() {
     	// Get URI of picture to upload
         var img = document.getElementById('camera_image');
         var imageURI = img.src;
-        var newstext = document.getElementById('newstext').value;
         if (!imageURI || (img.style.display == "none")) {
-			
             document.getElementById('camera_status').innerHTML = "Take picture or select picture from library first.";
             return;
         }
-		if (!newstext) {
-			myApp.alert('Пожалуйста, введите текст новости.');
-            // document.getElementById('camera_status').innerHTML = "Take picture or select picture from library first.";
-            return;
-        }
-		
         
         // Verify server has been entered
         server = document.getElementById('serverUrl').value;
