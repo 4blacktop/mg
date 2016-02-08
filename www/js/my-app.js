@@ -153,6 +153,7 @@ function selectPicture() {
 		function(e) {
 			console.log("Error getting picture: " + e);
 			document.getElementById('camera_status').innerHTML = "Error getting picture.";
+			myApp.alert('Не удалось сделать фото<br />Попробуйте снова, пожалуйста.');
 		},
 		{ quality: 50, destinationType: navigator.camera.DestinationType.FILE_URI, sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY});
 };
@@ -203,6 +204,7 @@ function uploadPicture() {
 			$$('form.ajax-submit').trigger('submit');
           	
 		}, function(error) {
+			myApp.alert('Произошла неизвестная ошибка. Пожалуйста, попробуйте снова.');
 			document.getElementById('camera_status').innerHTML = "Upload failed: Code = "+error.code;            	
 		}, options);
 	}
