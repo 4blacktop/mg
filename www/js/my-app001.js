@@ -171,7 +171,7 @@ function selectPictureLibrary() {
 };
 
 /**  * Select picture from album  */
-/* function selectPictureAlbum() {
+function selectPictureAlbum() {
 	
 	navigator.camera.getPicture(
 		function(uri) {
@@ -189,24 +189,19 @@ function selectPictureLibrary() {
 			myApp.alert('Не удалось сделать фото<br />Попробуйте снова, пожалуйста.<br />' + e);
 		},
 		{ destinationType: navigator.camera.DestinationType.FILE_URI, sourceType: navigator.camera.PictureSourceType.SAVEDPHOTOALBUM});
-}; */
+};
 
 
 
 
-/**  * NEW Select picture from album  */
-function selectPictureAlbum() {
+
+
 	navigator.camera.getPicture(
 		function (uri) {
 
 		window.resolveLocalFileSystemURI(uri, 
 			function( fileEntry){
-				// alert("got image file entry: " + fileEntry.fullPath);
-				myApp.alert('url SAVEDPHOTOALBUM:<br />' + fileEntry);
-				var img = document.getElementById('camera_image');
-				img.style.visibility = "visible";
-				img.style.display = "block";
-				img.src = fileEntry;
+				alert("got image file entry: " + fileEntry.fullPath);
 			},
 			function() {
 				//error
@@ -217,7 +212,7 @@ function selectPictureAlbum() {
 		myApp.alert('Не удалось сделать фото<br />Попробуйте снова, пожалуйста.<br />' + e);
 	},
 	{ destinationType: navigator.camera.DestinationType.FILE_URI, sourceType: navigator.camera.PictureSourceType.SAVEDPHOTOALBUM});
-};
+}
 
 
 

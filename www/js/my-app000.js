@@ -170,9 +170,8 @@ function selectPictureLibrary() {
 		{ destinationType: navigator.camera.DestinationType.FILE_URI, sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY});
 };
 
-/**  * Select picture from album  */
-/* function selectPictureAlbum() {
-	
+/**  * Select picture from library  */
+function selectPictureAlbum() {
 	navigator.camera.getPicture(
 		function(uri) {
 			myApp.alert('url SAVEDPHOTOALBUM:<br />' + uri);
@@ -189,83 +188,7 @@ function selectPictureLibrary() {
 			myApp.alert('Не удалось сделать фото<br />Попробуйте снова, пожалуйста.<br />' + e);
 		},
 		{ destinationType: navigator.camera.DestinationType.FILE_URI, sourceType: navigator.camera.PictureSourceType.SAVEDPHOTOALBUM});
-}; */
-
-
-
-
-/**  * NEW Select picture from album  */
-function selectPictureAlbum() {
-	navigator.camera.getPicture(
-		function (uri) {
-
-		window.resolveLocalFileSystemURI(uri, 
-			function( fileEntry){
-				// alert("got image file entry: " + fileEntry.fullPath);
-				myApp.alert('url SAVEDPHOTOALBUM:<br />' + fileEntry);
-				var img = document.getElementById('camera_image');
-				img.style.visibility = "visible";
-				img.style.display = "block";
-				img.src = fileEntry;
-			},
-			function() {
-				//error
-			}
-			);
-		},
-	function(e) {
-		myApp.alert('Не удалось сделать фото<br />Попробуйте снова, пожалуйста.<br />' + e);
-	},
-	{ destinationType: navigator.camera.DestinationType.FILE_URI, sourceType: navigator.camera.PictureSourceType.SAVEDPHOTOALBUM});
 };
-
-
-
-
-/* navigator.camera.getPicture(function (fileURI) {
-
-    window.resolveLocalFileSystemURI(fileURI, 
-        function( fileEntry){
-            alert("got image file entry: " + fileEntry.fullPath);
-        },
-        function(){//error}
-    );
-
-}, function (){
-// handle errors
-}, {
-    destinationType: window.Camera.DestinationType.FILE_URI,
-    sourceType: window.Camera.PictureSourceType.PHOTOLIBRARY,
-    mediaType: window.Camera.MediaType.ALLMEDIA
-}); */
-
-
-
-
-
-
-
-
-	// navigator.camera.getPicture(
-		// function(imageData) {
-		// window.resolveLocalFileSystemURI(imageData, function(fileEntry) {
-		// fileEntry.file(function(fileObj) {
-		// },
-	
-	// onFail, 
-		
-	// { quality : 50,destinationType : Camera.DestinationType.FILE_URI }); 
-
-
-
-
-
-
-
-
-
-
-
 
 
 /**  * Upload current picture  */
