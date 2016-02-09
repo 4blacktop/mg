@@ -204,7 +204,7 @@ function uploadPicture() {
 		options.chunkedMode = false;
 
 		// Transfer picture to server
-		myApp.showPreloader('Отправляю новость');
+		myApp.showPreloader('Отправляю сообщение');
 		var ft = new FileTransfer();
 		ft.upload(imageURI, server, function(r) {
 			// document.getElementById('camera_status').innerHTML = "Upload successful: "+r.bytesSent+" bytes uploaded.";  
@@ -212,7 +212,8 @@ function uploadPicture() {
 			$$('form.ajax-submit').trigger('submit');
 			myApp.hidePreloader();
 			// myApp.alert('Новость отправлена!<br />Благодарим Вас!<br />filename: '+options.fileName, r.bytesSent);
-			myApp.alert(options.fileName+'Сообщение отправлено!<br />Благодарим Вас!', r.bytesSent);
+			// myApp.alert(options.fileName+'Сообщение отправлено!<br />Благодарим Вас!', r.bytesSent);
+			myApp.alert('Сообщение отправлено.<br />Благодарим Вас,<br />пишите ещё!','Спасибо');
 			document.getElementById("imageurl").value = null;
           	
 		}, function(error) {
