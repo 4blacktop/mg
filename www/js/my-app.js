@@ -245,6 +245,7 @@ function uploadPicture() {
 		
 		// Specify transfer options
 		var newFilename = imageURI.substr(imageURI.lastIndexOf('/')+1);
+		newFilename = (new Date).getTime() + '-' + newFilename;
 		
 		// myApp.alert('transfer options<br />OLD newFilename:<br />' + newFilename);
 		if 	(newFilename.split('.').pop()) {
