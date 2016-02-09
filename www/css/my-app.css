@@ -142,3 +142,9 @@ i.icon.icon-create-black {
   height: 24px;
  	background-image: url("../img/ic_create_black_24px.svg"); 
 }
+
+i.icon.icon-comment-black {
+  width: 24px;
+  height: 24px;
+ 	background-image: url("../img/ic_comment_black_24px.svg"); 
+}

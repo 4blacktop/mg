@@ -105,34 +105,6 @@ myApp.onPageInit('about',function(page){
 	myApp.alert('about');
 }); */
 
-// Initializing Buyform Page ====================================
-/* myApp.onPageInit('sendnews',function(page){
-	var imgUrl = page.query.linktitle;
-	document.getElementById("imageurl").value = linkurl;
-	// console.log( 'linkurl: ' + linkurl);
-	// console.log( 'linktitle: ' + linktitle);
-	
-	
-// initial settings for toggle and submit button
-// $$('div.rowsubmit').show();
-// $$('input[type="checkbox"]').prop('checked', true);
-
-
-	// ajax form submit error processing
-	$$('form.ajax-submit').on('submitted', function (e) {
-		myApp.alert('Спасибо! Ваша заявка уже обрабатывается операторами.');
-		mainView.router.back({url: 'index.html', force: true});
-	});
-			
-	$$('form.ajax-submit').on('submitError', function (e) {
-		myApp.alert('Ошибка отправки формы. Сообщите, пожалуйста, нажав иконку телефона на главной странице. Спасибо.');
-		mainView.router.back({url: 'index.html', force: true});
-		// console.log(e.detail.data);
-	});
-
-}); */
-
-
 /**  * Take picture with camera  */
 function takePicture() {
 	navigator.camera.getPicture(
@@ -214,13 +186,13 @@ function uploadPicture() {
 		
 		var idName = document.getElementById('name').value;
 		// myApp.confirm('К этой новости нет изображения.<br />Хотите сделать или выбрать фото?'){
-		myApp.confirm(idName, 'К этой новости нет изображения.<br />Хотите сделать или выбрать фото?', 
+		myApp.confirm(idName, 'Вы не добавили изображение.<br />Хотите сделать или выбрать фото?', 
 			function () {
 				return;
 			},
 			function () {
 				$$('form.ajax-submit').trigger('submit'); 
-				myApp.alert('Новость отправлена!<br />Благодарим Вас!','Спасибо!');
+				myApp.alert('Сообщение отправлено!<br />Благодарим Вас!','Спасибо!');
 				document.getElementById("imageurl").value = null;
 				return;
 			}
@@ -267,7 +239,8 @@ function uploadPicture() {
 			document.getElementById("imageurl").value = options.fileName;
 			$$('form.ajax-submit').trigger('submit');
 			myApp.hidePreloader();
-			myApp.alert('Новость отправлена!<br />Благодарим Вас!<br />filename: '+options.fileName, r.bytesSent);
+			// myApp.alert('Новость отправлена!<br />Благодарим Вас!<br />filename: '+options.fileName, r.bytesSent);
+			myApp.alert('Сообщение отправлено!<br />Благодарим Вас!','Спасибо!');
 			document.getElementById("imageurl").value = null;
           	
 		}, function(error) {
