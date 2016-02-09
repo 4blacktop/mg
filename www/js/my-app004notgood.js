@@ -170,12 +170,23 @@ function uploadPicture() {
 	
 	// Check if photo is made, if text news only is allowed, skip this check
 	if (!imageURI || (img.style.display == "none")) {
+		// myApp.alert('imageURI BEFORE:<br />' + imageURI);
+		
 		if (uri.substring(0,21)=="content://com.android") {
 				photo_split=uri.split("%3A");
 				uri="content://media/external/images/media/"+photo_split[1];
 			}
-		var idName = document.getElementById('name').value;
+		
+		// myApp.alert('imageURI AFTER:<br />' + imageURI);
+		
+	// if (!imageURI) {
+		// myApp.alert('Вы забыли сделать фото!<br />А ведь так новость читать гораздо интереснее.');
+		// document.getElementById('camera_status').innerHTML = "Take picture or select picture from library first.";
+		// document.getElementById("imageurl").value = options.fileName;
+		
 		myApp.confirm(idName, 'Вы не добавили изображение.<br />Хотите сделать или выбрать фото?', 
+		// myApp.confirm('Вы не добавили изображение.<br />Хотите сделать или выбрать фото?'){
+		// myApp.confirm(idName, 'Вы не добавили изображение.<br />Хотите сделать или выбрать фото?', 
 			function () {
 				return;
 			},
@@ -186,6 +197,8 @@ function uploadPicture() {
 				return;
 			}
 		);
+		
+		
 		return;
 	}
 	
