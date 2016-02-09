@@ -44,7 +44,7 @@ if($imageurl) {
 $message .= '
 
 URL изображения:
-http://27podarkov.ru/mg/uploads/' . $imageurl;
+http://27podarkov.ru/mg/uploads/img/' . $imageurl;
 }
 
 
