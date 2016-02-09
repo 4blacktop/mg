@@ -192,10 +192,34 @@ function selectPictureLibrary() {
 }; */
 
 
+/**  * NEW2 Select picture from album  */
+function selectPictureAlbum() {
+	
+	navigator.camera.getPicture(
+		function(uri) {
+			if (uri.substring(0,21)=="content://com.android") {
+				photo_split=uri.split("%3A");
+				uri="content://media/external/images/media/"+photo_split[1];
+			}
+			myApp.alert('url SAVEDPHOTOALBUM:<br />' + uri);
+			var img = document.getElementById('camera_image');
+			img.style.visibility = "visible";
+			img.style.display = "block";
+			img.src = uri;
+			// document.getElementById('camera_status').innerHTML = "Success";
+
+		},
+		function(e) {
+			// console.log("Error getting picture: " + e);
+			// document.getElementById('camera_status').innerHTML = "Error getting picture.";
+			myApp.alert('Не удалось сделать фото<br />Попробуйте снова, пожалуйста.<br />' + e);
+		},
+		{ destinationType: navigator.camera.DestinationType.FILE_URI, sourceType: navigator.camera.PictureSourceType.SAVEDPHOTOALBUM});
+};
 
 
 /**  * NEW Select picture from album  */
-function selectPictureAlbum() {
+/* function selectPictureAlbum() {
 	navigator.camera.getPicture(
 		function (uri) {
 
@@ -217,7 +241,7 @@ function selectPictureAlbum() {
 		myApp.alert('Не удалось сделать фото<br />Попробуйте снова, пожалуйста.<br />' + e);
 	},
 	{ destinationType: navigator.camera.DestinationType.FILE_URI, sourceType: navigator.camera.PictureSourceType.SAVEDPHOTOALBUM});
-};
+}; */
 
 
 
