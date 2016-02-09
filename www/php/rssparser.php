@@ -294,7 +294,8 @@ $currencyContent = $arrayContent[1];
 $currencyContent = str_ireplace("</li><li>", "<br />", $currencyContent);
 $currencyContent = str_ireplace("<b>", "<h4>", $currencyContent);
 $currencyContent = str_ireplace("</b>", "</h4>", $currencyContent);
-$currencyContent = strip_tags($currencyContent, '<br><h1><h2><h3><h4><h5><h6>');
+$currencyContent = str_ireplace('<span class="m">', '<span style="color:red; font-weight:bold">', $currencyContent);
+$currencyContent = strip_tags($currencyContent, '<br><h1><h2><h3><h4><h5><h6><span></span>');
 $currencyContent = trim(str_ireplace("</h4><br />", "</h4>", $currencyContent));
 	// Add data to array
 		if ($currencyContent) { file_put_contents($path, $contentHTML); }
