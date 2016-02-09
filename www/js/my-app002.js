@@ -238,34 +238,19 @@ function uploadPicture() {
 	if (server) {
 		
 		// Preloader indicator with timeout
-		// myApp.showIndicator();
-			// setTimeout(function () {
-				// myApp.hideIndicator();
-			// }, 2000);
+		myApp.showIndicator();
+			setTimeout(function () {
+				myApp.hideIndicator();
+			}, 2000);
 		
 		// Specify transfer options
 		var options = new FileUploadOptions();
 		options.fileKey="file";
 		options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
-		
-		
-		myApp.alert('transfer options<br />OLD options.fileName:<br />' + options.fileName);
-		
-		if 	(!options.fileName.split('.').pop()) {
-			options.fileName = options.fileName+'.jpg';
-		}
-		myApp.alert('transfer options<br />NEW options.fileName:<br />' + options.fileName);
-		
-		
-		
-		
 		options.mimeType="image/jpeg";
 		options.chunkedMode = false;
 		
-		
-		
-		
-		
+		myApp.alert('options.fileName:<br />' + options.fileName);
 
 		// Transfer picture to server
 		var ft = new FileTransfer();
