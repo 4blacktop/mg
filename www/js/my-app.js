@@ -12,7 +12,7 @@ var myApp = new Framework7({
 // Export selectors engine
 var $$ = Dom7;
 // var jsonURL = 'http://scr.ru/mg/www/php/json680000.txt';
-var jsonURL = 'http://27podarkov.ru/mg-json/json680000.txt';
+var jsonURL = 'http://27podarkov.ru/mg/json680000.txt';
 
 // Ajax setting for timeout
 $$.ajaxSetup({
@@ -218,7 +218,7 @@ function uploadPicture() {
 	
 	// Verify server has been entered
 	// server = document.getElementById('serverUrl').value;
-	server = 'http://27podarkov.ru/mg-json/upload.php';
+	server = 'http://27podarkov.ru/mg/upload.php';
 	if (server) {
 		
 		// Preloader indicator with timeout
