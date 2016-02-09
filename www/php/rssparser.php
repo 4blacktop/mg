@@ -21,8 +21,8 @@ echo '<pre><h1>Проверь кино - афиша должна быть на �
 // ======================================= Settings  ===================================
 // =====================================================================================
 // Pause Settings
+$pauseMin = 0;
 $pauseMin = 1;
-$pauseMin = 2;
 
 // Quantity of Post titles in each category. Counting from ZERO, but "if  >=" makes the Qty values actual!
 $newsQty   = 30;
