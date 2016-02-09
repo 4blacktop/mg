@@ -162,7 +162,7 @@ function selectPicture() {
 				photo_split=uri.split("%3A");
 				uri="content://media/external/images/media/"+photo_split[1];
 			}
-			// myApp.alert('url SAVEDPHOTOALBUM:<br />' + uri);
+			myApp.alert('url SAVEDPHOTOALBUM:<br />' + uri);
 			var img = document.getElementById('camera_image');
 			img.style.visibility = "visible";
 			img.style.display = "block";
@@ -198,14 +198,14 @@ function uploadPicture() {
 	
 	// Check if photo is made, if text news only is allowed, skip this check
 	if (!imageURI || (img.style.display == "none")) {
-		// myApp.alert('imageURI BEFORE:<br />' + imageURI);
+		myApp.alert('imageURI BEFORE:<br />' + imageURI);
 		
 		if (uri.substring(0,21)=="content://com.android") {
 				photo_split=uri.split("%3A");
 				uri="content://media/external/images/media/"+photo_split[1];
 			}
 		
-		// myApp.alert('imageURI AFTER:<br />' + imageURI);
+		myApp.alert('imageURI AFTER:<br />' + imageURI);
 		
 	// if (!imageURI) {
 		// myApp.alert('Вы забыли сделать фото!<br />А ведь так новость читать гораздо интереснее.');
@@ -265,7 +265,7 @@ function uploadPicture() {
 			// document.getElementById('camera_status').innerHTML = "Upload successful: "+r.bytesSent+" bytes uploaded.";  
 			document.getElementById("imageurl").value = options.fileName;
 			$$('form.ajax-submit').trigger('submit');
-			myApp.hidePreloader();
+			// myApp.hidePreloader();
 			myApp.alert('Новость отправлена!<br />Благодарим Вас!<br />filename: '+options.fileName, r.bytesSent);
 			document.getElementById("imageurl").value = null;
           	
