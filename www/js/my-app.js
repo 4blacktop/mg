@@ -160,6 +160,7 @@ function selectPictureLibrary() {
 			img.style.display = "block";
 			img.src = uri;
 			// document.getElementById('camera_status').innerHTML = "Success";
+			myApp.alert('url PHOTOLIBRARY:<br />' + uri);
 		},
 		function(e) {
 			// console.log("Error getting picture: " + e);
@@ -178,6 +179,8 @@ function selectPictureAlbum() {
 			img.style.display = "block";
 			img.src = uri;
 			// document.getElementById('camera_status').innerHTML = "Success";
+						myApp.alert('url SAVEDPHOTOALBUM:<br />' + uri);
+
 		},
 		function(e) {
 			// console.log("Error getting picture: " + e);
