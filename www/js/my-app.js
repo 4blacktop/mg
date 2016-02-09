@@ -245,12 +245,24 @@ function uploadPicture() {
 		
 		// Specify transfer options
 		var newFilename = imageURI.substr(imageURI.lastIndexOf('/')+1);
-		myApp.alert('transfer options<br />OLD newFilename:<br />' + options.fileName);
 		
+		
+		
+		
+		
+		
+		
+		myApp.alert('transfer options<br />OLD newFilename:<br />' + newFilename);
 		if 	(newFilename.split('.').pop()) {
 			newFilename = newFilename+'.jpg';
 		}
-		myApp.alert('transfer options<br />NEW newFilename:<br />' + options.fileName);
+		myApp.alert('transfer options<br />NEW newFilename:<br />' + newFilename);
+		
+		
+		
+		
+		
+		
 		
 		
 		var options = new FileUploadOptions();
@@ -309,144 +321,3 @@ function viewUploadedPictures() {
 		xmlhttp.send();       	
 	}	
 }
-    
-
-
-
-/**  * Select picture from library  */
-/* function selectPictureLibrary() {
-	navigator.camera.getPicture(
-		function(uri) {
-			myApp.alert('url PHOTOLIBRARY:<br />' + uri);
-			var img = document.getElementById('camera_image');
-			img.style.visibility = "visible";
-			img.style.display = "block";
-			img.src = uri;
-			// document.getElementById('camera_status').innerHTML = "Success";
-		},
-		function(e) {
-			// console.log("Error getting picture: " + e);
-			// document.getElementById('camera_status').innerHTML = "Error getting picture.";
-			myApp.alert('Не удалось сделать фото<br />Попробуйте снова, пожалуйста.<br />' + e);
-		},
-		{ destinationType: navigator.camera.DestinationType.FILE_URI, sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY});
-}; */
-
-/**  * Select picture from album  */
-/* function selectPictureAlbum() {
-	
-	navigator.camera.getPicture(
-		function(uri) {
-			myApp.alert('url SAVEDPHOTOALBUM:<br />' + uri);
-			var img = document.getElementById('camera_image');
-			img.style.visibility = "visible";
-			img.style.display = "block";
-			img.src = uri;
-			// document.getElementById('camera_status').innerHTML = "Success";
-
-		},
-		function(e) {
-			// console.log("Error getting picture: " + e);
-			// document.getElementById('camera_status').innerHTML = "Error getting picture.";
-			myApp.alert('Не удалось сделать фото<br />Попробуйте снова, пожалуйста.<br />' + e);
-		},
-		{ destinationType: navigator.camera.DestinationType.FILE_URI, sourceType: navigator.camera.PictureSourceType.SAVEDPHOTOALBUM});
-}; */
-
-
-/**  * NEW2 Select picture from album  */
-/* function selectPictureAlbum() {
-	
-	navigator.camera.getPicture(
-		function(uri) {
-			if (uri.substring(0,21)=="content://com.android") {
-				photo_split=uri.split("%3A");
-				uri="content://media/external/images/media/"+photo_split[1];
-			}
-			myApp.alert('url SAVEDPHOTOALBUM:<br />' + uri);
-			var img = document.getElementById('camera_image');
-			img.style.visibility = "visible";
-			img.style.display = "block";
-			img.src = uri;
-			// document.getElementById('camera_status').innerHTML = "Success";
-
-		},
-		function(e) {
-			// console.log("Error getting picture: " + e);
-			// document.getElementById('camera_status').innerHTML = "Error getting picture.";
-			myApp.alert('Не удалось сделать фото<br />Попробуйте снова, пожалуйста.<br />' + e);
-		},
-		{ destinationType: navigator.camera.DestinationType.FILE_URI, sourceType: navigator.camera.PictureSourceType.SAVEDPHOTOALBUM});
-}; */
-
-
-/**  * NEW Select picture from album  */
-/* function selectPictureAlbum() {
-	navigator.camera.getPicture(
-		function (uri) {
-
-		window.resolveLocalFileSystemURI(uri, 
-			function( fileEntry){
-				// alert("got image file entry: " + fileEntry.fullPath);
-				myApp.alert('url SAVEDPHOTOALBUM:<br />' + fileEntry.fullPath);
-				var img = document.getElementById('camera_image');
-				img.style.visibility = "visible";
-				img.style.display = "block";
-				img.src = fileEntry.fullPath;
-			},
-			function() {
-				//error
-			}
-			);
-		},
-	function(e) {
-		myApp.alert('Не удалось сделать фото<br />Попробуйте снова, пожалуйста.<br />' + e);
-	},
-	{ destinationType: navigator.camera.DestinationType.FILE_URI, sourceType: navigator.camera.PictureSourceType.SAVEDPHOTOALBUM});
-}; */
-
-
-
-
-/* navigator.camera.getPicture(function (fileURI) {
-
-    window.resolveLocalFileSystemURI(fileURI, 
-        function( fileEntry){
-            alert("got image file entry: " + fileEntry.fullPath);
-        },
-        function(){//error}
-    );
-
-}, function (){
-// handle errors
-}, {
-    destinationType: window.Camera.DestinationType.FILE_URI,
-    sourceType: window.Camera.PictureSourceType.PHOTOLIBRARY,
-    mediaType: window.Camera.MediaType.ALLMEDIA
-}); */
-
-
-
-
-
-
-
-
-	// navigator.camera.getPicture(
-		// function(imageData) {
-		// window.resolveLocalFileSystemURI(imageData, function(fileEntry) {
-		// fileEntry.file(function(fileObj) {
-		// },
-	
-	// onFail, 
-		
-	// { quality : 50,destinationType : Camera.DestinationType.FILE_URI }); 
-
-
-
-
-
-
-
-
-
