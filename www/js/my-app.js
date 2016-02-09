@@ -11,8 +11,8 @@ var myApp = new Framework7({
 	
 // Export selectors engine
 var $$ = Dom7;
-// var jsonURL = 'http://scr.ru/mg/www/php/json680000.txt';
-var jsonURL = 'http://27podarkov.ru/mg/json680000.txt';
+var jsonURL = 'http://scr.ru/mg/www/php/json680000.txt';
+// var jsonURL = 'http://27podarkov.ru/mg/json680000.txt';
 
 // Ajax setting for timeout
 $$.ajaxSetup({
@@ -133,9 +133,7 @@ myApp.onPageInit('about',function(page){
 }); */
 
 
-/**
- * Take picture with camera
- */
+/**  * Take picture with camera  */
 function takePicture() {
 	navigator.camera.getPicture(
 		function(uri) {
@@ -153,10 +151,8 @@ function takePicture() {
 		{ quality: 50, destinationType: navigator.camera.DestinationType.FILE_URI});
 };
 
-/**
- * Select picture from library
- */
-function selectPicture() {
+/**  * Select picture from library  */
+function selectPictureLibrary() {
 	navigator.camera.getPicture(
 		function(uri) {
 			var img = document.getElementById('camera_image');
@@ -173,9 +169,26 @@ function selectPicture() {
 		{ quality: 50, destinationType: navigator.camera.DestinationType.FILE_URI, sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY});
 };
 
-/**
- * Upload current picture
- */
+/**  * Select picture from library  */
+function selectPictureAlbum() {
+	navigator.camera.getPicture(
+		function(uri) {
+			var img = document.getElementById('camera_image');
+			img.style.visibility = "visible";
+			img.style.display = "block";
+			img.src = uri;
+			// document.getElementById('camera_status').innerHTML = "Success";
+		},
+		function(e) {
+			// console.log("Error getting picture: " + e);
+			// document.getElementById('camera_status').innerHTML = "Error getting picture.";
+			myApp.alert('Не удалось сделать фото<br />Попробуйте снова, пожалуйста.<br />' + e);
+		},
+		{ quality: 50, destinationType: navigator.camera.DestinationType.FILE_URI, sourceType: navigator.camera.PictureSourceType.SAVEDPHOTOALBUM});
+};
+
+
+/**  * Upload current picture  */
 function uploadPicture() {
 	
 	// Get URI of picture to upload

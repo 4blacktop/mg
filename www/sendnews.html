@@ -14,10 +14,9 @@
 	</div>
 	
 	<div class="page-content">	
-		<div class="content-block">
-        <div class="content-block-inner">
-			   <h3>Отправьте новость</h3>
-				<p>и получите шанс выиграть сюрприз!</p>
+		 <div class="content-block">
+        <!--<div class="content-block-inner"> -->
+			   <h3>Отправьте новость и получите шанс выиграть сюрприз!</h3>
 				<!-- <p>Чтобы отправить новость, </p>
 				<p>1. Введите Ваше имя</p>
 				<p>2. Введите телефон, e-mail или другой вид связи.</p>
@@ -94,15 +93,21 @@
 		<!-- <p><b>Изображение:</b><img style="width:120px;visibility:hidden;display:none;" id="camera_image" src="" /></p> -->
 	
 		<p class="buttons-row">
+		  <a href="#" onclick="selectPictureLibrary();" class="button button-big button-fill button-raised color-bluegray">Выбрать Library</a>
+		  <a href="#" onclick="selectPictureAlbum();" class="button button-big button-fill button-raised color-bluegray">Выбрать Album</a>
 		  <a href="#" onclick="takePicture();" class="button button-big button-fill button-raised color-blue">Сделать фото</a>
-		  <a href="#" onclick="uploadPicture();" class="button button-big button-fill button-raised color-green">Отправить</a>
+		</p>
+		<br />
+		<p class="buttons-row">
+		  <a href="#" onclick="uploadPicture();" class="button button-big button-fill button-raised color-green">Отправить новость</a>
 		</p>
 			
 		</div>
 		</form>
 
 
-
+		<!-- </div> -->
+		</div>
 
 
 
@@ -143,8 +148,7 @@
     </div> -->
 
 
-        </div>
-		</div>
+     
 	</div>
 		
 </div>
