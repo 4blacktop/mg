@@ -184,9 +184,9 @@ function uploadPicture() {
 		// document.getElementById('camera_status').innerHTML = "Take picture or select picture from library first.";
 		// document.getElementById("imageurl").value = options.fileName;
 		
-		var idName = document.getElementById('name').value;
-		// myApp.confirm('К этой новости нет изображения.<br />Хотите сделать или выбрать фото?'){
 		myApp.confirm(idName, 'Вы не добавили изображение.<br />Хотите сделать или выбрать фото?', 
+		// myApp.confirm('Вы не добавили изображение.<br />Хотите сделать или выбрать фото?'){
+		// myApp.confirm(idName, 'Вы не добавили изображение.<br />Хотите сделать или выбрать фото?', 
 			function () {
 				return;
 			},
