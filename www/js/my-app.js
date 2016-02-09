@@ -202,11 +202,11 @@ function selectPictureAlbum() {
 		window.resolveLocalFileSystemURI(uri, 
 			function( fileEntry){
 				// alert("got image file entry: " + fileEntry.fullPath);
-				myApp.alert('url SAVEDPHOTOALBUM:<br />' + fileEntry);
+				myApp.alert('url SAVEDPHOTOALBUM:<br />' + fileEntry.fullPath);
 				var img = document.getElementById('camera_image');
 				img.style.visibility = "visible";
 				img.style.display = "block";
-				img.src = fileEntry;
+				img.src = fileEntry.fullPath;
 			},
 			function() {
 				//error
