@@ -196,25 +196,10 @@ function uploadPicture() {
 	var server = 'http://27podarkov.ru/mg/upload.php';
 	if (server) {
 		
-		// Preloader indicator with timeout
-		// myApp.showIndicator();
-			// setTimeout(function () {
-				// myApp.hideIndicator();
-			// }, 2000);
-		
 		// Specify transfer options
-		var newFilename = imageURI.substr(imageURI.lastIndexOf('/')+1);
-		newFilename = (new Date).getTime() + '-' + newFilename;
-		
-		// myApp.alert('transfer options<br />OLD newFilename:<br />' + newFilename);
-		if 	(newFilename.split('.').pop()) {
-			newFilename = newFilename+'.jpg';
-		}
-		// myApp.alert('transfer options<br />NEW newFilename:<br />' + newFilename);
-		
 		var options = new FileUploadOptions();
 		options.fileKey="file";
-		options.fileName = newFilename;
+		options.fileName = (new Date).getTime()+".jpg";
 		options.mimeType="image/jpeg";
 		options.chunkedMode = false;
 
@@ -227,7 +212,7 @@ function uploadPicture() {
 			$$('form.ajax-submit').trigger('submit');
 			myApp.hidePreloader();
 			// myApp.alert('Новость отправлена!<br />Благодарим Вас!<br />filename: '+options.fileName, r.bytesSent);
-			myApp.alert('Сообщение отправлено!<br />Благодарим Вас!', r.bytesSent);
+			myApp.alert(options.fileName+'Сообщение отправлено!<br />Благодарим Вас!', r.bytesSent);
 			document.getElementById("imageurl").value = null;
           	
 		}, function(error) {
