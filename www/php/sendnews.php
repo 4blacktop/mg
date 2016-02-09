@@ -59,8 +59,8 @@ print_r ($message);
 echo "<hr />";
 
 $to1 = '4blacktop@gmail.com';
-$to2 = '4blogga@gmail.com';
-// $to2 = 'director@eson.ru';
+// $to2 = '4blogga@gmail.com';
+$to2 = 'director@eson.ru';
 $subject = '=?KOI8-R?B?' . base64_encode($title) . "?=";
 $message = rtrim(chunk_split(base64_encode($message),512,"\r\n"));
 
