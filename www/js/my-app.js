@@ -234,7 +234,7 @@ function uploadPicture() {
 	
 	// Verify server has been entered
 	// server = document.getElementById('serverUrl').value;
-	server = 'http://27podarkov.ru/mg/upload.php';
+	var server = 'http://27podarkov.ru/mg/upload.php';
 	if (server) {
 		
 		// Preloader indicator with timeout
@@ -244,28 +244,20 @@ function uploadPicture() {
 			// }, 2000);
 		
 		// Specify transfer options
+		var newFilename = imageURI.substr(imageURI.lastIndexOf('/')+1);
+		myApp.alert('transfer options<br />OLD newFilename:<br />' + options.fileName);
+		
+		if 	(newFilename.split('.').pop()) {
+			newFilename = newFilename+'.jpg';
+		}
+		myApp.alert('transfer options<br />NEW newFilename:<br />' + options.fileName);
+		
+		
 		var options = new FileUploadOptions();
 		options.fileKey="file";
-		options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
-		
-		
-		myApp.alert('transfer options<br />OLD options.fileName:<br />' + options.fileName);
-		
-		if 	(!options.fileName.split('.').pop()) {
-			options.fileName = options.fileName+'.jpg';
-		}
-		myApp.alert('transfer options<br />NEW options.fileName:<br />' + options.fileName);
-		
-		
-		
-		
+		options.fileName = newFilename;
 		options.mimeType="image/jpeg";
 		options.chunkedMode = false;
-		
-		
-		
-		
-		
 
 		// Transfer picture to server
 		var ft = new FileTransfer();
