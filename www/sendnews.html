@@ -16,7 +16,6 @@
 	<div class="page-content">	
 		 <div class="content-block">
         <!--<div class="content-block-inner"> -->
-			   <p>Каждая новость - шанс выиграть сюрприз!</p>
 				<!-- <p>Чтобы отправить новость, </p>
 				<p>1. Введите Ваше имя</p>
 				<p>2. Введите телефон, e-mail или другой вид связи.</p>
@@ -27,6 +26,7 @@
 
 		<form id="sendnewsid" class="ajax-submit list-block store-data" method="POST" action="http://27podarkov.ru/mg/sendnews.php">
 		<div class="list-block inputs-list">
+			   <p>Каждая новость - шанс выиграть сюрприз!</p>
 		<ul>
 			<input name="imageurl" id="imageurl" type="hidden" placeholder=""/>
 		
@@ -93,8 +93,8 @@
 		<!-- <p><b>Изображение:</b><img style="width:120px;visibility:hidden;display:none;" id="camera_image" src="" /></p> -->
 	
 		<p class="buttons-row">
-		  <a href="#" onclick="selectPictureLibrary();" class="button button-big button-fill button-raised color-bluegray">Из Library</a>
-		  <a href="#" onclick="selectPictureAlbum();" class="button button-big button-fill button-raised color-bluegray">Из Album</a>
+		  <!-- <a href="#" onclick="selectPictureLibrary();" class="button button-big button-fill button-raised color-bluegray">Из Library</a> -->
+		  <a href="#" onclick="selectPicture();" class="button button-big button-fill button-raised color-bluegray">Выбрать фото</a>
 		  <a href="#" onclick="takePicture();" class="button button-big button-fill button-raised color-blue">Сделать фото</a>
 		</p>
 		<br />

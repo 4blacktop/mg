@@ -151,8 +151,152 @@ function takePicture() {
 		{ quality: 50, destinationType: navigator.camera.DestinationType.FILE_URI});
 };
 
+
+
+/**  * BEST Select picture from album  */
+function selectPicture() {
+	
+	navigator.camera.getPicture(
+		function(uri) {
+			if (uri.substring(0,21)=="content://com.android") {
+				photo_split=uri.split("%3A");
+				uri="content://media/external/images/media/"+photo_split[1];
+			}
+			myApp.alert('url SAVEDPHOTOALBUM:<br />' + uri);
+			var img = document.getElementById('camera_image');
+			img.style.visibility = "visible";
+			img.style.display = "block";
+			img.src = uri;
+			// document.getElementById('camera_status').innerHTML = "Success";
+
+		},
+		function(e) {
+			// console.log("Error getting picture: " + e);
+			// document.getElementById('camera_status').innerHTML = "Error getting picture.";
+			myApp.alert('Не удалось сделать фото<br />Попробуйте снова, пожалуйста.<br />' + e);
+		},
+		{ destinationType: navigator.camera.DestinationType.FILE_URI, sourceType: navigator.camera.PictureSourceType.SAVEDPHOTOALBUM});
+};
+
+
+
+
+
+/**  * Upload current picture  */
+function uploadPicture() {
+	
+	// Get URI of picture to upload
+	var img = document.getElementById('camera_image');
+	var imageURI = img.src;
+	var newstext = document.getElementById('newstext').value;
+	
+	if (!newstext) {
+		myApp.alert('Пожалуйста, введите текст новости.','Ошибка!');
+		// document.getElementById('camera_status').innerHTML = "Take picture or select picture from library first.";
+		return;
+	}
+	
+	// Check if photo is made, if text news only is allowed, skip this check
+	if (!imageURI || (img.style.display == "none")) {
+	// if (!imageURI) {
+		// myApp.alert('Вы забыли сделать фото!<br />А ведь так новость читать гораздо интереснее.');
+		// document.getElementById('camera_status').innerHTML = "Take picture or select picture from library first.";
+		// document.getElementById("imageurl").value = options.fileName;
+		
+		var idName = document.getElementById('name').value;
+		// myApp.confirm('К этой новости нет изображения.<br />Хотите сделать или выбрать фото?'){
+		myApp.confirm(idName, 'К этой новости нет изображения.<br />Хотите сделать или выбрать фото?', 
+			function () {
+				return;
+			},
+			function () {
+				$$('form.ajax-submit').trigger('submit'); 
+				myApp.alert('Новость отправлена!<br />Благодарим Вас!','Спасибо!');
+				document.getElementById("imageurl").value = null;
+				return;
+			}
+		);
+		
+		
+		return;
+	}
+	
+	
+	
+	// Verify server has been entered
+	// server = document.getElementById('serverUrl').value;
+	server = 'http://27podarkov.ru/mg/upload.php';
+	if (server) {
+		
+		// Preloader indicator with timeout
+		myApp.showIndicator();
+			setTimeout(function () {
+				myApp.hideIndicator();
+			}, 2000);
+		
+		// Specify transfer options
+		var options = new FileUploadOptions();
+		options.fileKey="file";
+		options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
+		options.mimeType="image/jpeg";
+		options.chunkedMode = false;
+
+		// Transfer picture to server
+		var ft = new FileTransfer();
+		ft.upload(imageURI, server, function(r) {
+			// myApp.showPreloader('Отправляю новость');
+			// document.getElementById('camera_status').innerHTML = "Upload successful: "+r.bytesSent+" bytes uploaded.";  
+			document.getElementById("imageurl").value = options.fileName;
+			$$('form.ajax-submit').trigger('submit');
+			myApp.hidePreloader();
+			myApp.alert('Новость отправлена!<br />Благодарим Вас!<br />filename: '+options.fileName, r.bytesSent);
+			document.getElementById("imageurl").value = null;
+          	
+		}, function(error) {
+			// document.getElementById('camera_status').innerHTML = "Upload failed: Code = "+error.code;            	
+			myApp.hidePreloader();
+			myApp.alert('Произошла неизвестная ошибка. Пожалуйста, попробуйте снова.<br />'+error.code);
+		}, options);
+	}
+}
+
+/**
+ * View pictures uploaded to the server
+ */
+function viewUploadedPictures() {
+	
+	// Get server URL
+	server = document.getElementById('serverUrl').value;
+	if (server) {
+		
+		// Get HTML that lists all pictures on server using XHR	
+		var xmlhttp = new XMLHttpRequest();
+
+		// Callback function when XMLHttpRequest is ready
+		xmlhttp.onreadystatechange=function(){
+			if(xmlhttp.readyState === 4){
+
+				// HTML is returned, which has pictures to display
+				if (xmlhttp.status === 200) {
+					document.getElementById('server_images').innerHTML = xmlhttp.responseText;
+				}
+
+				// If error
+				else {
+					document.getElementById('server_images').innerHTML = "Error retrieving pictures from server.";
+				}
+			}
+		};
+		xmlhttp.open("GET", server , true);
+		xmlhttp.send();       	
+	}	
+}
+    
+
+
+
 /**  * Select picture from library  */
-function selectPictureLibrary() {
+/* function selectPictureLibrary() {
 	navigator.camera.getPicture(
 		function(uri) {
 			myApp.alert('url PHOTOLIBRARY:<br />' + uri);
@@ -168,7 +312,7 @@ function selectPictureLibrary() {
 			myApp.alert('Не удалось сделать фото<br />Попробуйте снова, пожалуйста.<br />' + e);
 		},
 		{ destinationType: navigator.camera.DestinationType.FILE_URI, sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY});
-};
+}; */
 
 /**  * Select picture from album  */
 /* function selectPictureAlbum() {
@@ -193,7 +337,7 @@ function selectPictureLibrary() {
 
 
 /**  * NEW2 Select picture from album  */
-function selectPictureAlbum() {
+/* function selectPictureAlbum() {
 	
 	navigator.camera.getPicture(
 		function(uri) {
@@ -215,7 +359,7 @@ function selectPictureAlbum() {
 			myApp.alert('Не удалось сделать фото<br />Попробуйте снова, пожалуйста.<br />' + e);
 		},
 		{ destinationType: navigator.camera.DestinationType.FILE_URI, sourceType: navigator.camera.PictureSourceType.SAVEDPHOTOALBUM});
-};
+}; */
 
 
 /**  * NEW Select picture from album  */
@@ -288,119 +432,3 @@ function selectPictureAlbum() {
 
 
 
-
-
-
-
-/**  * Upload current picture  */
-function uploadPicture() {
-	
-	// Get URI of picture to upload
-	var img = document.getElementById('camera_image');
-	var imageURI = img.src;
-	var newstext = document.getElementById('newstext').value;
-	
-	if (!newstext) {
-		myApp.alert('Пожалуйста, введите текст новости.','Ошибка!');
-		// document.getElementById('camera_status').innerHTML = "Take picture or select picture from library first.";
-		return;
-	}
-	
-	// Check if photo is made, if text news only is allowed, skip this check
-	if (!imageURI || (img.style.display == "none")) {
-	// if (!imageURI) {
-		// myApp.alert('Вы забыли сделать фото!<br />А ведь так новость читать гораздо интереснее.');
-		// document.getElementById('camera_status').innerHTML = "Take picture or select picture from library first.";
-		// document.getElementById("imageurl").value = options.fileName;
-		
-		var idName = document.getElementById('name').value;
-		// myApp.confirm('К этой новости нет изображения.<br />Хотите сделать или выбрать фото?'){
-		myApp.confirm(idName, 'К этой новости нет изображения.<br />Хотите сделать или выбрать фото?', 
-			function () {
-				return;
-			},
-			function () {
-				$$('form.ajax-submit').trigger('submit'); 
-				myApp.alert('Новость отправлена!<br />Благодарим Вас!','Спасибо!');
-				document.getElementById("imageurl").value = null;
-				return;
-			}
-		);
-		
-		
-		return;
-	}
-	
-	
-	
-	// Verify server has been entered
-	// server = document.getElementById('serverUrl').value;
-	server = 'http://27podarkov.ru/mg/upload.php';
-	if (server) {
-		
-		// Preloader indicator with timeout
-		// myApp.showIndicator();
-			// setTimeout(function () {
-				// myApp.hideIndicator();
-			// }, 2000);
-		
-		// Specify transfer options
-		var options = new FileUploadOptions();
-		options.fileKey="file";
-		options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
-		options.mimeType="image/jpeg";
-		options.chunkedMode = false;
-
-		// Transfer picture to server
-		var ft = new FileTransfer();
-		ft.upload(imageURI, server, function(r) {
-			// myApp.showPreloader('Отправляю новость');
-			// document.getElementById('camera_status').innerHTML = "Upload successful: "+r.bytesSent+" bytes uploaded.";  
-			document.getElementById("imageurl").value = options.fileName;
-			$$('form.ajax-submit').trigger('submit');
-			myApp.hidePreloader();
-			myApp.alert('Новость отправлена!<br />Благодарим Вас!<br />filename: '+options.fileName, r.bytesSent);
-			document.getElementById("imageurl").value = null;
-          	
-		}, function(error) {
-			// document.getElementById('camera_status').innerHTML = "Upload failed: Code = "+error.code;            	
-			myApp.hidePreloader();
-			myApp.alert('Произошла неизвестная ошибка. Пожалуйста, попробуйте снова.<br />'+error.code);
-		}, options);
-	}
-}
-
-/**
- * View pictures uploaded to the server
- */
-function viewUploadedPictures() {
-	
-	// Get server URL
-	server = document.getElementById('serverUrl').value;
-	if (server) {
-		
-		// Get HTML that lists all pictures on server using XHR	
-		var xmlhttp = new XMLHttpRequest();
-
-		// Callback function when XMLHttpRequest is ready
-		xmlhttp.onreadystatechange=function(){
-			if(xmlhttp.readyState === 4){
-
-				// HTML is returned, which has pictures to display
-				if (xmlhttp.status === 200) {
-					document.getElementById('server_images').innerHTML = xmlhttp.responseText;
-				}
-
-				// If error
-				else {
-					document.getElementById('server_images').innerHTML = "Error retrieving pictures from server.";
-				}
-			}
-		};
-		xmlhttp.open("GET", server , true);
-		xmlhttp.send();       	
-	}	
-}
-    
-
-  
