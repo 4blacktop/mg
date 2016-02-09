@@ -246,24 +246,11 @@ function uploadPicture() {
 		// Specify transfer options
 		var newFilename = imageURI.substr(imageURI.lastIndexOf('/')+1);
 		
-		
-		
-		
-		
-		
-		
-		myApp.alert('transfer options<br />OLD newFilename:<br />' + newFilename);
+		// myApp.alert('transfer options<br />OLD newFilename:<br />' + newFilename);
 		if 	(newFilename.split('.').pop()) {
 			newFilename = newFilename+'.jpg';
 		}
-		myApp.alert('transfer options<br />NEW newFilename:<br />' + newFilename);
-		
-		
-		
-		
-		
-		
-		
+		// myApp.alert('transfer options<br />NEW newFilename:<br />' + newFilename);
 		
 		var options = new FileUploadOptions();
 		options.fileKey="file";
@@ -272,9 +259,9 @@ function uploadPicture() {
 		options.chunkedMode = false;
 
 		// Transfer picture to server
+		myApp.showPreloader('Отправляю новость');
 		var ft = new FileTransfer();
 		ft.upload(imageURI, server, function(r) {
-			// myApp.showPreloader('Отправляю новость');
 			// document.getElementById('camera_status').innerHTML = "Upload successful: "+r.bytesSent+" bytes uploaded.";  
 			document.getElementById("imageurl").value = options.fileName;
 			$$('form.ajax-submit').trigger('submit');
