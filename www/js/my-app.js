@@ -170,10 +170,10 @@ function uploadPicture() {
 	
 	// Check if photo is made, if text news only is allowed, skip this check
 	if (!imageURI || (img.style.display == "none")) {
-		if (uri.substring(0,21)=="content://com.android") {
-				photo_split=uri.split("%3A");
-				uri="content://media/external/images/media/"+photo_split[1];
-			}
+		// if (uri.substring(0,21)=="content://com.android") {
+				// photo_split=uri.split("%3A");
+				// uri="content://media/external/images/media/"+photo_split[1];
+			// }
 		var idName = document.getElementById('name').value;
 		myApp.confirm(idName, 'Вы не добавили изображение.<br />Хотите сделать или выбрать фото?', 
 			function () {
