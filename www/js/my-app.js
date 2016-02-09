@@ -147,7 +147,7 @@ function selectPicture() {
 			// document.getElementById('camera_status').innerHTML = "Error getting picture.";
 			myApp.alert('Не удалось сделать фото<br />Попробуйте снова, пожалуйста.<br />' + e);
 		},
-		{ destinationType: navigator.camera.DestinationType.FILE_URI, sourceType: navigator.camera.PictureSourceType.SAVEDPHOTOALBUM});
+		{ quality: 50, destinationType: navigator.camera.DestinationType.FILE_URI, sourceType: navigator.camera.PictureSourceType.SAVEDPHOTOALBUM});
 };
 
 
@@ -227,7 +227,7 @@ function uploadPicture() {
 			$$('form.ajax-submit').trigger('submit');
 			myApp.hidePreloader();
 			// myApp.alert('Новость отправлена!<br />Благодарим Вас!<br />filename: '+options.fileName, r.bytesSent);
-			myApp.alert('Сообщение отправлено!<br />Благодарим Вас!','Спасибо!');
+			myApp.alert('Сообщение отправлено!<br />Благодарим Вас!', r.bytesSent);
 			document.getElementById("imageurl").value = null;
           	
 		}, function(error) {
