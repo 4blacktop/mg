@@ -32,11 +32,21 @@ $$.ajaxSetup({
 document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() { // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
 	document.addEventListener("backbutton", onBackKeyDown, false); // Register the event listener backButton
+	initPushwoosh();
 }
 function onBackKeyDown() { // Handle the back button
 	if(mainView.activePage.name == "home"){ navigator.app.exitApp(); }
 	else { mainView.router.back(); }
 }
+
+document.addEventListener('push-notification', function(event) {
+    
+    var title = event.notification.title;//event.notification is a JSON push notifications payload
+    var userData = event.notification.userdata;//example of obtaining custom data from push notification
+    console.warn('user data: ' + JSON.stringify(userData));
+    alert(title);//we might want to display an alert with push notifications title
+    // alert(userData);//we might want to display an alert with push notifications title
+});
 
 
 
@@ -254,4 +264,38 @@ function viewUploadedPictures() {
 		xmlhttp.open("GET", server , true);
 		xmlhttp.send();       	
 	}	
+}
+
+/**
+ * Pushwoosh
+ */
+function initPushwoosh()
+{
+    var pushNotification = cordova.require("com.pushwoosh.plugins.pushwoosh.PushNotification");
+ 
+    //set push notifications handler
+    document.addEventListener('push-notification', function(event) {
+        var title = event.notification.title;
+        var userData = event.notification.userdata;
+                                 
+        if(typeof(userData) != "undefined") {
+            console.warn('user data: ' + JSON.stringify(userData));
+        }
+                                     
+        alert(title);
+    });
+ 
+    //initialize Pushwoosh with projectid: "GOOGLE_PROJECT_ID", pw_appid : "PUSHWOOSH_APP_ID". This will trigger all pending push notifications on start.
+    pushNotification.onDeviceReady({ projectid: "856146586583", pw_appid : "6CFA4-45F6E" });
+ 
+    //register for pushes
+    pushNotification.registerDevice(
+        function(status) {
+            var pushToken = status;
+            console.warn('push token: ' + pushToken);
+        },
+        function(status) {
+            console.warn(JSON.stringify(['failed to register ', status]));
+        }
+    );
 }

@@ -47,7 +47,12 @@
 	<plugin name="org.apache.cordova.splashscreen" spec="1.0.0" source="pgb" />
 	<plugin name="org.apache.cordova.camera" spec="0.3.6" source="pgb" />
 	
-	<plugin name="com.phonegap.plugins.pushplugin" spec="2.5.0" source="pgb" />
+	<!-- <plugin name="com.phonegap.plugins.pushplugin" spec="2.5.0" source="pgb" /> -->
+	<plugin name="pushwoosh-pgb-plugin" source="npm" />
+	
+	<access origin="*"/> <!-- allow all pages, use for development -->
+	<access origin="*.pushwoosh.com"/> <!-- allow pushwoosh service -->
+	<preference name="android-build-tool" value="gradle" />
 
   
   <!-- <icon src="www/res/icon/blackberry/icon-80.png" gap:platform="blackberry"/>
