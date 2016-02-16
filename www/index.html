@@ -6,17 +6,12 @@
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<!-- <meta name="apple-mobile-web-app-status-bar-style" content="black"> -->
 		<meta name="apple-mobile-web-app-status-bar-style" content="yes">
-		<!-- Color theme for statusbar -->
-		<meta name="theme-color" content="#2196f3">
-		<!-- Your app title -->	
-		<title>MoiGorod</title>
+		<meta name="theme-color" content="#2196f3"><!-- Color theme for statusbar -->
+		<title>MoiGorod</title><!-- Your app title -->	
 		<!-- Path to Framework7 Library CSS-->
-		<!-- <link rel="stylesheet" href="css/framework7.ios.min.css"> -->
-		<link rel="stylesheet" href="css/framework7.material.min.css">
-		<!-- Path to Framework7 color related styles, Material Theme -->
-		<link rel="stylesheet" href="css/framework7.material.colors.min.css">
-		<!-- Path to your custom app styles-->
-		<link rel="stylesheet" href="css/my-app.css">
+		<link rel="stylesheet" href="css/framework7.material.min.css"><!-- <link rel="stylesheet" href="css/framework7.ios.min.css"> -->
+		<link rel="stylesheet" href="css/framework7.material.colors.min.css"><!-- Path to Framework7 color related styles, Material Theme -->
+		<link rel="stylesheet" href="css/my-app.css"><!-- Path to your custom app styles-->
 	</head>
 <body class="theme-cyan">
 
@@ -36,8 +31,6 @@
 					</div>
 				</li>
 				</a> -->
-					
-					
 				
 				<a href="sendnews.html">
 				<li class="item-content list-panel-addnews close-panel item-link">
@@ -47,10 +40,6 @@
 					</div>
 				</li>
 				</a>
-				
-							
-					
-					
 					
 				<!-- <a href="#">
 				<li class="item-content list-panel-all close-panel item-link">
@@ -97,7 +86,6 @@
 					</div>
 				</li>
 				</a>
-				
 						
 				<a href="#">
 				<li class="item-content close-panel">
@@ -108,23 +96,8 @@
 				</li>
 				</a>
 				
-				
-				
 			</ul>
 		</div>
-	
-      <!-- Click on link with "close-panel" class will close panel -->
-	  <!-- 	 <p>Список категорий:</p>
-      <p><a href="index.html" class="back close-panel" data-force="true">На главную</a></p>
-      <p><a href="#" data-catid="3" class="close-panel item-link item-content load-dynamic-page-category">Великано</a></p>
-      <p><a href="#" data-catid="7" class="close-panel item-link item-content load-dynamic-page-category">Заимка/Ривьера</a></p>
-      <p><a href="#" data-postid="140" class="close-panel item-link item-content load-dynamic-page-post">140 пост</a></p>
-
-	  <br />
-      <p><a href="#" class="close-panel">Просто закрыть панель</a></p>
-	 -->
-
-		<!-- http://27biletov.ru/wp-json/wp/v2/posts?filter[category_name]=platinum-arena -->
 	</div>
 </div>
   
@@ -142,7 +115,7 @@
 								</div><!-- Default pull to refresh layer-->
 						<div class="navbar-inner">
 							<div class="left"><a href="#" class="link icon-only open-panel"> <i class="icon icon-bars"></i></a></div>
-							<div class="center">MG</div>
+							<div class="center">MoiGorod</div>
 							<div class="right icon">
 								<!-- <a class="link icon-only" onclick="window.plugins.socialsharing.share(null, null, null,  'http://www.moigorod.ru/m/')" href="#" > <i class="icon icon-share" > </i></a>  -->
 								<a class="link icon-only" href="sendnews.html" > <i class="icon icon-noteadd-white" > </i></a>
@@ -217,49 +190,68 @@
 	</div><!-- Your main view, should have "view-main" class-->
 </div><!-- Views-->
 
-<!-- Templates-->	
 <script id="news-template" type="text/template">
-	{{#each news.all.posts}}
+{{#each news.all.posts}}
 	<li>
-	<a href="post.html" class="item-content item-link no-ripple" data-context-name="news.all.posts.{{@index}}">
-	<div class="item-inner">
-	<div class="item-title">{{title}}</div>
-	</div>
-	</a>
-	</li>{{/each}}
+		<a href="post.html" class="item-content item-link no-ripple" data-context-name="news.all.posts.{{@index}}">
+			<div class="item-media"><img src="{{imgurl}}" width="60"></div>
+			<div class="item-inner">
+				<div class="item-title-row">
+					<div class="itempic-text">{{title}}</div>
+					<div class="itempic-subtitle">{{pubDate}}</div>
+				</div>
+			</div>
+		</a>
+	</li>
+{{/each}}
 </script>	
 
 <script id="sale-template" type="text/template">
-	{{#each sale.all.posts}}
+{{#each sale.all.posts}}
 	<li>
-	<a href="post.html" class="item-content item-link no-ripple" data-context-name="sale.all.posts.{{@index}}">
-	<div class="item-inner">
-	<div class="item-title">{{title}}</div>
-	</div>
-	</a>
-	</li>{{/each}}
+		<a href="post.html" class="item-content item-link no-ripple" data-context-name="sale.all.posts.{{@index}}">
+			<div class="item-media"><img src="{{imgurl}}" width="60"></div>
+			<div class="item-inner">
+				<div class="item-title-row">
+					<div class="itempic-text">{{title}}</div>
+					<div class="itempic-subtitle">{{pubDate}}</div>
+				</div>
+			</div>
+		</a>
+	</li>
+{{/each}}
 </script>
 
 <script id="cinema-template" type="text/template">
-	{{#each cinema.all.posts}}
+{{#each cinema.all.posts}}
 	<li>
-	<a href="post.html" class="item-content item-link no-ripple" data-context-name="cinema.all.posts.{{@index}}">
-	<div class="item-inner">
-	<div class="item-title">{{title}}</div>
-	</div>
-	</a>
-	</li>{{/each}}
+		<a href="post.html" class="item-content item-link no-ripple" data-context-name="cinema.all.posts.{{@index}}">
+			<div class="item-media"><img src="{{imgurl}}" width="60"></div>
+			<div class="item-inner">
+				<div class="item-title-row">
+					<div class="itempic-text">{{title}}</div>
+					<div class="itempic-subtitle">{{description}}</div>
+				</div>
+			</div>
+		</a>
+	</li>
+{{/each}}
 </script>
 
 <script id="events-template" type="text/template">
-	{{#each events.all.posts}}
+{{#each events.all.posts}}
 	<li>
-	<a href="post.html" class="item-content item-link no-ripple" data-context-name="events.all.posts.{{@index}}">
-	<div class="item-inner">
-	<div class="item-title">{{title}}</div>
-	</div>
-	</a>
-	</li>{{/each}}
+		<a href="post.html" class="item-content item-link no-ripple" data-context-name="events.all.posts.{{@index}}">
+			<div class="item-media"><img src="{{imgurl}}" width="60"></div>
+			<div class="item-inner">
+				<div class="item-title-row">
+					<div class="itempic-text">{{description}}</div>
+					<div class="itempic-subtitle">{{title}}</div>
+				</div>
+			</div>
+		</a>
+	</li>
+{{/each}}
 </script>			
 
 <script id="currency-template" type="text/template">

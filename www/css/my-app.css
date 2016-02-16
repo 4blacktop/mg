@@ -148,3 +148,37 @@ i.icon.icon-comment-black {
   height: 24px;
  	background-image: url("../img/ic_comment_black_24px.svg"); 
 }
+
+
+
+
+
+
+
+
+/* list block - list of posts on every tab with pictures */
+
+
+.list-block .itempic-text {
+  font-size: 14px;
+  color: #212121;
+  line-height: 20px;
+  position: relative;
+  overflow: hidden;
+  max-height: 40px;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+}
+
+
+.list-block .itempic-subtitle {
+  font-size: 12px;
+  color: #757575;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  max-width: 100%;
+  text-overflow: ellipsis;
+}

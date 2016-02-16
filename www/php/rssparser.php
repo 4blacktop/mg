@@ -15,7 +15,8 @@ $opts = array(
 	);
 $context = stream_context_create($opts);
 
-echo '<pre><h1>Проверь кино - афиша должна быть на сегодня!</h1>' . date("Ymd-His", time()+14400) . '<br /><br />';
+// echo '<pre><h1>Проверь кино - афиша должна быть на сегодня!</h1>' . date("Ymd-His", time()+14400) . '<br /><br />';
+echo '<pre><h1>АФИША закеширована!!</h1>' . date("Ymd-His", time()+14400) . '<br /><br />';
 
 // =====================================================================================
 // ======================================= Settings  ===================================
@@ -30,19 +31,27 @@ $cinemaQty = 30;
 $eventsQty = 30; //29
 
 // News XML URL
-$arrXmlNews = objectsIntoArray(simplexml_load_string(file_get_contents('http://www.moigorod.ru/uploads/rss/_headlines/680000/news-main.xml', false, $context))); // replace Category in URL
-// $arrXmlNews = objectsIntoArray(simplexml_load_string(file_get_contents('xml/news-main.xml', false, $context)));															// replace Category in URL
+
+$arrXmlNews = file_get_contents('http://www.moigorod.ru/uploads/rss/_headlines/680000/news-main.xml', false, $context); // replace Category in URL
+// $arrXmlNews = str_ireplace("<![CDATA[", "", $arrXmlNews);
+// $arrXmlNews = str_ireplace("]]>", "", $arrXmlNews);
+$arrXmlNews = objectsIntoArray(simplexml_load_string($arrXmlNews)); // replace Category in URL
 
 
 // Events XML URL
-$arrXmlEvents = objectsIntoArray(simplexml_load_string(file_get_contents('http://www.moigorod.ru/uploads/rss/_headlines/680000/events-all.xml', false, $context)));	// replace Category in URL
-// $arrXmlEvents = objectsIntoArray(simplexml_load_string(file_get_contents('xml/events-all.xml', false, $context)));															// replace Category in URL
-
+$arrXmlEvents = file_get_contents('http://www.moigorod.ru/uploads/rss/_headlines/680000/events-all.xml', false, $context); // replace Category in URL
+$arrXmlEvents = str_ireplace("<![CDATA[", "", $arrXmlEvents);
+$arrXmlEvents = str_ireplace("]]>", "", $arrXmlEvents);
+$arrXmlEvents = objectsIntoArray(simplexml_load_string($arrXmlEvents));	// replace Category in URL
 
 // Cinema XML URL
-$arrXmlCinema = objectsIntoArray(simplexml_load_string(file_get_contents('http://www.moigorod.ru/uploads/rss/_headlines/680000/cinema-newfilms.xml', false, $context)));// replace Category in URL
-// $arrXmlCinema = objectsIntoArray(simplexml_load_string(file_get_contents('xml/cinema-newfilms.xml', false, $context))); 														// replace Category in URL
-
+$arrXmlCinema = file_get_contents('http://www.moigorod.ru/uploads/rss/_headlines/680000/cinema-newfilms.xml', false, $context); // replace Category in URL
+$arrXmlCinema = str_ireplace("<![CDATA[", "", $arrXmlCinema);
+$arrXmlCinema = str_ireplace("]]>", "", $arrXmlCinema);
+// $arrXmlCinema = strip_tags($arrXmlCinema);
+$arrXmlCinema = preg_replace('#<img[^>].*?/>#si', '', $arrXmlCinema);
+// print_r($arrXmlCinema);
+$arrXmlCinema = objectsIntoArray(simplexml_load_string($arrXmlCinema));// replace Category in URL
 
 // Array to json convert
 $arrayOut = array (
@@ -111,6 +120,9 @@ if ( $key >= $newsQty ) {
 	preg_match('#\<div.id\=\"nb\"\>(.*?)\<\/div\>#sim', $localContent, $arrayTextLocalContent);
 	preg_match('#<img[^>]*>#si', $arrayTextLocalContent[1], $imgTag);
 	$imgTag = str_ireplace('src="/', 'width="100%" src="http://www.moigorod.ru/', $imgTag[0]);
+	
+	preg_match('/src="([^"]*)"/', $imgTag, $matches);
+	$imgUrl = $matches[1];
 
 // <img src="/uploads/news/2146446564/ddt6ru_t.jpg">	
 // src="http://www.moigorod.ru/uploads/news/2146446564/ddt6ru_t.jpg 	
@@ -123,16 +135,20 @@ if ( $key >= $newsQty ) {
 	$textContent = strip_tags(($arrayTextLocalContent[1]), '<br><i>');
 	$textContent = trim($textContent);
 	$textContent = prepareJSON($textContent);
+	$pubDate = date('d.m.Y',strtotime($item["pubDate"]));
+	// echo "<br />" . $pubDate;
 	
 	// Add data to array
+		// "pubDate" => date('d.m.Y',strtotime($item["pubDate"])),
+		// "description" => $item["description"],
 	$arrayOut['news']['all']['posts'][] = array(
 		"id" => $filename,
 		"title" => $item["title"],
 		"link" => $item["link"],
 		"pdalink" => $item["pdalink"],
-		"description" => $item["description"],
-		"pubDate" => $item["pubDate"],
+		"pubDate" => $pubDate,
 		"img" => $imgTag,
+		"imgurl" => $imgUrl,
 		"content"  => $textContent
 	);
 }
@@ -166,26 +182,19 @@ foreach ($arrXmlEvents['channel']['item'] as $key => $item) {
 	$localContent = file_get_contents($path);
 	preg_match('#\<div.class\=\"evt\".id\=\"nb\".itemprop\=\"description\"\>(.*?)\<\/div\>#sim', $localContent, $arrayTextLocalContent);
 	
-	
-	// preg_match('#\<div.class\=\"where\"\>(.*?)\<\/div\>#si', $arrayTextLocalContent[0], $place);
-	
 	// Parse place
 	preg_match('#\<h1\>\<span.itemprop\=\"name\"\>(.*?)\<\/span\>#si', $localContent, $place);
 	$place = '<h3>Место и время проведения:</h3>' . $place[1];
 	$place = prepareJSON($place);
 	$place = trim($place);
-	// print_r($place);
-	// $place = str_ireplace("h2", "h3", $place);
 	
 	// Parse schedule
 	preg_match('#\<ul.class\=\"time.cascad\"\>(.*)\<\/ul\>#si', $localContent, $schedule);
-	// $todaySchedule = '<h3>' . str_ireplace('</legend>', '</h3>', $todaySchedule);
 	$schedule = $schedule[1];
 	$schedule = str_ireplace('</li>', '<br/>', $schedule);
 	$schedule = strip_tags($schedule, '<b><br><i><br/>');
 	$schedule = trim($schedule);
 	$schedule = prepareJSON($schedule);
-	// print_r($schedule);
 	
 	
 	preg_match('#<img[^>]*>#si', $arrayTextLocalContent[0], $imgTag);
@@ -193,14 +202,33 @@ foreach ($arrXmlEvents['channel']['item'] as $key => $item) {
 	$imgTag = str_ireplace(' style="margin:0 0 1em 1em; float:right"', '', $imgTag);
 	$imgTag = str_ireplace('/uploads', 'http://www.moigorod.ru/uploads', $imgTag)  . '<br/>';
 	$imgTag = trim($imgTag);
-	// print_r($imgTag);
 	
+	preg_match('/src="([^"]*)"/', $imgTag, $matches);
+	$imgUrl = $matches[1];
 	
 	$textContent = strip_tags(($arrayTextLocalContent[0]), '<br><i><br/>');
 	$textContent = trim($textContent);
 	$textContent = prepareJSON($textContent);
-	// print_r($textContent);
+	$pubDate = date('d.m.Y',strtotime($item["pubDate"]));
 	
+	$desc = $item["description"];
+	$desc = strip_tags($desc);
+	$desc = prepareJSON($desc);
+	
+	preg_match_all("#\((.*)\)#U", $item["title"], $arrayBrackets, PREG_SET_ORDER);
+	$eventDate = array_pop($arrayBrackets);
+	$item["title"] = str_ireplace($eventDate[0], "", $item["title"]); 
+	$arrayEventDate = explode(" ", $eventDate[1]);
+	$buf = $arrayEventDate[0];
+	$arrayEventDate[0] = $arrayEventDate[1];
+	$arrayEventDate[1] = $buf;
+	$time24 = array_pop($arrayEventDate);
+	$time24  = date("H:i", strtotime($time24));
+	array_push($arrayEventDate, $time24);
+	$eventDate = implode(" ", $arrayEventDate);
+	$item["title"] = $item["title"] . "(" . $eventDate  . ")";
+
+
 	// Add data to array
 	$arrayOut['events']['all']['posts'][] = array(
 		"id" => $filename,
@@ -208,7 +236,8 @@ foreach ($arrXmlEvents['channel']['item'] as $key => $item) {
 		"link" => $item["link"],
 		"pdalink" => $item["pdalink"],
 		"description" => $item["description"],
-		"pubDate" => $item["pubDate"],
+		"pubDate" => $pubDate,
+		"imgurl" => $imgUrl,
 		"content"  => $imgTag . '<br />' . $textContent . '<br />' . $place . '<br />' .  $schedule 
 	);
 	
@@ -230,18 +259,17 @@ foreach ($arrXmlCinema['channel']['item'] as $key => $item) {
 	echo '<br />' . round((microtime(true) - $mtime) * 1, 4) . "\t$key. Checking cinema/" . $filename . ".html"; flush(); 								// replace Category in "checking "
 	$path = "cinema/$filename.html"; // replace folder in path variable
 	
-	// DO NOT check existing files because every day cinema schedule must be actual
+	// COMMENT THIS LINE!!! DO NOT check existing files because every day cinema schedule must be actual UNCOMMENT LINES ONLY FOR DEBUG USE!!! 
 	// if (file_exists($path)) {// COMMENT THIS LINE!!! 
 		// echo "\t*** DO NOT CACHE! *** Cached ok"; flush(); // COMMENT THIS LINE!!! 
 	// } else {// COMMENT THIS LINE!!! 
-	
 	
 	rndSleep($pauseMin,$pauseMax);
 	$contentHTML = file_get_contents($item["pdalink"], false, $context);
 	echo "\tDownload " . strlen($contentHTML) ." bytes\tFrom: " . $item["pdalink"] . "\tTo: " .$path; flush();
 	if ($contentHTML) { file_put_contents($path, $contentHTML); }
 	else { echo "ERROR! NULL content: " . $path; }
-	
+
 	// } // COMMENT THIS LINE!!! DO NOT check existing files because every day cinema schedule must be actual
 	
 	// Parse local HTML files for JSON
@@ -250,28 +278,37 @@ foreach ($arrXmlCinema['channel']['item'] as $key => $item) {
 	
 	$textContent = trim($arrayTextLocalContent[1]);
 	$textContent = strip_tags($textContent, '<br><b></b><i></i><br /><br/>');
-	// print_r($textContent);
 	$textContent = prepareJSON($textContent);
 	
 	preg_match('#\<\/tr\>\<\/table\>(.*?)<a href="(.*?)\".style#sim', $localContent, $imgUrl);
 	$imgTag = str_ireplace('/uploads', '<img src="http://www.moigorod.ru/uploads', $imgUrl[2]) . '" /><br />';
+	preg_match('/src="([^"]*)"/', $imgTag, $matches);
+	$imgUrl = $matches[1];
 	
 	preg_match('#\<fieldset\>\<legend\>(.*?)\<div.class\=\"dsc\"\>#sim', $localContent, $todaySchedule);
 	$todaySchedule = $todaySchedule[1];
 	$todaySchedule = '<h3>' . str_ireplace('</legend>', '</h3>', $todaySchedule);
 	$todaySchedule = trim($todaySchedule);
 	$todaySchedule = strip_tags($todaySchedule, '<h3></h3><br><b></b><i></i><br /><br/>');
-	// print_r($todaySchedule);
+	
+	$pubDate = date('d.m.Y',strtotime($item["pubDate"]));
+
+	
+	
+	
 	
 	// Add data to array
+		// "pubDate" => date('d.m.Y',strtotime($item["pubDate"])),
+		// "description" => $desc,
 	$arrayOut['cinema']['all']['posts'][] = array(
 		"id" => $filename,
 		"title" => $item["title"],
 		"link" => $item["link"],
 		"pdalink" => $item["pdalink"],
 		"description" => $item["description"],
-		"pubDate" => $item["pubDate"],
+		"pubDate" => $pubDate,
 		"img" => $imgTag,
+		"imgurl" => $imgUrl,
 		"content"  => $textContent . $todaySchedule
 	);
 		// "content"  => $textContent

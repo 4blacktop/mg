@@ -11,8 +11,8 @@ var myApp = new Framework7({
 	
 // Export selectors engine
 var $$ = Dom7;
-// var jsonURL = 'http://scr.ru/mg/www/php/json680000.txt';
-var jsonURL = 'http://27podarkov.ru/mg/json680000.txt';
+var jsonURL = 'http://scr.ru/mg/www/php/json680000.txt';
+// var jsonURL = 'http://27podarkov.ru/mg/json680000.txt';
 
 // Ajax setting for timeout
 $$.ajaxSetup({
