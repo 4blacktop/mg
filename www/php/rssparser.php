@@ -218,6 +218,7 @@ foreach ($arrXmlEvents['channel']['item'] as $key => $item) {
 	preg_match_all("#\((.*)\)#U", $item["title"], $arrayBrackets, PREG_SET_ORDER);
 	$eventDate = array_pop($arrayBrackets);
 	$item["title"] = str_ireplace($eventDate[0], "", $item["title"]); 
+	$shortTitle = $item["title"];
 	$arrayEventDate = explode(" ", $eventDate[1]);
 	$buf = $arrayEventDate[0];
 	$arrayEventDate[0] = $arrayEventDate[1];
@@ -238,6 +239,8 @@ foreach ($arrXmlEvents['channel']['item'] as $key => $item) {
 		"description" => $item["description"],
 		"pubDate" => $pubDate,
 		"imgurl" => $imgUrl,
+		"shortTitle" => $shortTitle,
+		"eventDate" => $eventDate,
 		"content"  => $imgTag . '<br />' . $textContent . '<br />' . $place . '<br />' .  $schedule 
 	);
 	
