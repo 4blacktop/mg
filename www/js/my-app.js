@@ -40,11 +40,10 @@ function onBackKeyDown() { // Handle the back button
 }
 
 document.addEventListener('push-notification', function(event) {
-    
     var title = event.notification.title;//event.notification is a JSON push notifications payload
     var userData = event.notification.userdata;//example of obtaining custom data from push notification
-    console.warn('user data: ' + JSON.stringify(userData));
-    alert(title);//we might want to display an alert with push notifications title
+    // console.warn('user data: ' + JSON.stringify(userData));
+    // alert(title);//we might want to display an alert with push notifications title
     // alert(userData);//we might want to display an alert with push notifications title
 });
 
