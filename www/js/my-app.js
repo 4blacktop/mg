@@ -2,7 +2,7 @@
 var myApp = new Framework7({
 	template7Pages: true,
 	material: true, //enable Material theme
-	modalTitle: 'MG',
+	modalTitle: 'MoiGorod',
 	pushstate: true,
 	modalButtonOk: 'Да',
 	modalButtonCancel: 'Нет',
