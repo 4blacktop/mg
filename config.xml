@@ -1,4 +1,4 @@
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="ru.vladimirklochkov.mg" version="1.1.5">
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="ru.vladimirklochkov.mg" version="1.1.6">
   <name>MoiGorod</name>
   <description>Мобильное приложение Moigorod</description>
   <author href="http://vladimirklochkov.ru" email="4blogga@gmail.com">Vladimir Klochkov</author>
@@ -43,9 +43,14 @@
   <gap:plugin name="org.apache.cordova.vibration"/>
   
   
-	<gap:plugin name="nl.x-services.plugins.socialsharing" spec="4.3.8" source="pgb" />
-	<plugin name="org.apache.cordova.splashscreen" spec="1.0.0" source="pgb" />
-	<plugin name="org.apache.cordova.camera" spec="0.3.6" source="pgb" />
+	<!-- <gap:plugin name="nl.x-services.plugins.socialsharing" spec="4.3.8" source="pgb" /> -->
+	<plugin name="cordova-plugin-x-socialsharing" source="npm" />
+	
+	<!-- <plugin name="org.apache.cordova.splashscreen" spec="1.0.0" source="pgb" /> -->
+	<plugin name="cordova-plugin-splashscreen" spec="~4.0.1" />
+	
+	<!-- <plugin name="org.apache.cordova.camera" spec="0.3.6" source="pgb" /> -->
+	<plugin name="cordova-plugin-camera" spec="~2.3.1" />
 	
 	<!-- <plugin name="com.phonegap.plugins.pushplugin" spec="2.5.0" source="pgb" /> -->
 	<plugin name="pushwoosh-pgb-plugin" source="npm" />
