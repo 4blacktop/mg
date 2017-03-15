@@ -23,7 +23,7 @@
 	<preference name="SplashScreenDelay" value="4000" />
   
   
-  <plugin name="org.apache.cordova.battery-status" spec="0.2.12" source="pgb" /><!-- <plugin name="org.apache.cordova.battery-status" spec="0.2.12" source="pgb" /> --><!-- <gap:plugin name="org.apache.cordova.battery-status"/> -->
+  <plugin name="org.apache.cordova.battery-status" spec="0.2.12" source="pgb" /><!-- <gap:plugin name="org.apache.cordova.battery-status"/> -->
   
   <plugin name="org.apache.cordova.media-capture" spec="0.3.6" source="pgb" /><!-- <gap:plugin name="org.apache.cordova.media-capture"/> -->
   <!-- <gap:plugin name="org.apache.cordova.console"/> -->
