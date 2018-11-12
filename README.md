@@ -1,0 +1,1 @@
+Phonegap Cordova Hybrid Mobile App. Convert existing city portal to mobile app. Previous developer is gone and I have only access to HTML data, I've made PHP parser with JSON output, that loads data into Mobile app. There is push notification using PushWoosh service.
